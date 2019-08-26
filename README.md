@@ -1,4 +1,9 @@
-# @REPO@
+# Flex Manager
+
+Manage & Deploy Flex Integrations
+
+## Screenshot
+![Screenshot](./screenshots/main.png)
 
 ## Getting started
 
