@@ -1,0 +1,30 @@
+{
+    "private": true,
+    "name": "flex-manager",
+    "description": "Nerdpack flex-manager",
+    "version": "0.1.1",
+    "scripts": {
+        "start": "nr1 nerdpack:serve",
+        "test": "exit 0"
+    },
+    "nr1": {
+        "uuid": "615e1cab-fded-4680-bd59-5050f12835e5",
+        "sdkVersion": 2
+    },
+    "dependencies": {
+        "graphql": "^14.4.2",
+        "graphql-tag": "^2.10.1",
+        "lodash": "^4.17.15",
+        "prop-types": "^15.6.2",
+        "react": "^16.6.3",
+        "react-ace": "^7.0.2",
+        "react-dom": "^16.6.3",
+        "react-syntax-highlighter": "^11.0.2",
+        "semantic-ui-react": "^0.87.3"
+    },
+    "browserslist": [
+        "last 2 versions",
+        "not ie < 11",
+        "not dead"
+    ]
+}

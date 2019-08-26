@@ -1,0 +1,113 @@
+
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Segment, Grid, Button, Icon, List, Search, Input, Label } from 'semantic-ui-react'
+import AceEditor from 'react-ace';
+import 'brace/mode/yaml';
+import 'brace/theme/monokai';
+const _ = require("lodash");
+
+export default class MyNerdlet extends React.Component {
+
+    static propTypes = {
+        handleState: PropTypes.func.isRequired
+    }
+
+    constructor(props){
+        super(props)
+    }
+
+    handleSearchChange = (e, { value }) => {
+        const initialState = { configSearchLoading: false, results: [], value: '' }
+        this.props.handleState("set",{ configSearchLoading: true, value })
+
+        setTimeout(() => {
+          if (this.props.handleState("get","value").length < 1) return this.props.handleState("set", initialState)
+    
+          const re = new RegExp(_.escapeRegExp(this.props.handleState("get","value")), 'i')
+          const isMatch = result => re.test(result.name)
+    
+          this.props.handleState("set",{
+            configSearchLoading: false,
+            configSearchResults: _.filter(this.props.exampleRepoConfigs, isMatch),
+          })
+        }, 300)
+    }
+
+    handleResultSelect = async (e, { result }) => this.props.handleState("set",{ configFileName: result.name, configSearchValue: result.name, tempConfig: await fetch(result.download_url).then((response)=>response.text()) })
+
+    render(){
+        const resultRenderer = (val, i) => <Label key={i + "x"} content={val.name} onClick={async ()=>this.props.handleState("set",{configFileName: val.name, tempConfig: await fetch(val.download_url).then((response)=>response.text())})} />
+        const saveFileName = (e,data) => this.props.handleState("set",{configFileName: data.value})
+        let colWidth = 4
+        // need, alternate source, select repo, clear repo, deploy button
+        return (
+            <Grid.Row style={{display:this.props.handleState("get","activeItem") == "deploy integrations" ? "":"none"}}>
+                <Grid.Column width={colWidth}>
+                <Search
+                    resultRenderer={resultRenderer}
+                    fluid
+                    loading={this.props.handleState("get","configSearchLoading")}
+                    onResultSelect={this.handleResultSelect}
+                    onSearchChange={_.debounce(this.handleSearchChange, 500, {
+                        leading: true,
+                    })}
+                    results={this.props.handleState("get","configSearchResults")}
+                    value={this.props.handleState("get","value")}
+                    input={{ fluid: true }}
+                />
+                
+                    <Segment inverted style={{height: "660px"}}>
+                        <h4>Examples ({this.props.handleState("get","exampleRepoConfigs").length}):</h4>
+                        <List selection inverted verticalAlign='middle' style={{height: "600px",overflow: "scroll"}}>
+                            {this.props.handleState("get","exampleRepoConfigs").map((config, i)=>{
+                                return (
+                                    <List.Item key={"list_"+i} onClick={async ()=>{
+                                            this.props.handleState("set",{"configFileName":config.name, "tempConfig": await fetch(config.download_url).then((response)=>response.text())})
+                                        }}>
+                                        <List.Header>{config.name}</List.Header>
+                                    </List.Item>
+                                )
+                            })}
+                        </List>
+                    </Segment>
+                </Grid.Column>
+
+                <Grid.Column width={12}>
+                    <div style={{paddingBottom:"12px"}}>
+                        <Input size="large" labelPosition='right' type='text' placeholder='name' inverted onChange={saveFileName} value={this.props.handleState("get","configFileName")} style={{width:"320px"}}>
+                            <Label color="black">1</Label>
+                            <Label color="black">filename</Label>
+                            <input style={{textAlign:"right"}} />
+                        </Input> 
+                            &nbsp;&nbsp;&nbsp;
+                        <Button.Group>
+                            <Button color="black">2</Button>
+                            {this.props.handleState("get","activeRepo")!=""?
+                                <Button color="black" onClick={()=>this.props.handleState("set",{"activeItem":"repositories"})}><Icon size="small" name='exchange' />{this.props.handleState("get","activeRepo")}</Button> :
+                                <Button color="black" onClick={()=>this.props.handleState("set",{"activeItem":"repositories"})}>Select Repository</Button> 
+                            }
+                            <Button.Or text="<-" />
+                            <Button onClick={() => {window.open(`${this.props.handleState("get","activeRepo")}new/${this.props.handleState("get","branch")}?filename=${this.props.handleState("get","configFileName")}&value=${encodeURIComponent(this.props.handleState("get","tempConfig"))}`, "_blank")}} positive disabled={this.props.handleState("get","activeRepo")=="" || this.props.handleState("get","tempConfig") == "" || this.props.handleState("get","configFileName") == ""}>Deploy</Button>
+                        </Button.Group>
+                        &nbsp;&nbsp;&nbsp;
+
+                        <Input size="large" labelPosition='right' type='text' placeholder='branch' inverted onChange={(e,data) => this.props.handleState("set",{branch:data.value})} value={this.props.handleState("get","branch")} style={{width:"125px"}}>
+                                <Label color="black">branch</Label>
+                                <input />
+                        </Input> 
+                    </div>
+                <AceEditor
+                        mode="yaml"
+                        theme="monokai"
+                        onChange={(val)=>{this.props.handleState("set",{"tempConfig":val})}}
+                        name="UNIQUE_ID_OF_DIV"
+                        editorProps={{$blockScrolling: true}}
+                        value={this.props.handleState("get","tempConfig")}
+                        style={{width:"100%", height:"660px"}}
+                    />
+                </Grid.Column>
+            </Grid.Row>
+        )
+    }
+}
