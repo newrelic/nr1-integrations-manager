@@ -23,6 +23,7 @@ Clone this repository and run the following scripts:
 ```bash
 git clone https://github.com/newrelic/nr1-flex-manager.git
 cd nr1-flex-manager
+nr1 nerdpack:uuid -gf
 npm install
 npm start
 ```
