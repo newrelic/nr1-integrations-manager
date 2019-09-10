@@ -29,7 +29,7 @@ export default class MyNerdlet extends React.Component {
                 }
                 {   entity["flex.LambdaName"] ? 
                     <Popup
-                        trigger={<img width="20px" style={{verticalAlign:"sub"}} height="20px" src={"https://upload.wikimedia.org/wikipedia/commons/0/05/AWS_Lambda_logo.svg"}/> }
+                        trigger={<img width="20px" style={{verticalAlign:"sub"}} height="20px" src={"https://miro.medium.com/max/1000/1*gcpNI5rPdZn2kE5caUd4Cg.png"}/> }
                         content='Lambda'
                         inverted
                     /> : ""

@@ -85,7 +85,7 @@ export default class MyNerdlet extends React.Component {
             let accountResults  = await NerdGraphQuery.query({ query: gql(q.getAccounts()) })
             const accounts = (((accountResults || {}).data || {}).actor || {}).accounts || []
             this.setState({"accounts": accounts})
-            await this.fetchFlexSummarySamples(testAccounts)
+            await this.fetchFlexSummarySamples(accounts)
             this.setState({"loading":false})
         }
     }

@@ -75,12 +75,12 @@ export default class MyNerdlet extends React.Component {
 
                 <Grid.Column width={12}>
                     <div style={{paddingBottom:"12px"}}>
-                        <Input size="large" labelPosition='right' type='text' placeholder='name' inverted onChange={saveFileName} value={this.props.handleState("get","configFileName")} style={{width:"320px"}}>
-                            <Label color="black">1</Label>
-                            <Label color="black">filename</Label>
-                            <input style={{textAlign:"right"}} />
-                        </Input> 
-                            &nbsp;&nbsp;&nbsp;
+                        <Label color="black">1</Label>
+                        <Input size="large" labelPosition='right' type='text' placeholder='name' inverted onChange={saveFileName} value={this.props.handleState("get","configFileName")} />
+                        <Label color="black">filename</Label>
+
+                        &nbsp;&nbsp;&nbsp;
+
                         <Button.Group>
                             <Button color="black">2</Button>
                             {this.props.handleState("get","activeRepo")!=""?
@@ -90,6 +90,7 @@ export default class MyNerdlet extends React.Component {
                             <Button.Or text="<-" />
                             <Button onClick={() => {window.open(`${this.props.handleState("get","activeRepo")}new/${this.props.handleState("get","branch")}?filename=${this.props.handleState("get","configFileName")}&value=${encodeURIComponent(this.props.handleState("get","tempConfig"))}`, "_blank")}} positive disabled={this.props.handleState("get","activeRepo")=="" || this.props.handleState("get","tempConfig") == "" || this.props.handleState("get","configFileName") == ""}>Deploy</Button>
                         </Button.Group>
+                        
                         &nbsp;&nbsp;&nbsp;
 
                         <Input size="large" labelPosition='right' type='text' placeholder='branch' inverted onChange={(e,data) => this.props.handleState("set",{branch:data.value})} value={this.props.handleState("get","branch")} style={{width:"125px"}}>
