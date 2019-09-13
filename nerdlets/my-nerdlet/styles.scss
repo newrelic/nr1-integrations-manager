@@ -32,3 +32,8 @@
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
+
+.ui.search > .results {
+    overflow-y: auto !important;
+    max-height: 400px !important;
+}

@@ -23,6 +23,18 @@ export default class MyNerdlet extends React.Component {
             <Grid.Row style={{display:this.props.activeItem == "linux host" ? "":"none"}}>
                 <Grid.Column>
                     <Segment inverted>
+                        <h3>Automated Install on Linux with defaults and without any Flex Configs</h3>
+                        <Segment inverted>
+                            <SyntaxHighlighter language="bash" style={atomDark}>
+                                    {   
+                                        "### Install\n" +
+                                        'sudo bash -c "$(curl -L https://newrelic-flex.s3-ap-southeast-2.amazonaws.com/install_linux_s3.sh)"\n\n'+
+                                        "### Browse to the below directory to add your Flex Configs\n" +
+                                        "cd /var/db/newrelic-infra/custom-integrations/flexConfigs"
+                                    }
+                                </SyntaxHighlighter>
+                        </Segment>
+                        <Divider />
                         <h3>Standard Install</h3>
                         <Segment inverted>
                             Latest: <a rel="noopener noreferrer" target="_blank" href={`${downloadLink}`}>{`${downloadLink}`}</a>
@@ -47,18 +59,6 @@ export default class MyNerdlet extends React.Component {
                                             "sudo ./install_linux.sh \n"
                                         }
                             </SyntaxHighlighter>
-                        </Segment>
-                        <Divider />
-                        <h3>Automated Install on Linux with defaults and without any Flex Configs</h3>
-                        <Segment inverted>
-                            <SyntaxHighlighter language="bash" style={atomDark}>
-                                    {   
-                                        "### Install\n" +
-                                        'sudo bash -c "$(curl -L https://newrelic-flex.s3-ap-southeast-2.amazonaws.com/install_linux_s3.sh)"\n\n'+
-                                        "### Browse to the below directory to add your Flex Configs\n" +
-                                        "cd /var/db/newrelic-infra/custom-integrations/flexConfigs"
-                                    }
-                                </SyntaxHighlighter>
                         </Segment>
                     </Segment>
                 </Grid.Column>

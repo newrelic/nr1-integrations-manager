@@ -74,29 +74,26 @@ export default class MyNerdlet extends React.Component {
                 </Grid.Column>
 
                 <Grid.Column width={12}>
-                    <div style={{paddingBottom:"12px"}}>
-                        <Label color="black">1</Label>
-                        <Input size="large" labelPosition='right' type='text' placeholder='name' inverted onChange={saveFileName} value={this.props.handleState("get","configFileName")} />
-                        <Label color="black">filename</Label>
+                    <div style={{display:"flex", paddingBottom:"12px"}}>
+                        <div>
+                            <Input label={{ color: "black", content: 'Filename' }} size="large" labelPosition='left' type='text' placeholder='name' inverted onChange={saveFileName} value={this.props.handleState("get","configFileName")} />
+                        </div>
 
-                        &nbsp;&nbsp;&nbsp;
+                        <div style={{marginLeft:"100px"}}>
+                            <Button.Group>
+                                {this.props.handleState("get","activeRepo")!=""?
+                                    <Button color="black" onClick={()=>this.props.handleState("set",{"activeItem":"repositories"})}><Icon size="small" name='exchange' />{this.props.handleState("get","activeRepo")}</Button> :
+                                    <Button color="black" onClick={()=>this.props.handleState("set",{"activeItem":"repositories"})}>Select Repository</Button> 
+                                }
+                                <Button.Or text="<-" />
+                                <Button onClick={() => {window.open(`${this.props.handleState("get","activeRepo")}new/${this.props.handleState("get","branch")}?filename=${this.props.handleState("get","configFileName")}&value=${encodeURIComponent(this.props.handleState("get","tempConfig"))}`, "_blank")}} positive disabled={this.props.handleState("get","activeRepo")=="" || this.props.handleState("get","tempConfig") == "" || this.props.handleState("get","configFileName") == ""}>Deploy</Button>
+                            </Button.Group>
+                        </div>
 
-                        <Button.Group>
-                            <Button color="black">2</Button>
-                            {this.props.handleState("get","activeRepo")!=""?
-                                <Button color="black" onClick={()=>this.props.handleState("set",{"activeItem":"repositories"})}><Icon size="small" name='exchange' />{this.props.handleState("get","activeRepo")}</Button> :
-                                <Button color="black" onClick={()=>this.props.handleState("set",{"activeItem":"repositories"})}>Select Repository</Button> 
-                            }
-                            <Button.Or text="<-" />
-                            <Button onClick={() => {window.open(`${this.props.handleState("get","activeRepo")}new/${this.props.handleState("get","branch")}?filename=${this.props.handleState("get","configFileName")}&value=${encodeURIComponent(this.props.handleState("get","tempConfig"))}`, "_blank")}} positive disabled={this.props.handleState("get","activeRepo")=="" || this.props.handleState("get","tempConfig") == "" || this.props.handleState("get","configFileName") == ""}>Deploy</Button>
-                        </Button.Group>
-                        
-                        &nbsp;&nbsp;&nbsp;
+                        <div style={{marginLeft:"15px"}}>
+                            <Input label={{ color: "black", content: 'Branch' }} size="large" labelPosition='left' type='text' placeholder='branch' inverted onChange={(e,data) => this.props.handleState("set",{branch:data.value})} value={this.props.handleState("get","branch")} style={{width:"125px"}}/> 
+                        </div>
 
-                        <Input size="large" labelPosition='right' type='text' placeholder='branch' inverted onChange={(e,data) => this.props.handleState("set",{branch:data.value})} value={this.props.handleState("get","branch")} style={{width:"125px"}}>
-                                <Label color="black">branch</Label>
-                                <input />
-                        </Input> 
                     </div>
                 <AceEditor
                         mode="yaml"
