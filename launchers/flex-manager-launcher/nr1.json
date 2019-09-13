@@ -1,8 +1,8 @@
 {
     "schemaType": "LAUNCHER",
-    "id": "my-launcher",
+    "id": "flex-manager-launcher",
     "description": "Manage & Deploy Flex Integrations",
     "displayName": "Flex Manager",
     "icon": "interface_operations_adjust",
-    "rootNerdletId": "02454655-c0e2-4e13-9db7-35232666dbe5.my-nerdlet"
+    "rootNerdletId": "02454655-c0e2-4e13-9db7-35232666dbe5.flex-manager-nerdlet"
 }
