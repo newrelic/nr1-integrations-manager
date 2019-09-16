@@ -4,7 +4,7 @@
 
 ## Usage
 
-Manage & Deploy Flex Integrations
+Manage and deploy [Flex integrations](https://github.com/newrelic/nri-flex).  
 
 ![Screenshot](./screenshots/main.png)
 
