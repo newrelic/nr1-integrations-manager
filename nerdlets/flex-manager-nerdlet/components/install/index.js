@@ -10,7 +10,7 @@ import Downloads from './downloads'
 import Fargate from './fargate'
 import Lambda from './lambda'
 
-export default class MyNerdlet extends React.Component {
+export default class Install extends React.Component {
 
     static propTypes = {
     }

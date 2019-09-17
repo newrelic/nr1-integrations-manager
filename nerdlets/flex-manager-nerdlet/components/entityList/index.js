@@ -5,7 +5,7 @@ import { Table, Grid, Button, Icon, Popup } from 'semantic-ui-react'
 import InstanceModal from './instanceModal'
 import ProcessDiscoveryModal from './processDiscoveryModal'
 
-export default class MyNerdlet extends React.Component {
+export default class EntityList extends React.Component {
 
     static propTypes = {
         flexStatusSamples: PropTypes.array.isRequired,

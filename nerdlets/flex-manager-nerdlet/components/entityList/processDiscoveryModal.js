@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Button, Table, Icon } from 'semantic-ui-react'
 
-export default class MyNerdlet extends React.Component {
+export default class ProcessDiscoveryModal extends React.Component {
 
     static propTypes = {
         entity: PropTypes.object.isRequired,

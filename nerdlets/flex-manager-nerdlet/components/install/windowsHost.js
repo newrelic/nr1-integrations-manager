@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Segment, List } from 'semantic-ui-react'
 
-export default class MyNerdlet extends React.Component {
+export default class WindowsInstall extends React.Component {
 
     static propTypes = {
         activeItem: PropTypes.string.isRequired,

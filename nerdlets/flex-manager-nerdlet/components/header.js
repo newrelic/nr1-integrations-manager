@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Segment, Statistic, Button } from 'semantic-ui-react'
 
-export default class MyNerdlet extends React.Component {
+export default class Header extends React.Component {
 
     static propTypes = {
         flexStatusSamples: PropTypes.array.isRequired,

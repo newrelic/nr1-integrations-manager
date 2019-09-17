@@ -7,7 +7,7 @@ import 'brace/mode/yaml';
 import 'brace/theme/monokai';
 const _ = require("lodash");
 
-export default class MyNerdlet extends React.Component {
+export default class DeployIntegrations extends React.Component {
 
     static propTypes = {
         handleState: PropTypes.func.isRequired
@@ -74,11 +74,11 @@ export default class MyNerdlet extends React.Component {
                 </Grid.Column>
 
                 <Grid.Column width={12}>
+                    
                     <div style={{display:"flex", paddingBottom:"12px"}}>
                         <div>
                             <Input label={{ color: "black", content: 'Filename' }} size="large" labelPosition='left' type='text' placeholder='name' inverted onChange={saveFileName} value={this.props.handleState("get","configFileName")} />
                         </div>
-
                         <div style={{marginLeft:"100px"}}>
                             <Button.Group>
                                 {this.props.handleState("get","activeRepo")!=""?
@@ -89,12 +89,11 @@ export default class MyNerdlet extends React.Component {
                                 <Button onClick={() => {window.open(`${this.props.handleState("get","activeRepo")}new/${this.props.handleState("get","branch")}?filename=${this.props.handleState("get","configFileName")}&value=${encodeURIComponent(this.props.handleState("get","tempConfig"))}`, "_blank")}} positive disabled={this.props.handleState("get","activeRepo")=="" || this.props.handleState("get","tempConfig") == "" || this.props.handleState("get","configFileName") == ""}>Deploy</Button>
                             </Button.Group>
                         </div>
-
                         <div style={{marginLeft:"15px"}}>
                             <Input label={{ color: "black", content: 'Branch' }} size="large" labelPosition='left' type='text' placeholder='branch' inverted onChange={(e,data) => this.props.handleState("set",{branch:data.value})} value={this.props.handleState("get","branch")} style={{width:"125px"}}/> 
                         </div>
-
                     </div>
+
                 <AceEditor
                         mode="yaml"
                         theme="monokai"

@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Segment, List, Button, Icon, Divider } from 'semantic-ui-react'
 
-export default class MyNerdlet extends React.Component {
+export default class RepositoryList extends React.Component {
 
     static propTypes = {
         handleState: PropTypes.func.isRequired,

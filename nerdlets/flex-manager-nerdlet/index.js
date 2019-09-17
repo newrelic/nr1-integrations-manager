@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Grid } from 'semantic-ui-react'
 import { NerdGraphQuery } from 'nr1';
+import { accountsWithData } from './lib/utils'
 import Header from './components/header'
 import FlexEntityList from './components/entityList/index'
 import FlexRepoList from './components/repositoryList/index'
@@ -11,7 +12,7 @@ import InstallFlex from './components/install/index'
 import gql from 'graphql-tag';
 const q = require('./queries')
 
-export default class MyNerdlet extends React.Component {
+export default class FlexManager extends React.Component {
     static propTypes = {
         width: PropTypes.number,
         height: PropTypes.number,
@@ -72,21 +73,17 @@ export default class MyNerdlet extends React.Component {
     componentDidMount(){
         this.fetchData()
         this.refresh = setInterval(()=>{
-            if(this.state.enableRefresh){
-                this.fetchData()
-            }
+            if(this.state.enableRefresh) this.fetchData()
         },15000);
     }
 
     async fetchData(){
         if(this.state.loading == false){
-            this.setState({"loading":true})
+            await this.setState({"loading":true})
             this.fetchRepoExamples(this.state.exampleRepoLinks)
-            let accountResults  = await NerdGraphQuery.query({ query: gql(q.getAccounts()) })
-            const accounts = (((accountResults || {}).data || {}).actor || {}).accounts || []
-            this.setState({"accounts": accounts})
-            await this.fetchFlexSummarySamples(accounts)
-            this.setState({"loading":false})
+            await this.setState({accounts: await accountsWithData("flexStatusSample")})
+            await this.fetchFlexSummarySamples(this.state.accounts)
+            await this.setState({"loading":false})
         }
     }
 

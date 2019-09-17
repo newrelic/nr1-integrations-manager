@@ -1,14 +1,4 @@
 module.exports = {
-    getAccounts: () => {
-      return `{
-        actor {
-          accounts {
-            id
-            name
-          }
-        }
-      }`
-    },
     nrql: (accountId, nrql) => {
       return `{
           actor {

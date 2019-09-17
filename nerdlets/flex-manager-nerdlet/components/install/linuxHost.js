@@ -5,7 +5,7 @@ import { Grid, Segment, Divider } from 'semantic-ui-react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export default class MyNerdlet extends React.Component {
+export default class LinuxInstall extends React.Component {
 
     static propTypes = {
         activeItem: PropTypes.string.isRequired
