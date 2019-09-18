@@ -25,15 +25,24 @@ export default class Header extends React.Component {
         return(
             <Segment inverted>
                 <Statistic horizontal style={{marginBottom:"0px"}} inverted>
+                    <Statistic.Label>Flex Entities &nbsp;&nbsp;</Statistic.Label>
                     <Statistic.Value>{this.props.flexStatusSamples.length}</Statistic.Value>
                     <Statistic.Label>Git Repositories &nbsp;&nbsp;</Statistic.Label>
                     <Statistic.Value>{this.props.flexGitRepos ? Object.keys(this.props.flexGitRepos).length : 0}</Statistic.Value>
                 </Statistic>
                 <Statistic horizontal style={{marginBottom:"0px", float:"right"}} inverted>
-                    <Statistic.Label style={{marginBottom:"0px", float:"right", display: this.props.loading ? "": "none"}}>{this.props.loading ? `Checking ${this.props.noAccounts} Accounts` : ""} &nbsp;&nbsp;</Statistic.Label>
+                    <Statistic.Label style={{marginBottom:"0px", float:"right", display: this.props.loading ? "": "none"}}>{this.props.loading ? `${this.props.noAccounts} Accounts` : ""} &nbsp;&nbsp;</Statistic.Label>
                     <Button.Group>
-                        <Button loading={this.props.loading} icon="refresh" compact content='Refresh' inverted labelPosition='left' onClick={()=>this.props.fetchData()} />
-                        <Button toggle active={this.props.enableRefresh} compact inverted content='AUTO' inverted onClick={this.handleClick} />
+                        <Button 
+                            active={this.props.enableRefresh} 
+                            compact inverted 
+                            loading={this.props.loading} 
+                            icon="refresh" 
+                            compact 
+                            inverted 
+                            toggle
+                            style={{paddingTop:"6px"}}
+                            onClick={this.handleClick} />
                     </Button.Group>
                 </Statistic>
             </Segment>

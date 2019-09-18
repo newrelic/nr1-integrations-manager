@@ -22,7 +22,7 @@ export default class FlexManager extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            enableRefresh: false,
+            enableRefresh: true,
             activeItem: "entities",
             enableNerdLog: true,
             accounts: [],
@@ -74,7 +74,7 @@ export default class FlexManager extends React.Component {
         this.fetchData()
         this.refresh = setInterval(()=>{
             if(this.state.enableRefresh) this.fetchData()
-        },15000);
+        },7000);
     }
 
     async fetchData(){
@@ -130,12 +130,12 @@ export default class FlexManager extends React.Component {
             let statusSamplePromise = []
             summarySamples.forEach((sample)=>{
                 let query = ""
-                if(sample["flex.LambdaName"]){
+                if(sample["entityGuid"]){
+                    query = `FROM flexStatusSample SELECT * WHERE entityGuid = '${sample["entityGuid"]}' SINCE 1 minute ago LIMIT 1`
+                }else if(sample["flex.LambdaName"]){
                     query = `FROM flexStatusSample SELECT * WHERE flex.LambdaName = '${sample["flex.LambdaName"]}' SINCE 1 minute ago LIMIT 1`
                 }else if(sample["flex.ContainerId"]){
                     query = `FROM flexStatusSample SELECT * WHERE flex.ContainerId = '${sample["flex.ContainerId"]}' SINCE 1 minute ago LIMIT 1`
-                }else if(sample["entityGuid"]){
-                    query = `FROM flexStatusSample SELECT * WHERE entityGuid = '${sample["entityGuid"]}' SINCE 1 minute ago LIMIT 1`
                 }else if(sample["flex.Hostname"]){
                     query = `FROM flexStatusSample SELECT * WHERE flex.Hostname = '${sample["flex.Hostname"]}' SINCE 1 minute ago LIMIT 1`
                 }
@@ -179,7 +179,6 @@ export default class FlexManager extends React.Component {
     renderMenu(activeItem){
         return(
             <Menu pointing secondary inverted>
-                {/* // position='right' */}
                 <Menu.Item name='install flex' active={activeItem === 'install flex'} onClick={this.handleItemClick} />
                 <Menu.Item name='entities' active={activeItem === 'entities'} onClick={this.handleItemClick} />
                 <Menu.Item name='repositories' active={activeItem === 'repositories'} onClick={this.handleItemClick} />
