@@ -40,8 +40,8 @@ export default class FlexManager extends React.Component {
             branch:"master",
             customRepoLinks: [],
             exampleRepoLinks:   [ 
-                            "https://api.github.com/repos/kav91/nri-flex-concept/contents/flexConfigs",
-                            "https://api.github.com/repos/kav91/nri-flex-concept/contents/flexContainerDiscovery"
+                            "https://api.github.com/repos/newrelic/nri-flex/contents/examples/flexConfigs",
+                            "https://api.github.com/repos/newrelic/nri-flex/contents/examples/flexContainerDiscovery"
             ],
             exampleRepoConfigs: []
         }
