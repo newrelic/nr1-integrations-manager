@@ -1,15 +1,10 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Grid, Segment, List } from 'semantic-ui-react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default class FargateInstall extends React.Component {
-
-    static propTypes = {
-        activeItem: PropTypes.string.isRequired
-    }
 
     constructor(props){
         super(props)
@@ -20,19 +15,19 @@ export default class FargateInstall extends React.Component {
     }
 
     async componentDidMount(){
-        let nriFlexConfig = await fetch('https://newrelic-flex.s3-ap-southeast-2.amazonaws.com/configs/nri-flex-config.yml').then((response)=>response.text())
+        let nriFlexConfig = await fetch('https://raw.githubusercontent.com/newrelic/nri-flex/master/configs/nri-flex-config-linux.yml').then((response)=>response.text())
         if(nriFlexConfig){
             nriFlexConfig = nriFlexConfig.replace("# fargate","fargate")
             this.setState({nriFlexConfig})
         }
-        let example = await fetch('https://newrelic-flex.s3-ap-southeast-2.amazonaws.com/examples/cd-nginx.yml').then((response)=>response.text())
+        let example = await fetch('https://raw.githubusercontent.com/newrelic/nri-flex/master/examples/flexConfigs/cd-nginx.yml').then((response)=>response.text())
         if(example){
             this.setState({example})
         }
     }
 
     render(){
-        let nginxDownloadLink = `https://newrelic-flex.s3-ap-southeast-2.amazonaws.com/examples/cd-nginx.yml`
+        let nginxDownloadLink = `https://raw.githubusercontent.com/newrelic/nri-flex/master/examples/flexConfigs/cd-nginx.yml`
         return(
             <Grid.Row style={{display:this.props.activeItem == "fargate" ? "":"none"}}>
                 <Grid.Column>

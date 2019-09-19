@@ -1,6 +1,5 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Grid, Menu } from 'semantic-ui-react'
 import LinuxHost from './linuxHost'
 import WindowsHost from './windowsHost'
@@ -12,25 +11,15 @@ import Lambda from './lambda'
 
 export default class Install extends React.Component {
 
-    static propTypes = {
-    }
-
     constructor(props){
         super(props)
         this.state = {
             activeItem: "linux host",
-            flexLatestVersion: ""
+            latest: {},
         }
     }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-    async componentDidMount(){
-        let flexLatestVersion = await fetch('https://newrelic-flex.s3-ap-southeast-2.amazonaws.com/releases/LATEST').then((response)=>response.text())
-        if(flexLatestVersion){
-            this.setState({flexLatestVersion})
-        }
-    }
 
     renderMenu(activeItem){
         return (
@@ -51,13 +40,13 @@ export default class Install extends React.Component {
             <Grid.Row style={{display:this.props.activeItem == "install flex" ? "":"none"}}>
                 <Grid.Column>
                     {this.renderMenu(this.state.activeItem)}
-                    <LinuxHost activeItem={this.state.activeItem} version={this.state.flexLatestVersion}/>
-                    <Docker activeItem={this.state.activeItem} version={this.state.flexLatestVersion}/>
-                    <K8s activeItem={this.state.activeItem} version={this.state.flexLatestVersion}/>
-                    <Fargate activeItem={this.state.activeItem} version={this.state.flexLatestVersion}/>
-                    <Lambda activeItem={this.state.activeItem} version={this.state.flexLatestVersion}/>
-                    <WindowsHost activeItem={this.state.activeItem} version={this.state.flexLatestVersion}/>
-                    <Downloads activeItem={this.state.activeItem} version={this.state.flexLatestVersion}/>
+                    <LinuxHost activeItem={this.state.activeItem} latest={this.props.latest}/>
+                    <Docker activeItem={this.state.activeItem} latest={this.props.latest}/>
+                    <K8s activeItem={this.state.activeItem} latest={this.props.latest}/>
+                    <Fargate activeItem={this.state.activeItem} latest={this.props.latest}/>
+                    <Lambda activeItem={this.state.activeItem} latest={this.props.latest}/>
+                    <WindowsHost activeItem={this.state.activeItem} latest={this.props.latest}/>
+                    <Downloads activeItem={this.state.activeItem} latest={this.props.latest}/>
                 </Grid.Column>
             </Grid.Row>
         )

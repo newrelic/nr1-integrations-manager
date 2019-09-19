@@ -1,15 +1,10 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Grid, Segment, List } from 'semantic-ui-react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default class KubernetesInstall extends React.Component {
-
-    static propTypes = {
-        activeItem: PropTypes.string.isRequired
-    }
 
     constructor(props){
         super(props)
@@ -25,7 +20,7 @@ export default class KubernetesInstall extends React.Component {
             nriFlexConfig = nriFlexConfig.replace("# container_discovery","container_discovery")
             this.setState({nriFlexConfig})
         }
-        let k8s = await fetch('https://newrelic-flex.s3-ap-southeast-2.amazonaws.com/configs/nri-flex-k8s.yml').then((response)=>response.text())
+        let k8s = await fetch('https://raw.githubusercontent.com/newrelic/nri-flex/master/examples/nri-flex-k8s.yml').then((response)=>response.text())
         if(k8s){
             this.setState({k8s})
         }
@@ -34,7 +29,7 @@ export default class KubernetesInstall extends React.Component {
     
 
     render(){
-        let downloadLink = `https://newrelic-flex.s3-ap-southeast-2.amazonaws.com/configs/nri-flex-k8s.yml`
+        let downloadLink = `https://raw.githubusercontent.com/newrelic/nri-flex/master/examples/nri-flex-k8s.yml`
         return(
             <Grid.Row style={{display:this.props.activeItem == "kubernetes" ? "":"none"}}>
                 <Grid.Column>
@@ -56,7 +51,7 @@ export default class KubernetesInstall extends React.Component {
                                     </SyntaxHighlighter>
                                 </List.Item>
                                 <List.Item>
-                                Flex K8s Daemonset Download: <a rel="noopener noreferrer" target="_blank" href={`${downloadLink}`}>{`${downloadLink}`}</a>
+                                Flex K8s Daemonset Download: <a rel="noopener noreferrer" target="_blank" href={`${downloadLink}`}>{`nri-flex-k8s.yml`}</a>
                                 </List.Item>
                                 <List.Item>
                                     Ensure you update the Kubernetes Deployment yaml file with your Flex image, and NRIA license key.

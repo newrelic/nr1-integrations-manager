@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Menu, Grid } from 'semantic-ui-react'
 import { NerdGraphQuery } from 'nr1';
 import { accountsWithData } from './lib/utils'
@@ -13,12 +12,6 @@ import gql from 'graphql-tag';
 const q = require('./queries')
 
 export default class FlexManager extends React.Component {
-    static propTypes = {
-        width: PropTypes.number,
-        height: PropTypes.number,
-        nr1: PropTypes.object
-    };
-
     constructor(props){
         super(props)
         this.state = {
@@ -38,6 +31,7 @@ export default class FlexManager extends React.Component {
             configSearchResults: [],
             value: "",
             branch:"master",
+            latest:{},
             customRepoLinks: [],
             exampleRepoLinks:   [ 
                             "https://api.github.com/repos/newrelic/nri-flex/contents/examples/flexConfigs",
@@ -50,6 +44,7 @@ export default class FlexManager extends React.Component {
         this.fetchFlexSummarySamples = this.fetchFlexSummarySamples.bind(this)
         this.fetchFlexStatusSamples = this.fetchFlexStatusSamples.bind(this)
         this.fetchRepoExamples = this.fetchRepoExamples.bind(this)
+        this.fetchLatestInfo = this.fetchLatestInfo.bind(this)
     }
 
     nerdLog(msg){
@@ -81,9 +76,17 @@ export default class FlexManager extends React.Component {
         if(this.state.loading == false){
             await this.setState({"loading":true})
             this.fetchRepoExamples(this.state.exampleRepoLinks)
+            this.fetchLatestInfo()
             await this.setState({accounts: await accountsWithData("flexStatusSample")})
             await this.fetchFlexSummarySamples(this.state.accounts)
             await this.setState({"loading":false})
+        }
+    }
+
+    async fetchLatestInfo(){
+        let latest = await fetch("https://api.github.com/repos/newrelic/nri-flex/releases/latest").then((response)=>response.json())
+        if(latest){
+            this.setState({latest})
         }
     }
 
@@ -194,7 +197,7 @@ export default class FlexManager extends React.Component {
                     <Header flexStatusSamples={this.state.flexStatusSamples} flexGitRepos={this.state.flexGitRepos} fetchData={this.fetchData} loading={this.state.loading} noAccounts={this.state.accounts.length} handleState={this.handleState} enableRefresh={this.state.enableRefresh}/>
                     {this.renderMenu(this.state.activeItem)}
                     <Grid inverted style={{paddingTop:"5px",paddingLeft:"5px",paddingRight:"5px", height:"100%", backgroundColor:"#000e0e"}}>
-                        <InstallFlex handleState={this.handleState} activeItem={this.state.activeItem} />
+                        <InstallFlex handleState={this.handleState} activeItem={this.state.activeItem} latest={this.state.latest}/>
                         <FlexEntityList handleState={this.handleState} activeItem={this.state.activeItem} flexStatusSamples={this.state.flexStatusSamples} exampleRepoConfigs={this.state.exampleRepoConfigs} />
                         <FlexRepoList handleState={this.handleState} activeItem={this.state.activeItem} flexGitRepos={this.state.flexGitRepos} activeRepo={this.state.activeRepo} />
                         <FlexDeployIntegrations handleState={this.handleState} activeItem={this.state.activeItem} exampleRepoConfigs={this.state.exampleRepoConfigs} />

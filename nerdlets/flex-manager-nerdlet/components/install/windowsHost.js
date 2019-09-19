@@ -1,22 +1,31 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Grid, Segment, List } from 'semantic-ui-react'
 
 export default class WindowsInstall extends React.Component {
-
-    static propTypes = {
-        activeItem: PropTypes.string.isRequired,
-        version: PropTypes.string.isRequired
-    }
 
     constructor(props){
         super(props)
     }
 
     render(){
-        let win = `nri-flex-windows-${this.props.version}.tar.gz`
-        let downloadPath = `https://newrelic-flex.s3-ap-southeast-2.amazonaws.com/releases/`
+        let { latest } = this.props
+
+        let filebase = ""
+        let filename = ""
+        let downloadLink = ""
+        let release = []
+
+        if(latest){
+            if(latest.assets){
+                release = latest.assets.filter((asset)=>asset.name.includes("windows"))
+                if(release[0]){
+                    downloadLink = release[0].browser_download_url
+                    filename = release[0].name
+                    filebase = (release[0].name).replace(".tar.gz","")
+                }
+            }
+        }
         
         return(
             <Grid.Row style={{display:this.props.activeItem == "windows host" ? "":"none"}}>
@@ -25,7 +34,7 @@ export default class WindowsInstall extends React.Component {
                         <h3>Windows Install</h3>
                         <List bulleted relaxed>
                             <List.Item>
-                                Download the latest windows release <a rel="noopener noreferrer" target="_blank" href={`${downloadPath}${win}`}>{`${downloadPath}${win}`}</a>
+                                Download the latest windows release <a rel="noopener noreferrer" target="_blank" href={downloadLink}>{filename}</a>
                             </List.Item>
                             <List.Item>
                                 Unpack
