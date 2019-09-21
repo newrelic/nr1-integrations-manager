@@ -4,7 +4,7 @@
 
 ## Usage
 
-Manage and deploy [Flex integrations](https://github.com/newrelic/nri-flex).  
+Manage and deploy [Flex integrations](https://github.com/newrelic/nri-flex).
 
 ![Screenshot](./screenshots/main.png)
 
@@ -21,7 +21,7 @@ This project is distributed under the [Apache 2 license](LICENSE).
 Clone this repository and run the following scripts:
 
 ```bash
-git clone https://github.com/newrelic/nr1-flex-manager.git
+nr1 nerdpack:clone -r https://github.com/newrelic/nr1-flex-manager.git
 cd nr1-flex-manager
 nr1 nerdpack:uuid -gf
 npm install
