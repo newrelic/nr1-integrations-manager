@@ -3,6 +3,5 @@
     "id": "flex-manager-launcher",
     "description": "Manage & Deploy Flex Integrations",
     "displayName": "Flex Manager",
-    "icon": "interface_operations_adjust",
     "rootNerdletId": "flex-manager-nerdlet"
 }
