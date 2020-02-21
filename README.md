@@ -4,7 +4,9 @@
 
 ## Usage
 
-Manage and deploy [Flex integrations](https://github.com/newrelic/nri-flex).
+Use Flex Manager to simplify the work of creating, managing and deploying new integrations that are built using [`Flex`](https://github.com/newrelic/nri-flex).
+
+> _Flex is an agnostic, all-in-one integration that makes sending data to New Relic from third party sources easier than ever._
 
 ![Screenshot](./screenshots/main.png)
 
@@ -12,9 +14,9 @@ Manage and deploy [Flex integrations](https://github.com/newrelic/nri-flex).
 
 This project is distributed under the [Apache 2 license](LICENSE).
 
-## What do you need to make this work?
+## Dependencies
 
-<!-- TODO -->
+Requires [`New Relic Infrastructure`](https://newrelic.com/products/infrastructure) and the [`Flex`](https://github.com/newrelic/nri-flex) integration.
 
 ## Getting started
 
@@ -52,20 +54,15 @@ nr1 nerdpack:subscribe [-c [DEV|BETA|STABLE]] [--profile=your_profile_name]
 
 Visit [https://one.newrelic.com](https://one.newrelic.com), navigate to the Nerdpack, and :sparkles:
 
-## Support
+## Community Support
 
-New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR SUPPORT, although you can report issues and contribute to the project here on GitHub.
+New Relic hosts and moderates an online forum where you can interact with New Relic employees as well as other customers to get help and share best practices. Like all New Relic open source community projects, there's a related topic in the New Relic Explorers Hub. You can find this project's topic/threads here:
 
-_Please do not report issues with this software to New Relic Global Technical Support._
+[https://discuss.newrelic.com/t/flex-manager-nerdpack/83346](https://discuss.newrelic.com/t/flex-manager-nerdpack/83346)
 
-### Community
+Please do not report issues with Flex Manager to New Relic Global Technical Support. Instead, visit the [`Explorers Hub`](https://discuss.newrelic.com/c/build-on-new-relic) for troubleshooting and best-practices.
 
-New Relic hosts and moderates an online forum where customers can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorers Hub. You can find this project's topic/threads here:
-
-[https://discuss.newrelic.com/c/build-on-new-relic/nr1-flex-manager](https://discuss.newrelic.com/c/build-on-new-relic/nr1-flex-manager)
-*(Note: URL subject to change before GA)*
-
-### Issues / Enhancement Requests
+## Issues / Enhancement Requests
 
 Issues and enhancement requests can be submitted in the [Issues tab of this repository](../../issues). Please search for and review the existing open issues before submitting a new issue.
 
