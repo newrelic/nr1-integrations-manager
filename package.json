@@ -9,10 +9,6 @@
     "eslint-check": "eslint nerdlets/",
     "eslint-fix": "eslint nerdlets/ --fix"
   },
-  "nr1": {
-    "uuid": "4dd99420-ca43-4287-b51a-9a042beec88d",
-    "sdkVersion": 2
-  },
   "dependencies": {
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",

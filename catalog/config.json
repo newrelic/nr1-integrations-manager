@@ -1,0 +1,17 @@
+{
+  "tagline": "Reduce the effort to create, manage and deploy new Flex integrations",
+  "repository": "https://github.com/newrelic/nr1-flex-manager.git",
+  "details": "Use Flex Manager to simplify the work of creating, managing and deploying new integrations that are built using Flex.",
+  "support": {
+    "issues": {
+      "url": "https://github.com/newrelic/nr1-flex-manager/issues"
+    },
+    "email": {
+      "address": "opensource+nr1-flex-manager@newrelic.com"
+    },
+    "community": {
+      "url": "https://discuss.newrelic.com/t/flex-manager-nerdpack/83346"
+    }
+  },
+  "whatsNew": "- Add new launcher icon \n - circleci and semantic-release"
+}
