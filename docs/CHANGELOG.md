@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/newrelic/nr1-flex-manager/compare/v0.2.0...v0.3.0) (2020-03-06)
+
+
+### Features
+
+* **catalog:** add app icon into root directory ([2a0bf7e](https://github.com/newrelic/nr1-flex-manager/commit/2a0bf7efdb7d881e3d231310149f5a81c3712c2f))
+
 # [0.2.0](https://github.com/newrelic/nr1-flex-manager/compare/v0.1.7...v0.2.0) (2019-11-15)
 
 
