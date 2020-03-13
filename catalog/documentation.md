@@ -1,16 +1,8 @@
-# Documentation
-
-[![New Relic One Catalog Project header](https://github.com/newrelic/open-source-office/raw/master/examples/categories/images/New_Relic_One_Catalog_Project.png)](https://github.com/newrelic/open-source-office/blob/master/examples/categories/index.md#nr1-catalog)
-
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-flex-manager?include_prereleases&sort=semver) [![Snyk](https://snyk.io/test/github/newrelic/nr1-flex-manager/badge.svg)](https://snyk.io/test/github/newrelic/nr1-flex-manager)
-
 ## Usage
 
 Use Flex Manager to simplify the work of creating, managing and deploying new integrations that are built using [`Flex`](https://github.com/newrelic/nri-flex).
 
 > _Flex is an agnostic, all-in-one integration that makes sending data to New Relic from third party sources easier than ever._
-
-![Screenshot](https://github.com/newrelic/nr1-flex-manager/blob/master/catalog/screenshots/nr1-flex-manager-1.png)
 
 ## Open Source License
 
