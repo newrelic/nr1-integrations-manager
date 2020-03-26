@@ -1,3 +1,11 @@
+## [0.3.1](https://github.com/newrelic/nr1-flex-manager/compare/v0.3.0...v0.3.1) (2020-03-26)
+
+
+### Bug Fixes
+
+* add trailing slash to repoUrl if its missing ([b0f6f46](https://github.com/newrelic/nr1-flex-manager/commit/b0f6f46fa4c068c65abcdb4a5d7e7fbc7477c466))
+* remove await this.setState; use callback instead ([0e31782](https://github.com/newrelic/nr1-flex-manager/commit/0e31782eef3a92a4b2b057ea63b2aec3e20894c0))
+
 # [0.3.0](https://github.com/newrelic/nr1-flex-manager/compare/v0.2.0...v0.3.0) (2020-03-06)
 
 
