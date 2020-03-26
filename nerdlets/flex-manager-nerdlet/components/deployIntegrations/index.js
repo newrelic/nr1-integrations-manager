@@ -40,6 +40,7 @@ export default class DeployIntegrations extends React.Component {
         const resultRenderer = (val, i) => <Label key={i + "x"} content={val.name} onClick={async ()=>this.props.handleState("set",{configFileName: val.name, tempConfig: await fetch(val.download_url).then((response)=>response.text())})} />
         const saveFileName = (e,data) => this.props.handleState("set",{configFileName: data.value})
         let colWidth = 4
+        const isDisabled = this.props.handleState("get","activeRepo") == "" || this.props.handleState("get","tempConfig") == "" || this.props.handleState("get","configFileName") == "";
         // need, alternate source, select repo, clear repo, deploy button
         return (
             <Grid.Row style={{display:this.props.handleState("get","activeItem") == "deploy integrations" ? "":"none"}}>
@@ -86,7 +87,23 @@ export default class DeployIntegrations extends React.Component {
                                     <Button color="black" onClick={()=>this.props.handleState("set",{"activeItem":"repositories"})}>Select Repository</Button> 
                                 }
                                 <Button.Or text="<-" />
-                                <Button onClick={() => {window.open(`${this.props.handleState("get","activeRepo")}new/${this.props.handleState("get","branch")}?filename=${this.props.handleState("get","configFileName")}&value=${encodeURIComponent(this.props.handleState("get","tempConfig"))}`, "_blank")}} positive disabled={this.props.handleState("get","activeRepo")=="" || this.props.handleState("get","tempConfig") == "" || this.props.handleState("get","configFileName") == ""}>Deploy</Button>
+                                <Button
+                                  onClick={() => {
+                                    let repoUrl = this.props.handleState("get","activeRepo");
+
+                                    if (repoUrl[repoUrl.length - 1] !== '/') {
+                                      repoUrl += '/';
+                                    }
+
+                                    const filename = this.props.handleState("get","configFileName");
+                                    const value = encodeURIComponent(this.props.handleState("get","tempConfig"));
+                                    const branch = this.props.handleState("get","branch");
+
+                                    window.open(`${repoUrl}new/${branch}?filename=${filename}&value=${value}`, "_blank")
+                                  }}
+                                  positive
+                                  disabled={isDisabled}
+                                >Deploy</Button>
                             </Button.Group>
                         </div>
                         <div style={{marginLeft:"15px"}}>
