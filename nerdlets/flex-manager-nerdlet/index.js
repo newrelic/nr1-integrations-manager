@@ -73,14 +73,17 @@ export default class FlexManager extends React.Component {
     }
 
     async fetchData(){
-        if(this.state.loading == false){
-            await this.setState({"loading":true})
+          if(this.state.loading == false){
+            this.setState({"loading": true})
             this.fetchRepoExamples(this.state.exampleRepoLinks)
             this.fetchLatestInfo()
-            await this.setState({accounts: await accountsWithData("flexStatusSample")})
-            await this.fetchFlexSummarySamples(this.state.accounts)
-            await this.setState({"loading":false})
-        }
+            this.setState({
+              accounts: await accountsWithData("flexStatusSample")},
+              async () => {
+                await this.fetchFlexSummarySamples(this.state.accounts)
+                this.setState({"loading": false})
+            })
+          }
     }
 
     async fetchLatestInfo(){
