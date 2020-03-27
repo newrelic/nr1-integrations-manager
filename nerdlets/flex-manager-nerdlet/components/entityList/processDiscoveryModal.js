@@ -7,6 +7,7 @@ export default class ProcessDiscoveryModal extends React.Component {
     entity: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     handleState: PropTypes.func.isRequired,
+    exampleRepoConfigs: PropTypes.array,
   };
 
   constructor(props) {
@@ -25,7 +26,10 @@ export default class ProcessDiscoveryModal extends React.Component {
         try {
           const jsonData = JSON.parse(this.props.entity[attr]);
           processes.push(jsonData);
-        } catch (e) {}
+        } catch (e) {
+          // eslint-disable-next-line no-console
+          console.warn(e);
+        }
       }
     });
     const { open, closeOnEscape, closeOnDimmerClick } = this.state;
@@ -48,9 +52,6 @@ export default class ProcessDiscoveryModal extends React.Component {
             <Icon name="searchengin" /> Discover{' '}
           </Button>
         }
-        onActionClick={(e, d) => {
-          console.log(e, d);
-        }}
       >
         <Modal.Header>{this.props.name}</Modal.Header>
         <Modal.Content style={{ backgroundColor: '#000e0e' }}>

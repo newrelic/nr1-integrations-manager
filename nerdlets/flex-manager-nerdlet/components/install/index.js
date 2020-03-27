@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Grid, Menu } from 'semantic-ui-react';
 import LinuxHost from './linuxHost';
 import WindowsHost from './windowsHost';
@@ -9,6 +11,10 @@ import Fargate from './fargate';
 import Lambda from './lambda';
 
 export default class Install extends React.Component {
+  static propTypes = {
+    latest: PropTypes.object,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -65,7 +71,7 @@ export default class Install extends React.Component {
     return (
       <Grid.Row
         style={{
-          display: this.props.activeItem == 'install flex' ? '' : 'none',
+          display: this.props.activeItem === 'install flex' ? '' : 'none',
         }}
       >
         <Grid.Column>

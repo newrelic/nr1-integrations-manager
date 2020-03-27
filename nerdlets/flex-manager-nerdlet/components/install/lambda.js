@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Grid, Segment, List } from 'semantic-ui-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default class LambdaInstall extends React.Component {
+  static propTypes = {
+    latest: PropTypes.object,
+    activeItem: PropTypes.string,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -41,7 +48,7 @@ export default class LambdaInstall extends React.Component {
 
     return (
       <Grid.Row
-        style={{ display: this.props.activeItem == 'lambda' ? '' : 'none' }}
+        style={{ display: this.props.activeItem === 'lambda' ? '' : 'none' }}
       >
         <Grid.Column>
           <Segment inverted>

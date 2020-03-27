@@ -9,6 +9,7 @@ export default class EntityList extends React.Component {
     flexStatusSamples: PropTypes.array.isRequired,
     activeItem: PropTypes.string.isRequired,
     handleState: PropTypes.func.isRequired,
+    exampleRepoConfigs: PropTypes.array,
   };
 
   constructor(props) {
@@ -220,7 +221,7 @@ export default class EntityList extends React.Component {
         : [];
     return (
       <Grid.Row
-        style={{ display: this.props.activeItem == 'entities' ? '' : 'none' }}
+        style={{ display: this.props.activeItem === 'entities' ? '' : 'none' }}
       >
         <Grid.Column>
           <Table celled inverted selectable>

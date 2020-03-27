@@ -1,9 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Grid, Segment, List } from 'semantic-ui-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default class KubernetesInstall extends React.Component {
+  static propTypes = {
+    activeItem: PropTypes.string,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +41,9 @@ export default class KubernetesInstall extends React.Component {
     const downloadLink = `https://raw.githubusercontent.com/newrelic/nri-flex/master/examples/nri-flex-k8s.yml`;
     return (
       <Grid.Row
-        style={{ display: this.props.activeItem == 'kubernetes' ? '' : 'none' }}
+        style={{
+          display: this.props.activeItem === 'kubernetes' ? '' : 'none',
+        }}
       >
         <Grid.Column>
           <Segment inverted>

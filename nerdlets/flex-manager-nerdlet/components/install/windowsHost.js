@@ -1,7 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Grid, Segment, List } from 'semantic-ui-react';
 
 export default class WindowsInstall extends React.Component {
+  static propTypes = {
+    latest: PropTypes.object,
+    activeItem: PropTypes.string,
+  };
+
   constructor(props) {
     super(props);
   }
@@ -30,7 +37,7 @@ export default class WindowsInstall extends React.Component {
     return (
       <Grid.Row
         style={{
-          display: this.props.activeItem == 'windows host' ? '' : 'none',
+          display: this.props.activeItem === 'windows host' ? '' : 'none',
         }}
       >
         <Grid.Column>

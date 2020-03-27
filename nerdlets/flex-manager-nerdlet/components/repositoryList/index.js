@@ -7,6 +7,7 @@ export default class RepositoryList extends React.Component {
     handleState: PropTypes.func.isRequired,
     activeItem: PropTypes.string.isRequired,
     flexGitRepos: PropTypes.object.isRequired,
+    activeRepo: PropTypes.string,
   };
 
   constructor(props) {
@@ -18,7 +19,7 @@ export default class RepositoryList extends React.Component {
     return (
       <Grid.Row
         style={{
-          display: this.props.activeItem == 'repositories' ? '' : 'none',
+          display: this.props.activeItem === 'repositories' ? '' : 'none',
         }}
       >
         <Grid.Column width={colWidth}>

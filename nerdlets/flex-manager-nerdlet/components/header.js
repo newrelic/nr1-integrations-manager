@@ -6,8 +6,10 @@ export default class Header extends React.Component {
   static propTypes = {
     flexStatusSamples: PropTypes.array.isRequired,
     flexGitRepos: PropTypes.object.isRequired,
-    fetchData: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
+    handleState: PropTypes.func,
+    enableRefresh: PropTypes.bool,
+    noAccounts: PropTypes.number,
   };
 
   constructor(props) {
@@ -15,7 +17,7 @@ export default class Header extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (x) => {
+  handleClick = () => {
     this.props.handleState('set', { enableRefresh: !this.props.enableRefresh });
   };
 
@@ -56,8 +58,6 @@ export default class Header extends React.Component {
               inverted
               loading={this.props.loading}
               icon="refresh"
-              compact
-              inverted
               toggle
               style={{ paddingTop: '6px' }}
               onClick={this.handleClick}

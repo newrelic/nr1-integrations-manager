@@ -19,6 +19,7 @@ const _ = require('lodash');
 export default class DeployIntegrations extends React.Component {
   static propTypes = {
     handleState: PropTypes.func.isRequired,
+    exampleRepoConfigs: PropTypes.array,
   };
 
   constructor(props) {
@@ -74,15 +75,16 @@ export default class DeployIntegrations extends React.Component {
       this.props.handleState('set', { configFileName: data.value });
     const colWidth = 4;
     const isDisabled =
-      this.props.handleState('get', 'activeRepo') == '' ||
-      this.props.handleState('get', 'tempConfig') == '' ||
-      this.props.handleState('get', 'configFileName') == '';
+      this.props.handleState('get', 'activeRepo') === '' ||
+      this.props.handleState('get', 'tempConfig') === '' ||
+      this.props.handleState('get', 'configFileName') === '';
     // need, alternate source, select repo, clear repo, deploy button
     return (
       <Grid.Row
         style={{
           display:
-            this.props.handleState('get', 'activeItem') == 'deploy integrations'
+            this.props.handleState('get', 'activeItem') ===
+            'deploy integrations'
               ? ''
               : 'none',
         }}
@@ -151,7 +153,7 @@ export default class DeployIntegrations extends React.Component {
             </div>
             <div style={{ marginLeft: '100px' }}>
               <Button.Group>
-                {this.props.handleState('get', 'activeRepo') != '' ? (
+                {this.props.handleState('get', 'activeRepo') !== '' ? (
                   <Button
                     color="black"
                     onClick={() =>

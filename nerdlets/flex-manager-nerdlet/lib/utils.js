@@ -5,10 +5,12 @@ export const accountsWithData = async (eventType) => {
   const gql = `{actor {accounts {name id reportingEventTypes(filter:["${eventType}"])}}}`;
   const result = await NerdGraphQuery.query({ query: gql });
   if (result.errors) {
+    // eslint-disable-next-line no-console
     console.log(
       "Can't get reporting event types because NRDB is grumpy at NerdGraph.",
       result.errors
     );
+    // eslint-disable-next-line no-console
     console.log(JSON.stringify(result.errors.slice(0, 5), 0, 2));
     return [];
   }

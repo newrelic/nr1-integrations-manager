@@ -48,8 +48,16 @@ export default class FlexManager extends React.Component {
     this.fetchLatestInfo = this.fetchLatestInfo.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchData();
+    this.refresh = setInterval(() => {
+      if (this.state.enableRefresh) this.fetchData();
+    }, 7000);
+  }
+
   nerdLog(msg) {
     if (this.state.enableNerdLog) {
+      // eslint-disable-next-line no-console
       console.log(msg);
     }
   }
@@ -68,15 +76,8 @@ export default class FlexManager extends React.Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-  componentDidMount() {
-    this.fetchData();
-    this.refresh = setInterval(() => {
-      if (this.state.enableRefresh) this.fetchData();
-    }, 7000);
-  }
-
   async fetchData() {
-    if (this.state.loading == false) {
+    if (this.state.loading === false) {
       this.setState({ loading: true });
       this.fetchRepoExamples(this.state.exampleRepoLinks);
       this.fetchLatestInfo();
@@ -262,7 +263,6 @@ export default class FlexManager extends React.Component {
           <Header
             flexStatusSamples={this.state.flexStatusSamples}
             flexGitRepos={this.state.flexGitRepos}
-            fetchData={this.fetchData}
             loading={this.state.loading}
             noAccounts={this.state.accounts.length}
             handleState={this.handleState}
