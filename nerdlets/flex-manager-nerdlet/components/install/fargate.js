@@ -1,76 +1,104 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import React from 'react'
-import { Grid, Segment, List } from 'semantic-ui-react'
+import { Grid, Segment, List } from 'semantic-ui-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default class FargateInstall extends React.Component {
+  static propTypes = {
+    activeItem: PropTypes.string,
+  };
 
-    constructor(props){
-        super(props)
-        this.state = {
-            example: "",
-            nriFlexConfig: ""
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      example: '',
+      nriFlexConfig: '',
+    };
+  }
 
-    async componentDidMount(){
-        let nriFlexConfig = await fetch('https://raw.githubusercontent.com/newrelic/nri-flex/master/configs/nri-flex-config-linux.yml').then((response)=>response.text())
-        if(nriFlexConfig){
-            nriFlexConfig = nriFlexConfig.replace("# fargate","fargate")
-            this.setState({nriFlexConfig})
-        }
-        let example = await fetch('https://raw.githubusercontent.com/newrelic/nri-flex/master/examples/flexConfigs/cd-nginx.yml').then((response)=>response.text())
-        if(example){
-            this.setState({example})
-        }
+  async componentDidMount() {
+    let nriFlexConfig = await fetch(
+      'https://raw.githubusercontent.com/newrelic/nri-flex/master/configs/nri-flex-config-linux.yml'
+    ).then((response) => response.text());
+    if (nriFlexConfig) {
+      nriFlexConfig = nriFlexConfig.replace('# fargate', 'fargate');
+      this.setState({ nriFlexConfig });
     }
+    const example = await fetch(
+      'https://raw.githubusercontent.com/newrelic/nri-flex/master/examples/flexConfigs/cd-nginx.yml'
+    ).then((response) => response.text());
+    if (example) {
+      this.setState({ example });
+    }
+  }
 
-    render(){
-        let nginxDownloadLink = `https://raw.githubusercontent.com/newrelic/nri-flex/master/examples/flexConfigs/cd-nginx.yml`
-        return(
-            <Grid.Row style={{display:this.props.activeItem == "fargate" ? "":"none"}}>
-                <Grid.Column>
-                    <Segment inverted>
-                        <h3>Deploying on Fargate </h3>
-                        <Segment inverted>
-                            <List relaxed bulleted>
-                                <List.Item>
-                                    Build your customized Docker image as in the Docker Install Steps however take into consideration the configs further below.
-                                </List.Item>
-                                <List.Item>
-                                    Once built with your required configs, add your new image as a sidecar to your existing task definition and redeploy.
-                                </List.Item>
-                                <List.Item>
-                                    Note that only IP addresses can be looked up with Fargate Container Discovery, so supply the port yourself if required. <br/>
-                                    <a rel="noopener noreferrer" target="_blank" href="https://github.com/newrelic/nri-flex/wiki/Service-Discovery#V2-Container-Discovery">View the documentation for more detail on how the containers are targeted.</a>
-                                </List.Item>
-                                <List.Item>
-                                    For Fargate, ensure the "fargate" parameter is set to true in "nri-flex-config.yml". <br/>
-                                    Also set the Insights URL and Insights API Key.
-                                    <SyntaxHighlighter language="yaml" style={atomDark}>
-                                        {
-                                            "### Example nri-flex-config.yml with Fargate mode enabled\n" +
-                                            "### Ensure the insights_api_key and insights_url parameters are also configured\n" +
-                                            this.state.nriFlexConfig
-                                        }
-                                    </SyntaxHighlighter>
-                                </List.Item>
-                                <List.Item>
-                                    Example Nginx Config for Container Discovery: <a rel="noopener noreferrer" target="_blank" href={nginxDownloadLink}>cd-nginx.yml</a>
-                                    <SyntaxHighlighter language="yaml" style={atomDark}>
-                                        {
-                                            "### Example Flex Fargate Nginx Config to place into flexConfigs/ folder\n" +
-                                            "### FileName: cd-nginx.yml\n" +
-                                            this.state.example
-                                        }
-                                    </SyntaxHighlighter>
-                                </List.Item>
-                            </List>
-                        </Segment>
-                    </Segment>
-                </Grid.Column>
-            </Grid.Row>
-        )
-    }
+  render() {
+    const nginxDownloadLink = `https://raw.githubusercontent.com/newrelic/nri-flex/master/examples/flexConfigs/cd-nginx.yml`;
+    return (
+      <Grid.Row
+        style={{ display: this.props.activeItem === 'fargate' ? '' : 'none' }}
+      >
+        <Grid.Column>
+          <Segment inverted>
+            <h3>Deploying on Fargate </h3>
+            <Segment inverted>
+              <List relaxed bulleted>
+                <List.Item>
+                  Build your customized Docker image as in the Docker Install
+                  Steps however take into consideration the configs further
+                  below.
+                </List.Item>
+                <List.Item>
+                  Once built with your required configs, add your new image as a
+                  sidecar to your existing task definition and redeploy.
+                </List.Item>
+                <List.Item>
+                  Note that only IP addresses can be looked up with Fargate
+                  Container Discovery, so supply the port yourself if required.{' '}
+                  <br />
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://github.com/newrelic/nri-flex/wiki/Service-Discovery#V2-Container-Discovery"
+                  >
+                    View the documentation for more detail on how the containers
+                    are targeted.
+                  </a>
+                </List.Item>
+                <List.Item>
+                  For Fargate, ensure the "fargate" parameter is set to true in
+                  "nri-flex-config.yml". <br />
+                  Also set the Insights URL and Insights API Key.
+                  <SyntaxHighlighter language="yaml" style={atomDark}>
+                    {`${
+                      '### Example nri-flex-config.yml with Fargate mode enabled\n' +
+                      '### Ensure the insights_api_key and insights_url parameters are also configured\n'
+                    }${this.state.nriFlexConfig}`}
+                  </SyntaxHighlighter>
+                </List.Item>
+                <List.Item>
+                  Example Nginx Config for Container Discovery:{' '}
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href={nginxDownloadLink}
+                  >
+                    cd-nginx.yml
+                  </a>
+                  <SyntaxHighlighter language="yaml" style={atomDark}>
+                    {`${
+                      '### Example Flex Fargate Nginx Config to place into flexConfigs/ folder\n' +
+                      '### FileName: cd-nginx.yml\n'
+                    }${this.state.example}`}
+                  </SyntaxHighlighter>
+                </List.Item>
+              </List>
+            </Segment>
+          </Segment>
+        </Grid.Column>
+      </Grid.Row>
+    );
+  }
 }
