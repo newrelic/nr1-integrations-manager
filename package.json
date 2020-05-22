@@ -18,7 +18,7 @@
     "react-ace": "^7.0.2",
     "react-dom": "^16.6.3",
     "react-syntax-highlighter": "^11.0.2",
-    "semantic-ui-react": "^0.87.3"
+    "semantic-ui-react": "^0.88.2"
   },
   "browserslist": [
     "last 2 versions",
