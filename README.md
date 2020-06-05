@@ -1,8 +1,8 @@
 [![New Relic One Catalog Project header](https://github.com/newrelic/open-source-office/raw/master/examples/categories/images/New_Relic_One_Catalog_Project.png)](https://github.com/newrelic/open-source-office/blob/master/examples/categories/index.md#nr1-catalog)
 
-# nr1-flex-manager
+# New Relic One Flex Manager (nr1-flex-manager)
 
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-flex-manager?include_prereleases&sort=semver) [![Snyk](https://snyk.io/test/github/newrelic/nr1-flex-manager/badge.svg)](https://snyk.io/test/github/newrelic/nr1-flex-manager)
+![CI](https://github.com/newrelic/nr1-flex-manager/workflows/CI/badge.svg) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-flex-manager?include_prereleases&sort=semver) [![Snyk](https://snyk.io/test/github/newrelic/nr1-flex-manager/badge.svg)](https://snyk.io/test/github/newrelic/nr1-flex-manager)
 
 ## Usage
 
