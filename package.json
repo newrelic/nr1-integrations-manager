@@ -2,7 +2,7 @@
   "private": true,
   "name": "flex-manager",
   "description": "Nerdpack flex-manager",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "scripts": {
     "start": "nr1 nerdpack:serve",
     "test": "exit 0",
@@ -18,7 +18,7 @@
     "react-ace": "^7.0.2",
     "react-dom": "^16.6.3",
     "react-syntax-highlighter": "^11.0.2",
-    "semantic-ui-react": "^0.87.3"
+    "semantic-ui-react": "^0.88.2"
   },
   "browserslist": [
     "last 2 versions",

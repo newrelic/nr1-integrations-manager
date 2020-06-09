@@ -30,18 +30,18 @@ export default class LambdaInstall extends React.Component {
   render() {
     const { latest } = this.props;
 
-    let filebase = '';
     let filename = '';
     let downloadLink = '';
     let release = [];
 
     if (latest) {
       if (latest.assets) {
-        release = latest.assets.filter((asset) => asset.name.includes('linux'));
+        release = latest.assets.filter((asset) =>
+          asset.name.includes('Linux_x86_64')
+        );
         if (release[0]) {
           downloadLink = release[0].browser_download_url;
           filename = release[0].name;
-          filebase = release[0].name.replace('.tar.gz', '');
         }
       }
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid, Menu } from 'semantic-ui-react';
-import LinuxHost from './linuxHost';
+import OnHost from './onHost';
 import WindowsHost from './windowsHost';
 import Docker from './docker';
 import K8s from './kubernetes';
@@ -18,8 +18,7 @@ export default class Install extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeItem: 'linux host',
-      latest: {},
+      activeItem: 'on host',
     };
   }
 
@@ -29,13 +28,8 @@ export default class Install extends React.Component {
     return (
       <Menu pointing secondary inverted>
         <Menu.Item
-          name="linux host"
-          active={activeItem === 'linux host'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name="docker"
-          active={activeItem === 'docker'}
+          name="on host"
+          active={activeItem === 'on host'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
@@ -51,11 +45,6 @@ export default class Install extends React.Component {
         <Menu.Item
           name="lambda"
           active={activeItem === 'lambda'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name="windows host"
-          active={activeItem === 'windows host'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
@@ -76,7 +65,7 @@ export default class Install extends React.Component {
       >
         <Grid.Column>
           {this.renderMenu(this.state.activeItem)}
-          <LinuxHost
+          <OnHost
             activeItem={this.state.activeItem}
             latest={this.props.latest}
           />
