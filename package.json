@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "flex-manager",
-  "description": "Nerdpack flex-manager",
-  "version": "0.3.1",
+  "name": "nr1-integrations-manager",
+  "description": "Nerdpack integrations-manager",
+  "version": "2.0.0",
   "scripts": {
     "start": "nr1 nerdpack:serve",
     "test": "exit 0",
@@ -12,13 +12,15 @@
   "dependencies": {
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
-    "lodash": "^4.17.16",
+    "lodash": "^4.17.19",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-ace": "^7.0.2",
     "react-dom": "^16.6.3",
     "react-syntax-highlighter": "^11.0.2",
-    "semantic-ui-react": "^0.87.3"
+    "react-toastify": "^5.5.0",
+    "semantic-ui-react": "^1.0.0",
+    "semver": "^7.3.2"
   },
   "browserslist": [
     "last 2 versions",

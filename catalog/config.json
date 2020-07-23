@@ -1,7 +1,7 @@
 {
-  "tagline": "Manage Flex integrations",
+  "tagline": "Manage your integrations",
   "repository": "https://github.com/newrelic/nr1-flex-manager.git",
-  "details": "Use Flex Manager to simplify the work of creating, managing and deploying new integrations that are built using Flex.",
+  "details": "Use the Integrations Manager to simplify the work of creating, managing and deploying integrations.",
   "support": {
     "issues": {
       "url": "https://github.com/newrelic/nr1-flex-manager/issues"
