@@ -1,0 +1,7 @@
+{
+    "schemaType": "LAUNCHER",
+    "id": "integrations-manager-launcher",
+    "description": "Manage & Deploy Integrations",
+    "displayName": "Integrations Manager",
+    "rootNerdletId": "integrations-manager-nerdlet"
+}
