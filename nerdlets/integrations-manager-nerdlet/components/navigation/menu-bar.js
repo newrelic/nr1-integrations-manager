@@ -10,21 +10,19 @@ export default class MenuBar extends React.PureComponent {
   render() {
     return (
       <DataConsumer>
-        {({ updateDataStateContext, selectedAccount }) => {
+        {({ accounts, selectedAccount, updateDataStateContext }) => {
           return (
             <div>
               <div className="utility-bar">
                 <div className="react-select-input-group">
                   <label>Select Account</label>
                   <Select
-                    // options={accountOptions}
-                    // onChange={async d => {
-                    //   await updateDataStateContext({
-                    //     storageLocation: d
-                    //   });
-                    //   selectMap(null, true);
-                    //   dataFetcher(['accountMaps']);
-                    // }}
+                    options={accounts}
+                    onChange={(selectedAccount) => {
+                      updateDataStateContext({
+                        selectedAccount
+                      });
+                    }}
                     value={selectedAccount}
                     classNamePrefix="react-select"
                   />

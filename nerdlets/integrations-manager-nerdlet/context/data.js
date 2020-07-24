@@ -76,6 +76,7 @@ export class DataProvider extends Component {
         const accounts = accountData.map((acc) => ({
           key: acc.id,
           value: acc.id,
+          label: acc.name,
           text: acc.name,
           hasSync:
             acc.reportingEventTypes.filter((event) => event === 'NriSyncSample')
@@ -89,7 +90,7 @@ export class DataProvider extends Component {
 
   updateDataStateContext = (stateData, actions) => {
     return new Promise((resolve) => {
-      this.setState({ stateData }, () => {
+      this.setState(stateData, () => {
         resolve(true);
       });
     });
