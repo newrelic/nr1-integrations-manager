@@ -6,7 +6,7 @@ export const accountsQuery = `{
         reportingEventTypes
       }
     }
-  }`
+  }`;
 
 export const getApiKeys = (accountId) => `{
     actor {
@@ -25,7 +25,7 @@ export const getApiKeys = (accountId) => `{
         }
       }
     }
-  }`
+  }`;
 
 export const createApiKey = (accountId, name, userId) => `mutation {
     apiAccessCreateKeys(keys: {user: {accountId: ${accountId}, name: "${name}", userId: ${userId}}}) {
@@ -39,7 +39,7 @@ export const createApiKey = (accountId, name, userId) => `mutation {
         type
       }
     }
-  }`
+  }`;
 
 export const deleteApiKey = (keyId) => `mutation {
     apiAccessDeleteKeys(keys: {userKeyIds: ["${keyId}"]}) {
@@ -51,4 +51,4 @@ export const deleteApiKey = (keyId) => `mutation {
         type
       }
     }
-  }`
+  }`;

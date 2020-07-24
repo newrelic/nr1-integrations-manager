@@ -17,7 +17,7 @@ export default class IntegrationsManagerNerdlet extends React.Component {
       <AutoSizer>
         {({ height }) => (
           <PlatformStateContext.Consumer>
-            {platformState => (
+            {(platformState) => (
               <DataProvider platformState={platformState}>
                 <IntegrationsManager height={height - 96} />
               </DataProvider>

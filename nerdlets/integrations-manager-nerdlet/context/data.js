@@ -11,115 +11,141 @@ import { ToastContainer, toast } from 'react-toastify';
 import { NerdGraphQuery } from 'nr1';
 import { Icon } from 'semantic-ui-react';
 import pkg from '../../../package.json';
+import gql from 'graphql-tag';
+import { accountsQuery } from './queries';
 
 const semver = require('semver');
 
 const DataContext = React.createContext();
 
-export const loadingMsg = msg => (
-    <>
-        <Icon name="spinner" loading />
-        {msg}
-    </>
+export const loadingMsg = (msg) => (
+  <>
+    <Icon name="spinner" loading />
+    {msg}
+  </>
 );
 
-export const successMsg = msg => (
-    <>
-        <Icon name="check" />
-        {msg}
-    </>
+export const successMsg = (msg) => (
+  <>
+    <Icon name="check" />
+    {msg}
+  </>
 );
 
 export class DataProvider extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            selectedPage: 'home',
-            selectedAccount: null,
-            selectedCollection: null,
-            hasError: false,
-            err: null,
-            errInfo: null
-        };
-    }
-
-    componentDidCatch(err, errInfo) {
-        this.setState({ hasError: true, err, errInfo });
-    }
-
-    async componentDidMount() {
-        this.checkVersion();
-
-
-        if (this.state.accounts.length === 0) {
-            toast.error('Unable to load accounts, please check your nerdpack uuid.', {
-                autoClose: 10000,
-                containerId: 'B'
-            });
-        }
-    }
-
-    updateDataStateContext = (stateData, actions) => {
-        return new Promise(resolve => {
-            this.setState({ stateData }, () => {
-                resolve(true);
-            })
-        })
-    }
-
-    checkVersion = async () => {
-        fetch(
-            'https://raw.githubusercontent.com/newrelic/nr1-flex-manager/master/package.json'
-        )
-            .then(response => {
-                return response.json();
-            })
-            .then(repoPackage => {
-                if (pkg.version === repoPackage.version) {
-                    console.log(`Running latest version: ${pkg.version}`);
-                } else if (semver.lt(pkg.version, repoPackage.version)) {
-                    toast.warn(
-                        <a
-                            onClick={() =>
-                                window.open(
-                                    'https://github.com/newrelic/nr1-flex-manager/',
-                                    '_blank'
-                                )
-                            }
-                        >{`New version available: ${repoPackage.version}`}</a>,
-                        {
-                            autoClose: 5000,
-                            containerId: 'C'
-                        }
-                    );
-                }
-            });
+    this.state = {
+      selectedPage: 'home',
+      selectedAccount: null,
+      selectedCollection: null,
+      hasError: false,
+      err: null,
+      errInfo: null,
+      accounts: []
     };
+  }
 
+  async componentDidMount() {
+    this.checkVersion();
+    await this.getAccounts();
 
-    render() {
-        const { children } = this.props;
+    if (this.state.accounts.length === 0) {
+      toast.error('Unable to load accounts, please check your nerdpack uuid.', {
+        autoClose: 10000,
+        containerId: 'B'
+      });
+    }
+  }
 
-        return (
-            <DataContext.Provider
-                value={{
-                    ...this.state,
-                    updateDataStateContext: this.updateDataStateContext
-                }}
-            >
-                {/* <ToastContainer
+  componentDidCatch(err, errInfo) {
+    this.setState({ hasError: true, err, errInfo });
+  }
+
+  getAccounts = () => {
+    return new Promise((resolve) => {
+      NerdGraphQuery.query({
+        query: gql`
+          ${accountsQuery}
+        `
+      }).then((value) => {
+        const accountData =
+          (((value || {}).data || {}).actor || {}).accounts || [];
+
+        const accounts = accountData.map((acc) => ({
+          key: acc.id,
+          value: acc.id,
+          text: acc.name,
+          hasSync:
+            acc.reportingEventTypes.filter((event) => event === 'NriSyncSample')
+              .length > 0
+        }));
+
+        this.setState({ accounts }, () => resolve(true));
+      });
+    });
+  };
+
+  updateDataStateContext = (stateData, actions) => {
+    return new Promise((resolve) => {
+      this.setState({ stateData }, () => {
+        resolve(true);
+      });
+    });
+  };
+
+  checkVersion = async () => {
+    fetch(
+      'https://raw.githubusercontent.com/newrelic/nr1-flex-manager/master/package.json'
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((repoPackage) => {
+        if (pkg.version === repoPackage.version) {
+          console.log(`Running latest version: ${pkg.version}`);
+        } else if (semver.lt(pkg.version, repoPackage.version)) {
+          toast.warn(
+            <a
+              onClick={() =>
+                window.open(
+                  'https://github.com/newrelic/nr1-flex-manager/',
+                  '_blank'
+                )
+              }
+            >{`New version available: ${repoPackage.version}`}</a>,
+            {
+              autoClose: 5000,
+              containerId: 'C'
+            }
+          );
+        }
+      });
+  };
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <DataContext.Provider
+        value={{
+          ...this.state,
+          updateDataStateContext: this.updateDataStateContext
+        }}
+      >
+        {/* <ToastContainer
           enableMultiContainer
           containerId="B"
           position={toast.POSITION.TOP_RIGHT}
         /> */}
 
-                <ToastContainer containerId="C" position="bottom-right" />
+        <ToastContainer containerId="C" position="bottom-right" />
 
-                {children}
-            </DataContext.Provider>
-        );
-    }
+        {children}
+      </DataContext.Provider>
+    );
+  }
 }
 
 export const DataConsumer = DataContext.Consumer;

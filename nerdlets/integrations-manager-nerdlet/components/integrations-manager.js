@@ -7,12 +7,10 @@ import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import MenuBar from './navigation/menu-bar';
 
-
 export default class IntegrationsManager extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {
@@ -26,13 +24,10 @@ export default class IntegrationsManager extends React.Component {
         <MenuBar />
         <Grid columns={16} style={mainGridStyle}>
           <Grid.Row style={{ paddingTop: '0px' }}>
-            <Grid.Column width={16}>
-
-            </Grid.Column>
+            <Grid.Column width={16} />
           </Grid.Row>
         </Grid>
       </div>
-
     );
   }
 }
