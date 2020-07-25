@@ -8,7 +8,11 @@ react/no-did-update-set-state: 0
 
 import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { NerdGraphQuery } from 'nr1';
+import {
+  NerdGraphQuery,
+  AccountStorageQuery,
+  AccountStorageMutation
+} from 'nr1';
 import { Icon } from 'semantic-ui-react';
 import pkg from '../../../package.json';
 import gql from 'graphql-tag';
@@ -40,10 +44,12 @@ export class DataProvider extends Component {
       selectedPage: 'home',
       selectedAccount: null,
       selectedCollection: null,
+      accounts: [],
+      collections: [],
+      reportingEntities: [],
       hasError: false,
       err: null,
-      errInfo: null,
-      accounts: []
+      errInfo: null
     };
   }
 
@@ -85,6 +91,77 @@ export class DataProvider extends Component {
 
         this.setState({ accounts }, () => resolve(true));
       });
+    });
+  };
+
+  getCollections = async (accountId) => {
+    // get collections from NriSyncSamples
+    const attributes = [
+      'collection',
+      'collectionAccountId',
+      'filesWritten',
+      'filesUpdated',
+      'filesAlreadyUpdated',
+      'filesDeleted',
+      'filesInCollection',
+      'errorsWriting',
+      'errorsDeleting',
+      'errorsReading',
+      'entityName'
+    ];
+
+    let attributeString = '';
+    attributes.forEach((a, i) => {
+      attributeString += `latest(${a}) as '${a}'${
+        attributes.length === i + 1 ? '' : ','
+      }`;
+    });
+
+    const snycQuery = `{
+      actor {
+        account(id: ${accountId}) {
+          nrql(query: "FROM NriSyncSample SELECT ${attributeString} FACET entityGuid SINCE 5 minutes ago LIMIT MAX") { 
+            results
+          }
+        }
+      }
+    }`;
+
+    NerdGraphQuery.query({
+      query: gql`
+        ${snycQuery}
+      `
+    }).then(async (value) => {
+      const reportingEntities =
+        (((((value || {}).data || {}).actor || {}).account || {}).nrql || {})
+          .results || [];
+
+      // get collections from collectionsIndex
+      let collectionsIndex = await AccountStorageQuery.query({
+        accountId,
+        collection: 'collectionsIndex',
+        documentId: 'collectionsIndex'
+      });
+      collectionsIndex = ((collectionsIndex || {}).data || {}).data || [];
+
+      const collections = collectionsIndex.map((c) => ({
+        key: c,
+        value: c,
+        label: c,
+        text: c
+      }));
+
+      reportingEntities.forEach((r) => {
+        collections.push({
+          key: r.collection,
+          value: r.collection,
+          label: r.collection,
+          text: r.collection,
+          collectionAccountId: r.collectionAccountId
+        });
+      });
+
+      this.setState({ collections, reportingEntities });
     });
   };
 
@@ -132,7 +209,8 @@ export class DataProvider extends Component {
       <DataContext.Provider
         value={{
           ...this.state,
-          updateDataStateContext: this.updateDataStateContext
+          updateDataStateContext: this.updateDataStateContext,
+          getCollections: this.getCollections
         }}
       >
         {/* <ToastContainer
