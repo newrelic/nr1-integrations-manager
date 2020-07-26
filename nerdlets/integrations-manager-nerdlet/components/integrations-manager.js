@@ -4,8 +4,9 @@ no-console: 0,
 */ // --> OFF
 
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Card } from 'semantic-ui-react';
 import MenuBar from './navigation/menu-bar';
+import RowMenu from './navigation/row-menu';
 
 export default class IntegrationsManager extends React.Component {
   constructor(props) {
@@ -23,8 +24,10 @@ export default class IntegrationsManager extends React.Component {
       <div style={{ overflowY: 'hidden', overflowX: 'hidden' }}>
         <MenuBar />
         <Grid columns={16} style={mainGridStyle}>
-          <Grid.Row style={{ paddingTop: '0px' }}>
-            <Grid.Column width={16} />
+          <Grid.Row style={{ paddingTop: '10px' }}>
+            <Grid.Column width={16}>
+              <RowMenu />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </div>
