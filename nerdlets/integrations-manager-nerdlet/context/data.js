@@ -17,6 +17,7 @@ import { Icon } from 'semantic-ui-react';
 import pkg from '../../../package.json';
 import gql from 'graphql-tag';
 import { accountsQuery } from './queries';
+import { existsInArray } from './utils';
 
 const semver = require('semver');
 
@@ -145,20 +146,31 @@ export class DataProvider extends Component {
       collectionsIndex = ((collectionsIndex || {}).data || {}).data || [];
 
       const collections = collectionsIndex.map((c) => ({
-        key: c,
+        key: `${c}:${accountId}`,
         value: c,
         label: c,
-        text: c
+        text: c,
+        accountId
       }));
 
       reportingEntities.forEach((r) => {
-        collections.push({
-          key: r.collection,
-          value: r.collection,
-          label: r.collection,
-          text: r.collection,
-          collectionAccountId: r.collectionAccountId
-        });
+        // avoid duplicates
+        let collectionExists = existsInArray(
+          collections,
+          `${r.collection}:${r.collectionAccountId}`,
+          'key'
+        );
+
+        if (!collectionExists) {
+          collections.push({
+            key: `${r.collection}:${r.collectionAccountId}`,
+            value: r.collection,
+            label: r.collection,
+            text: r.collection,
+            collectionAccountId: r.collectionAccountId,
+            accountId
+          });
+        }
       });
 
       this.setState({ collections, reportingEntities });
