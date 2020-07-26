@@ -8,6 +8,21 @@ export const accountsQuery = `{
     }
   }`;
 
+export const catalogNerdpacksQuery = `{
+    actor {
+      nr1Catalog {
+        nerdpacks {
+          id
+          visibility
+          metadata {
+            repository
+            displayName
+          }
+        }
+      }
+    }
+  }`;
+
 export const getApiKeys = (accountId) => `{
     actor {
       apiAccess {

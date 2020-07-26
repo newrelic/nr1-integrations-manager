@@ -16,7 +16,7 @@ import {
 import { Icon } from 'semantic-ui-react';
 import pkg from '../../../package.json';
 import gql from 'graphql-tag';
-import { accountsQuery } from './queries';
+import { accountsQuery, catalogNerdpacksQuery } from './queries';
 import { existsInArray } from './utils';
 
 const semver = require('semver');
@@ -50,12 +50,14 @@ export class DataProvider extends Component {
       reportingEntities: [],
       hasError: false,
       err: null,
-      errInfo: null
+      errInfo: null,
+      uuid: null
     };
   }
 
   async componentDidMount() {
     this.checkVersion();
+    this.getNerdpackUuid();
     await this.getAccounts();
 
     if (this.state.accounts.length === 0) {
@@ -69,6 +71,56 @@ export class DataProvider extends Component {
   componentDidCatch(err, errInfo) {
     this.setState({ hasError: true, err, errInfo });
   }
+
+  getNerdpackUuid = async () => {
+    // check if manually deployed nerdpack
+    let nerdpackUUID = '';
+    try {
+      console.log(window.location);
+      nerdpackUUID = window.location.href
+        .split('.com/launcher/')[1]
+        .split('.')[0];
+    } catch (e) {
+      // console.log(`nerdpack not manually deployed${e}`);
+    }
+
+    // check if nerdpack running locally
+    if (nerdpackUUID === '') {
+      try {
+        nerdpackUUID = window.location.href.split('https://')[1].split('.')[0];
+      } catch (e) {
+        // console.log(`nerdpack not running locally`);
+      }
+    }
+
+    // check if nerdpack is running from app catalog
+    if (nerdpackUUID === '') {
+      await NerdGraphQuery.query({
+        query: gql`
+          ${catalogNerdpacksQuery}
+        `
+      }).then((value) => {
+        const nerdpacks = (
+          ((((value || {}).data || {}).actor || {}).nr1Catalog || {})
+            .nerdpacks || []
+        ).filter(
+          (n) =>
+            n.visibility === 'GLOBAL' &&
+            n.metadata.repository &&
+            (n.metadata.repository.includes('nr1-flex-manager') ||
+              n.metadata.repository.includes('nr1-integrations-manager'))
+        );
+
+        if (nerdpacks.length > 0) {
+          nerdpackUUID = nerdpacks[0].id;
+        }
+      });
+    }
+
+    if (nerdpackUUID) {
+      this.setState({ uuid: nerdpackUUID });
+    }
+  };
 
   getAccounts = () => {
     return new Promise((resolve) => {
