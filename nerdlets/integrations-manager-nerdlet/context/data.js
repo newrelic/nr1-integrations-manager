@@ -76,7 +76,6 @@ export class DataProvider extends Component {
     // check if manually deployed nerdpack
     let nerdpackUUID = '';
     try {
-      console.log(window.location);
       nerdpackUUID = window.location.href
         .split('.com/launcher/')[1]
         .split('.')[0];
@@ -124,6 +123,12 @@ export class DataProvider extends Component {
 
   getAccounts = () => {
     return new Promise((resolve) => {
+      toast.info(loadingMsg('Fetching accounts...'), {
+        toastId: 'fetchingAccounts',
+        autoClose: 5000,
+        containerId: 'C'
+      });
+
       NerdGraphQuery.query({
         query: gql`
           ${accountsQuery}
@@ -142,12 +147,21 @@ export class DataProvider extends Component {
               .length > 0
         }));
 
-        this.setState({ accounts }, () => resolve(true));
+        this.setState({ accounts }, () => {
+          toast.dismiss('fetchingAccounts');
+          resolve(true);
+        });
       });
     });
   };
 
   getCollections = async (accountId) => {
+    toast.info(loadingMsg('Fetching collections...'), {
+      toastId: 'fetchingCollections',
+      autoClose: 5000,
+      containerId: 'C'
+    });
+
     // get collections from NriSyncSamples
     const attributes = [
       'collection',
@@ -225,7 +239,14 @@ export class DataProvider extends Component {
         }
       });
 
-      this.setState({ collections, reportingEntities });
+      this.setState({ collections, reportingEntities }, () => {
+        toast.update('fetchingCollections', {
+          autoClose: 2000,
+          containerId: 'C',
+          type: 'success',
+          render: successMsg('Collections fetched.')
+        });
+      });
     });
   };
 
