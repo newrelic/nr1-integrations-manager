@@ -23,7 +23,7 @@ export const catalogNerdpacksQuery = `{
     }
   }`;
 
-export const getApiKeys = (accountId) => `{
+export const getApiKeysQuery = (accountId) => `{
     actor {
       apiAccess {
         keySearch(query: {types: USER, scope: {accountIds: [${accountId}]}}) {

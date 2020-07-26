@@ -16,7 +16,11 @@ import {
 import { Icon } from 'semantic-ui-react';
 import pkg from '../../../package.json';
 import gql from 'graphql-tag';
-import { accountsQuery, catalogNerdpacksQuery } from './queries';
+import {
+  accountsQuery,
+  catalogNerdpacksQuery,
+  getApiKeysQuery
+} from './queries';
 import { existsInArray } from './utils';
 
 const semver = require('semver');
@@ -51,7 +55,8 @@ export class DataProvider extends Component {
       hasError: false,
       err: null,
       errInfo: null,
-      uuid: null
+      uuid: null,
+      apiKeys: []
     };
   }
 
@@ -152,6 +157,23 @@ export class DataProvider extends Component {
           resolve(true);
         });
       });
+    });
+  };
+
+  getApiKeys = (accountId) => {
+    NerdGraphQuery.query({
+      query: gql`
+        ${getApiKeysQuery(accountId)}
+      `
+    }).then((values) => {
+      let apiKeys = (
+        (
+          ((((values || {}).data || {}).actor || {}).apiAccess || {})
+            .keySearch || {}
+        ).keys || []
+      ).filter((k) => !k.key.includes('...'));
+
+      this.setState({ apiKeys });
     });
   };
 
@@ -295,7 +317,8 @@ export class DataProvider extends Component {
         value={{
           ...this.state,
           updateDataStateContext: this.updateDataStateContext,
-          getCollections: this.getCollections
+          getCollections: this.getCollections,
+          getApiKeys: this.getApiKeys
         }}
       >
         {/* <ToastContainer

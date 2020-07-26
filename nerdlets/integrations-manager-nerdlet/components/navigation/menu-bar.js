@@ -16,7 +16,8 @@ export default class MenuBar extends React.PureComponent {
           collections,
           selectedCollection,
           updateDataStateContext,
-          getCollections
+          getCollections,
+          getApiKeys
         }) => {
           return (
             <div>
@@ -30,6 +31,7 @@ export default class MenuBar extends React.PureComponent {
                         selectedAccount
                       });
                       getCollections(selectedAccount.key);
+                      getApiKeys(selectedAccount.key);
                     }}
                     value={selectedAccount}
                     classNamePrefix="react-select"
