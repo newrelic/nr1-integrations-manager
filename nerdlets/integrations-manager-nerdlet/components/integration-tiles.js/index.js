@@ -12,7 +12,7 @@ export default class IntegrationTiles extends React.PureComponent {
       <Card.Group>
         {integrations.map((i, z) => {
           return (
-            <Card key={z} href="#">
+            <Card key={z} href="#" color="teal">
               <Card.Content>
                 {i.image ? (
                   <Image floated="left" size="mini" src={i.image} />

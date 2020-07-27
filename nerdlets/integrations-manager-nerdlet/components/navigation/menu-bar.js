@@ -54,20 +54,6 @@ export default class MenuBar extends React.PureComponent {
                   />
                 </div>
 
-                <div className="react-select-input-group">
-                  <label>Select API Key</label>
-                  <Select
-                    options={apiKeys}
-                    onChange={(selectedApiKey) => {
-                      updateDataStateContext({
-                        selectedApiKey
-                      });
-                    }}
-                    value={selectedApiKey}
-                    classNamePrefix="react-select"
-                  />
-                </div>
-
                 <div className="flex-push" />
               </div>
             </div>

@@ -2,7 +2,8 @@
 no-console: 0
 */
 import React from 'react';
-import { Grid, Card, List, Segment } from 'semantic-ui-react';
+import { Grid, Card, List } from 'semantic-ui-react';
+import ApiKeyBar from '../api-key-bar';
 import { DataConsumer } from '../../context/data';
 import AceEditor from 'react-ace';
 import 'brace/mode/yaml';
@@ -29,7 +30,8 @@ export default class Setup extends React.PureComponent {
           uuid,
           selectedCollection,
           selectedApiKey,
-          selectedPage
+          selectedPage,
+          apiKeys
         }) => {
           const apiKey =
             (selectedApiKey && selectedApiKey.value) ||
@@ -69,13 +71,33 @@ export default class Setup extends React.PureComponent {
                 <Card color={'black'} style={{ width: '100%' }}>
                   <Card.Content>
                     <Card.Header>How does it work?</Card.Header>
+
                     <Card.Description>
-                      A collection containing your infrastructure integration
-                      configuration files are synced to your target
-                      infrastructure using <strong>nri-sync</strong>.
+                      <List bulleted>
+                        <List.Item>
+                          A collection containing your infrastructure
+                          integration configuration files are synced to your
+                          target infrastructure using <strong>nri-sync</strong>.
+                        </List.Item>
+                        <List.Item>
+                          To begin setup, select an account followed by a
+                          collection or create a new collection which will
+                          contain your integrations for a particular
+                          environment.
+                        </List.Item>
+                        <List.Item>
+                          Select an API key and your configuration file will be
+                          prepopulated.
+                        </List.Item>
+                        <List.Item>
+                          Choose your required deployment model.
+                        </List.Item>
+                      </List>
                     </Card.Description>
                   </Card.Content>
                 </Card>
+
+                <ApiKeyBar />
               </Grid.Column>
               <Grid.Column>
                 <Card style={{ width: '100%' }}>
