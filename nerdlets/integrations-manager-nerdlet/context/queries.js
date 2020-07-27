@@ -67,3 +67,11 @@ export const deleteApiKey = (keyId) => `mutation {
       }
     }
   }`;
+
+export const getUserQuery = `{
+    actor {
+      user {
+        id
+      }
+    }
+  }`;

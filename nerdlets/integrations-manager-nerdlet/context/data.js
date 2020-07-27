@@ -19,7 +19,8 @@ import gql from 'graphql-tag';
 import {
   accountsQuery,
   catalogNerdpacksQuery,
-  getApiKeysQuery
+  getApiKeysQuery,
+  getUserQuery
 } from './queries';
 import { existsInArray } from './utils';
 
@@ -56,13 +57,15 @@ export class DataProvider extends Component {
       err: null,
       errInfo: null,
       uuid: null,
-      apiKeys: []
+      apiKeys: [],
+      userData: null
     };
   }
 
   async componentDidMount() {
     this.checkVersion();
     this.getNerdpackUuid();
+    this.getUser();
     await this.getAccounts();
 
     if (this.state.accounts.length === 0) {
@@ -124,6 +127,18 @@ export class DataProvider extends Component {
     if (nerdpackUUID) {
       this.setState({ uuid: nerdpackUUID });
     }
+  };
+
+  getUser = () => {
+    NerdGraphQuery.query({
+      query: gql`
+        ${getUserQuery}
+      `
+    }).then((value) => {
+      const userData = (((value || {}).data || {}).actor || {}).user || null;
+      console.log(userData);
+      this.setState({ userData });
+    });
   };
 
   getAccounts = () => {
