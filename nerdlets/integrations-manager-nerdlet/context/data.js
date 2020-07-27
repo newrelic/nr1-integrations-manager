@@ -138,7 +138,6 @@ export class DataProvider extends Component {
       `
     }).then((value) => {
       const userData = (((value || {}).data || {}).actor || {}).user || null;
-      console.log(userData);
       this.setState({ userData });
     });
   };
@@ -196,8 +195,6 @@ export class DataProvider extends Component {
           label: `${a.name} - ${a.key.slice(0, 8)}...`,
           text: `${a.name} - ${a.key.slice(0, 8)}...`
         }));
-
-      console.log(apiKeys);
 
       this.setState({ apiKeys });
     });

@@ -31,27 +31,28 @@ export default class Setup extends React.PureComponent {
           selectedApiKey,
           selectedPage
         }) => {
+          const apiKey =
+            (selectedApiKey && selectedApiKey.value) ||
+            '<Select API Key eg.NRAK-123... >';
+          const collection =
+            (selectedCollection && selectedCollection.label) ||
+            '<Select collection eg.network-integrations>';
+          const accountId =
+            (selectedAccount && selectedAccount.key) ||
+            '<Select account eg. 12345678>';
+          const theUuid = uuid || 'eg. 4c2c66ea-c13d-4b95-9c9a-64183fe68290';
           const integrationsConfig = `---
   integrations:
     - name: nri-sync
       env:
         # integrations manager nerdpack uuid
-        NR_UUID: ${uuid || 'eg. 4c2c66ea-c13d-4b95-9c9a-64183fe68290'}
-        # new relic one user api key
-        NR_API_KEY: ${
-          (selectedApiKey && selectedApiKey.value) ||
-          '<Select API Key eg.NRAK-123... >'
-        }
+        NR_UUID: "${theUuid}"
         # account that contains your config collection
-        NR_ACCOUNT_ID: ${
-          (selectedAccount && selectedAccount.key) ||
-          '<Select account eg. 12345678>'
-        }
+        NR_ACCOUNT_ID: ${accountId}
         # name of config collection to sync
-        NR_COLLECTION: ${
-          (selectedCollection && selectedCollection.label) ||
-          '<Select collection eg.network-integrations>'
-        }`;
+        NR_COLLECTION: "${collection}"
+        # new relic one user api key
+        NR_API_KEY: "${apiKey}"`;
 
           return (
             <Grid.Row
@@ -119,7 +120,7 @@ export default class Setup extends React.PureComponent {
                         mode="yaml"
                         theme="monokai"
                         name="configuration"
-                        height={'180px'}
+                        height={'190px'}
                         value={integrationsConfig}
                         editorProps={{ $blockScrolling: true }}
                       />
@@ -197,6 +198,24 @@ export default class Setup extends React.PureComponent {
                         environment variables defined in each.
                       </List.Item>
                       <List.Item>Build the docker image.</List.Item>
+                      <List.Item>
+                        Use the following environment variables during
+                        deployment. Use the above dropdowns to populate, or
+                        manually define yourself.
+                        <br /> <br />
+                        <List.Item>
+                          <strong>NR_UUID</strong>="{theUuid}"
+                        </List.Item>
+                        <List.Item>
+                          <strong>NR_ACCOUNT_ID</strong>="{accountId}"
+                        </List.Item>
+                        <List.Item>
+                          <strong>NR_COLLECTION</strong>="{collection}"
+                        </List.Item>
+                        <List.Item>
+                          <strong>NR_API_KEY</strong>="{apiKey}"
+                        </List.Item>
+                      </List.Item>
                     </List>
                   </Card.Content>
                 </Card>
