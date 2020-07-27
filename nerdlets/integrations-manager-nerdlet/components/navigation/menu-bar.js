@@ -5,6 +5,7 @@ import React from 'react';
 import { Button } from 'semantic-ui-react';
 import Select from 'react-select';
 import { DataConsumer } from '../../context/data';
+import DeleteCollection from '../collection/del-collection';
 
 export default class MenuBar extends React.PureComponent {
   render() {
@@ -30,7 +31,9 @@ export default class MenuBar extends React.PureComponent {
                     options={accounts}
                     onChange={(selectedAccount) => {
                       updateDataStateContext({
-                        selectedAccount
+                        selectedAccount,
+                        selectedCollection: null,
+                        selectedApiKey: null
                       });
                       getCollections(selectedAccount.key);
                       getApiKeys(selectedAccount.key);
@@ -53,6 +56,8 @@ export default class MenuBar extends React.PureComponent {
                     classNamePrefix="react-select"
                   />
                 </div>
+
+                {selectedCollection ? <DeleteCollection /> : ''}
 
                 <div className="flex-push" />
               </div>

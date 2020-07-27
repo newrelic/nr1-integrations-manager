@@ -276,7 +276,7 @@ export class DataProvider extends Component {
       collectionsIndex = ((collectionsIndex || {}).data || {}).data || [];
 
       const collections = collectionsIndex.map((c) => ({
-        key: `${c}:${accountId}`,
+        key: `${c}:::${accountId}`,
         value: c,
         label: c,
         text: c,
@@ -287,13 +287,13 @@ export class DataProvider extends Component {
         // avoid duplicates
         let collectionExists = existsInArray(
           collections,
-          `${r.collection}:${r.collectionAccountId}`,
+          `${r.collection}:::${r.collectionAccountId}`,
           'key'
         );
 
         if (!collectionExists) {
           collections.push({
-            key: `${r.collection}:${r.collectionAccountId}`,
+            key: `${r.collection}:::${r.collectionAccountId}`,
             value: r.collection,
             label: r.collection,
             text: r.collection,
@@ -303,14 +303,17 @@ export class DataProvider extends Component {
         }
       });
 
-      this.setState({ collections, reportingEntities }, () => {
-        toast.update('fetchingCollections', {
-          autoClose: 2000,
-          containerId: 'C',
-          type: 'success',
-          render: successMsg('Collections fetched.')
-        });
-      });
+      this.setState(
+        { collections, reportingEntities, collectionsIndex },
+        () => {
+          toast.update('fetchingCollections', {
+            autoClose: 2000,
+            containerId: 'C',
+            type: 'success',
+            render: successMsg('Collections fetched.')
+          });
+        }
+      );
     });
   };
 
