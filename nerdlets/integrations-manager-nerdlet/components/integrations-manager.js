@@ -4,10 +4,11 @@ no-console: 0,
 */ // --> OFF
 
 import React from 'react';
-import { Grid, Card } from 'semantic-ui-react';
+import { Grid, Card, Divider } from 'semantic-ui-react';
 import MenuBar from './navigation/menu-bar';
 import RowMenu from './navigation/row-menu';
 import Setup from './setup';
+import ProductIntegrations from './product-integrations';
 
 export default class IntegrationsManager extends React.Component {
   constructor(props) {
@@ -31,7 +32,10 @@ export default class IntegrationsManager extends React.Component {
             </Grid.Column>
           </Grid.Row>
 
+          <Divider />
+
           <Setup />
+          <ProductIntegrations />
         </Grid>
       </div>
     );

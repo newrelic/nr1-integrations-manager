@@ -60,14 +60,17 @@ export class DataProvider extends Component {
       errInfo: null,
       uuid: null,
       apiKeys: [],
-      userData: null
+      userData: null,
+      productIntegrations: [],
+      flexIntegrations: []
     };
   }
 
   async componentDidMount() {
-    this.checkVersion();
+    await this.checkVersion();
     this.getNerdpackUuid();
     this.getUser();
+    this.getProductIntegrations();
     await this.getAccounts();
 
     if (this.state.accounts.length === 0) {
@@ -81,6 +84,22 @@ export class DataProvider extends Component {
   componentDidCatch(err, errInfo) {
     this.setState({ hasError: true, err, errInfo });
   }
+
+  // temporary function to help with repo name transition
+  getDetermineActiveRepo = () => {
+    return new Promise((resolve) => {
+      fetch;
+    });
+  };
+
+  getProductIntegrations = () => {
+    const { pkgName } = this.state;
+    const url = `https://raw.githubusercontent.com/newrelic/${pkgName}/master/integrations/product.json`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((productIntegrations) => this.setState({ productIntegrations }));
+  };
 
   getNerdpackUuid = async () => {
     // check if manually deployed nerdpack
@@ -303,33 +322,77 @@ export class DataProvider extends Component {
     });
   };
 
-  checkVersion = async () => {
-    fetch(
-      'https://raw.githubusercontent.com/newrelic/nr1-flex-manager/master/package.json'
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((repoPackage) => {
-        if (pkg.version === repoPackage.version) {
+  checkVersion = () => {
+    return new Promise(async (resolve) => {
+      let pkgName = '';
+
+      // dual check temporary till transition
+      let data = await fetch(
+        'https://raw.githubusercontent.com/newrelic/nr1-integrations-manager/master/package.json'
+      ).then((response) => {
+        if (response.ok) {
+          pkgName = 'nr1-integrations-manager';
+          return response.json();
+        }
+        return null;
+      });
+
+      if (!data) {
+        data = await fetch(
+          'https://raw.githubusercontent.com/newrelic/nr1-flex-manager/master/package.json'
+        ).then((response) => {
+          if (response.ok) {
+            pkgName = 'nr1-flex-manager';
+            return response.json();
+          }
+          return null;
+        });
+      }
+
+      if (data) {
+        console.log(`current name: ${pkgName}`);
+        if (pkg.version === data.version) {
           console.log(`Running latest version: ${pkg.version}`);
-        } else if (semver.lt(pkg.version, repoPackage.version)) {
+        } else if (semver.lt(pkg.version, data.version)) {
           toast.warn(
             <a
               onClick={() =>
-                window.open(
-                  'https://github.com/newrelic/nr1-flex-manager/',
-                  '_blank'
-                )
+                window.open(`https://github.com/newrelic/${pkgName}/`, '_blank')
               }
-            >{`New version available: ${repoPackage.version}`}</a>,
+            >{`New version available: ${data.version}`}</a>,
             {
               autoClose: 5000,
               containerId: 'C'
             }
           );
         }
+      }
+
+      this.setState({ pkgName }, () => {
+        resolve();
       });
+
+      //   .then((repoPackage) => {
+      //     if (pkg.version === repoPackage.version) {
+      //       console.log(`Running latest version: ${pkg.version}`);
+      //     } else if (semver.lt(pkg.version, repoPackage.version)) {
+      //       toast.warn(
+      //         <a
+      //           onClick={() =>
+      //             window.open(
+      //               'https://github.com/newrelic/nr1-flex-manager/',
+      //               '_blank'
+      //             )
+      //           }
+      //         >{`New version available: ${repoPackage.version}`}</a>,
+      //         {
+      //           autoClose: 5000,
+      //           containerId: 'C'
+      //         }
+      //       );
+      //     }
+      //   });
+    });
   };
 
   render() {

@@ -48,7 +48,7 @@ export default class RowMenu extends React.PureComponent {
                 <Card.Content>
                   <Card.Header>Flex Integrations</Card.Header>
                   <Card.Description>
-                    Deploy and develop Flex integrations.
+                    Deploy and develop <strong>Flex</strong> integrations.
                   </Card.Description>
                 </Card.Content>
               </Card>
