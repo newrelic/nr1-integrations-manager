@@ -44,12 +44,13 @@ export default class Setup extends React.PureComponent {
         }
         # account that contains your config collection
         NR_ACCOUNT_ID: ${
-          (selectedAccount && selectedAccount.key) || '<Select account>'
+          (selectedAccount && selectedAccount.key) ||
+          '<Select account eg. 12345678>'
         }
         # name of config collection to sync
         NR_COLLECTION: ${
           (selectedCollection && selectedCollection.label) ||
-          '<Select collection>'
+          '<Select collection eg.network-integrations>'
         }`;
 
           return (
@@ -111,14 +112,14 @@ export default class Setup extends React.PureComponent {
                       <List.Item>
                         Configuration file: <strong>nri-sync-config.yml</strong>
                       </List.Item>
-                      Either use the above dropdowns to prepopulate your
-                      configuration file, or input yourself.
+                      Use the above dropdowns to prepopulate your config file,
+                      or input manully.
                       <br /> <br />
                       <AceEditor
                         mode="yaml"
                         theme="monokai"
                         name="configuration"
-                        height={'190px'}
+                        height={'180px'}
                         value={integrationsConfig}
                         editorProps={{ $blockScrolling: true }}
                       />
@@ -168,7 +169,7 @@ export default class Setup extends React.PureComponent {
                         mode="yaml"
                         theme="monokai"
                         name="dockerSyncConfig"
-                        height={'70px'}
+                        height={'50px'}
                         value={dockerConfig}
                         editorProps={{ $blockScrolling: true }}
                         readOnly={true}
@@ -185,7 +186,7 @@ export default class Setup extends React.PureComponent {
                         mode="dockerfile"
                         theme="monokai"
                         name="Dockerfile"
-                        height={'110px'}
+                        height={'105px'}
                         value={dockerfile}
                         editorProps={{ $blockScrolling: true }}
                         readOnly={true}
