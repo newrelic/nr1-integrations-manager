@@ -1,9 +1,10 @@
 [
   {
     "name": "nginx",
-    "url": "https://github.com/newrelic/nri-nginx",
+    "git": "https://github.com/newrelic/nri-nginx",
     "image": "https://cdn.auth0.com/blog/nginx-plus/nginx-logo.png",
-    "config": "/master/integrations/v4configs/nri-nginx.yml",
-    "type": "standard"
+    "standard": "/master/integrations/v4configs/nri-nginx.yml",
+    "discovery": null,
+    "k8s": null
   }
 ]
