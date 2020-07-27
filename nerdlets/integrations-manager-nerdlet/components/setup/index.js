@@ -28,8 +28,7 @@ export default class Setup extends React.PureComponent {
           selectedAccount,
           uuid,
           selectedCollection,
-          selectedKey,
-          apiKeys,
+          selectedApiKey,
           selectedPage
         }) => {
           const integrationsConfig = `---
@@ -40,7 +39,8 @@ export default class Setup extends React.PureComponent {
         NR_UUID: ${uuid || 'eg. 4c2c66ea-c13d-4b95-9c9a-64183fe68290'}
         # new relic one user api key
         NR_API_KEY: ${
-          (selectedKey && selectedKey.key) || '<Select API Key eg.NRAK-123... >'
+          (selectedApiKey && selectedApiKey.value) ||
+          '<Select API Key eg.NRAK-123... >'
         }
         # account that contains your config collection
         NR_ACCOUNT_ID: ${
@@ -62,6 +62,18 @@ export default class Setup extends React.PureComponent {
                 marginBottom: '10px'
               }}
             >
+              <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
+                <Card color={'black'} style={{ width: '100%' }}>
+                  <Card.Content>
+                    <Card.Header>How does it work?</Card.Header>
+                    <Card.Description>
+                      A collection containing your infrastructure integration
+                      configuration files are synced to your target
+                      infrastructure using <strong>nri-sync</strong>.
+                    </Card.Description>
+                  </Card.Content>
+                </Card>
+              </Grid.Column>
               <Grid.Column>
                 <Card style={{ width: '100%' }}>
                   <Card.Content>
@@ -76,27 +88,32 @@ export default class Setup extends React.PureComponent {
                           <List.Item href="#">Windows</List.Item>
                         </List.List>
                       </List.Item>
-
                       <List.Item>
-                        Binary location:
+                        Save the binary to the following location:
                         <List.List>
-                          <List.Item>Linux</List.Item>
-                          <Segment style={{ fontSize: '13px' }}>
-                            /var/db/newrelic-infra/newrelic-integrations/bin/
-                            <strong>nri-sync</strong>
-                          </Segment>
-
-                          <List.Item>Windows</List.Item>
-                          <Segment style={{ fontSize: '13px' }}>
-                            C:\Program Files\New
-                            Relic\newrelic-infra\newrelic-integrations\
-                            <strong>nri-sync.exe</strong>
-                          </Segment>
+                          <List.Item style={{ paddingBottom: '5px' }}>
+                            Linux:
+                            <List.Item>
+                              /var/db/newrelic-infra/newrelic-integrations/bin/
+                              <strong>nri-sync</strong>
+                            </List.Item>
+                          </List.Item>
+                          <List.Item>
+                            Windows:
+                            <List.Item>
+                              C:\Program Files\New
+                              Relic\newrelic-infra\newrelic-integrations\
+                              <strong>nri-sync.exe</strong>
+                            </List.Item>
+                          </List.Item>
                         </List.List>
                       </List.Item>
-
-                      <List.Item>Configuration</List.Item>
-                      <br />
+                      <List.Item>
+                        Configuration file: <strong>nri-sync-config.yml</strong>
+                      </List.Item>
+                      Either use the above dropdowns to prepopulate your
+                      configuration file, or input yourself.
+                      <br /> <br />
                       <AceEditor
                         mode="yaml"
                         theme="monokai"
@@ -105,6 +122,27 @@ export default class Setup extends React.PureComponent {
                         value={integrationsConfig}
                         editorProps={{ $blockScrolling: true }}
                       />
+                      <br />
+                      <List.Item>
+                        Save the configuration to the following location:
+                        <List.List>
+                          <List.Item style={{ paddingBottom: '5px' }}>
+                            Linux:
+                            <List.Item>
+                              /etc/newrelic-infra/integrations.d/
+                              <strong>nri-sync-config.yml</strong>
+                            </List.Item>
+                          </List.Item>
+                          <List.Item>
+                            Windows:
+                            <List.Item>
+                              C:\Program Files\New
+                              Relic\newrelic-infra\integrations.d\
+                              <strong>nri-sync-config.yml</strong>
+                            </List.Item>
+                          </List.Item>
+                        </List.List>
+                      </List.Item>
                     </List>
                   </Card.Content>
                 </Card>
@@ -123,7 +161,7 @@ export default class Setup extends React.PureComponent {
                         </List.List>
                       </List.Item>
                       <List.Item>
-                        Save <strong>nri-sync-config.yml</strong>
+                        Save <strong>nri-sync-docker-config.yml</strong>
                       </List.Item>
                       <br />
                       <AceEditor
@@ -133,6 +171,7 @@ export default class Setup extends React.PureComponent {
                         height={'70px'}
                         value={dockerConfig}
                         editorProps={{ $blockScrolling: true }}
+                        readOnly={true}
                       />
 
                       <br />
@@ -149,12 +188,14 @@ export default class Setup extends React.PureComponent {
                         height={'110px'}
                         value={dockerfile}
                         editorProps={{ $blockScrolling: true }}
+                        readOnly={true}
                       />
                       <br />
                       <List.Item>
                         Alternatively you can bake separate images with the
                         environment variables defined in each.
                       </List.Item>
+                      <List.Item>Build the docker image.</List.Item>
                     </List>
                   </Card.Content>
                 </Card>

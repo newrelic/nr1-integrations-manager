@@ -17,7 +17,9 @@ export default class MenuBar extends React.PureComponent {
           selectedCollection,
           updateDataStateContext,
           getCollections,
-          getApiKeys
+          getApiKeys,
+          apiKeys,
+          selectedApiKey
         }) => {
           return (
             <div>
@@ -48,6 +50,20 @@ export default class MenuBar extends React.PureComponent {
                       });
                     }}
                     value={selectedCollection}
+                    classNamePrefix="react-select"
+                  />
+                </div>
+
+                <div className="react-select-input-group">
+                  <label>Select API Key</label>
+                  <Select
+                    options={apiKeys}
+                    onChange={(selectedApiKey) => {
+                      updateDataStateContext({
+                        selectedApiKey
+                      });
+                    }}
+                    value={selectedApiKey}
                     classNamePrefix="react-select"
                   />
                 </div>

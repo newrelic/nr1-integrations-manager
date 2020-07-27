@@ -47,9 +47,11 @@ export class DataProvider extends Component {
     super(props);
 
     this.state = {
+      pkgName: 'nr1-flex-manager', // when name transitioned update this
       selectedPage: 'home',
       selectedAccount: null,
       selectedCollection: null,
+      selectedApiKey: null,
       accounts: [],
       collections: [],
       reportingEntities: [],
@@ -186,7 +188,16 @@ export class DataProvider extends Component {
           ((((values || {}).data || {}).actor || {}).apiAccess || {})
             .keySearch || {}
         ).keys || []
-      ).filter((k) => !k.key.includes('...'));
+      )
+        .filter((k) => !k.key.includes('...'))
+        .map((a) => ({
+          key: a.id,
+          value: a.key,
+          label: `${a.name} - ${a.key.slice(0, 8)}...`,
+          text: `${a.name} - ${a.key.slice(0, 8)}...`
+        }));
+
+      console.log(apiKeys);
 
       this.setState({ apiKeys });
     });
