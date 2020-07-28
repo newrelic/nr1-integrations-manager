@@ -26,9 +26,11 @@ export default class IntegrationTiles extends React.PureComponent {
                       style={{ float: 'right' }}
                       onClick={() => window.open(i.git, '_blank')}
                     >
-                      <Label color="green" style={{ cursor: 'pointer' }}>
-                        <Icon name="github" /> GitHub
-                      </Label>
+                      <Icon
+                        name="github"
+                        color="green"
+                        style={{ cursor: 'pointer' }}
+                      />
                     </div>
                   ) : (
                     ''

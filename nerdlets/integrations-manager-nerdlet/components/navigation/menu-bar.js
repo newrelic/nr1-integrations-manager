@@ -2,7 +2,7 @@
 no-console: 0
 */
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { AccountStorageQuery } from 'nr1';
 import Select from 'react-select';
 import { DataConsumer } from '../../context/data';
 import DeleteCollection from '../collection/del-collection';
@@ -10,6 +10,24 @@ import CreateCollection from '../collection/add-collection';
 import EditCollection from '../collection/edit-collection';
 
 export default class MenuBar extends React.PureComponent {
+  getCollection = (selectedCollection, updateDataStateContext) => {
+    AccountStorageQuery.query({
+      accountId:
+        selectedCollection.collectionAccountId || selectedCollection.accountId,
+      collection: selectedCollection.label
+    }).then((value) => {
+      if (value.errors && value.errors.length > 0) {
+        window.alert(`${selectedCollection.label}: ${value.errors[0].message}`);
+        updateDataStateContext({ selectedCollection: null });
+      } else {
+        updateDataStateContext({
+          collectionData: value.data || [],
+          selectedCollection
+        });
+      }
+    });
+  };
+
   render() {
     return (
       <DataConsumer>
@@ -48,9 +66,10 @@ export default class MenuBar extends React.PureComponent {
                   <Select
                     options={collections}
                     onChange={(selectedCollection) => {
-                      updateDataStateContext({
-                        selectedCollection
-                      });
+                      this.getCollection(
+                        selectedCollection,
+                        updateDataStateContext
+                      );
                     }}
                     isDisabled={!selectedAccount || collections.length === 0}
                     value={selectedCollection}

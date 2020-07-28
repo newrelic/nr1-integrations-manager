@@ -12,10 +12,6 @@ export default class EditCollection extends React.PureComponent {
   handleOpen = () => this.setState({ createOpen: true, name: '' });
   handleClose = () => this.setState({ createOpen: false, name: '' });
 
-  componentDidMount() {
-    console.log(this.props.selectedCollection);
-  }
-
   addCollection = (selectedCollection, updateDataStateContext) => {
     return new Promise((resolve) => {
       this.setState({ isAdding: true }, () => {
@@ -45,9 +41,11 @@ export default class EditCollection extends React.PureComponent {
           selectedAccount,
           selectedCollection,
           getCollections,
+          collectionData,
           updateDataStateContext,
           collectionsIndex
         }) => {
+          console.log(collectionData);
           return (
             <Modal
               closeIcon
