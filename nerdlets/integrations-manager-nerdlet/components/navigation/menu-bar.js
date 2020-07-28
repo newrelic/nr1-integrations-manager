@@ -52,7 +52,7 @@ export default class MenuBar extends React.PureComponent {
                         selectedCollection
                       });
                     }}
-                    isDisabled={!selectedAccount}
+                    isDisabled={!selectedAccount || collections.length === 0}
                     value={selectedCollection}
                     classNamePrefix="react-select"
                   />
