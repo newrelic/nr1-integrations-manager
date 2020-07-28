@@ -4,7 +4,7 @@ no-console: 0,
 */ // --> OFF
 
 import React from 'react';
-import { Grid, Card, Divider } from 'semantic-ui-react';
+import { Grid, Divider } from 'semantic-ui-react';
 import MenuBar from './navigation/menu-bar';
 import RowMenu from './navigation/row-menu';
 import Setup from './setup';

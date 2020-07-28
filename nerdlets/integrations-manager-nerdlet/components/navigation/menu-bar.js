@@ -7,6 +7,7 @@ import Select from 'react-select';
 import { DataConsumer } from '../../context/data';
 import DeleteCollection from '../collection/del-collection';
 import CreateCollection from '../collection/add-collection';
+import EditCollection from '../collection/edit-collection';
 
 export default class MenuBar extends React.PureComponent {
   render() {
@@ -58,6 +59,7 @@ export default class MenuBar extends React.PureComponent {
                 </div>
 
                 {selectedCollection ? <DeleteCollection /> : ''}
+                {selectedCollection ? <EditCollection /> : ''}
                 {selectedAccount ? <CreateCollection /> : ''}
 
                 <div className="flex-push" />

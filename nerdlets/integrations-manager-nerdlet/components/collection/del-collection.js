@@ -110,7 +110,10 @@ export default class DeleteCollection extends React.PureComponent {
                       selectedCollection,
                       collectionsIndex
                     );
-                    updateDataStateContext({ selectedCollection: null });
+                    updateDataStateContext({
+                      selectedCollection: null,
+                      collectionData: null
+                    });
                     getCollections(selectedAccount.key);
                     this.setState({ isDeleting: false });
                   }}

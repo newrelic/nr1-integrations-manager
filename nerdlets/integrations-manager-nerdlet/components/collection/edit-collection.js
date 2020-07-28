@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal, Button, Popup, Icon, Input } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
-import { AccountStorageMutation } from 'nr1';
+import { AccountStorageMutation, AccountStorageQuery } from 'nr1';
 
-export default class CreateCollection extends React.PureComponent {
+export default class EditCollection extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { createOpen: false, name: '', isAdding: false };
@@ -12,42 +12,25 @@ export default class CreateCollection extends React.PureComponent {
   handleOpen = () => this.setState({ createOpen: true, name: '' });
   handleClose = () => this.setState({ createOpen: false, name: '' });
 
-  addCollection = (
-    selectedAccount,
-    updateDataStateContext,
-    getCollections,
-    collectionsIndex
-  ) => {
+  componentDidMount() {
+    console.log(this.props.selectedCollection);
+  }
+
+  addCollection = (selectedCollection, updateDataStateContext) => {
     return new Promise((resolve) => {
       this.setState({ isAdding: true }, () => {
         const { name } = this.state;
-
-        collectionsIndex.push(name);
 
         // create collection, add to infex
         AccountStorageMutation.mutate({
           accountId: selectedAccount.key,
           actionType: AccountStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
-          collection: 'collectionsIndex',
+          collection: selectedCollection,
           documentId: 'collectionsIndex',
           document: {
             data: collectionsIndex
           }
         }).then((value) => {
-          getCollections(selectedAccount.key);
-
-          updateDataStateContext({
-            collectionData: null,
-            selectedCollection: {
-              key: `${name}:::${selectedAccount.key}`,
-              value: name,
-              label: name,
-              text: name,
-              collectionAccountId: selectedAccount.key,
-              accountId: selectedAccount.key
-            }
-          });
-
           resolve(value);
         });
       });
@@ -60,6 +43,7 @@ export default class CreateCollection extends React.PureComponent {
       <DataConsumer>
         {({
           selectedAccount,
+          selectedCollection,
           getCollections,
           updateDataStateContext,
           collectionsIndex
@@ -69,10 +53,10 @@ export default class CreateCollection extends React.PureComponent {
               closeIcon
               onClose={this.handleClose}
               open={createOpen}
-              size="tiny"
+              size="fullscreen"
               trigger={
                 <Popup
-                  content="Create Collection"
+                  content="Edit Collection"
                   trigger={
                     <Button
                       onClick={this.handleOpen}
@@ -87,14 +71,16 @@ export default class CreateCollection extends React.PureComponent {
                           marginRight: '-10px'
                         }}
                       >
-                        <Icon name="plus" />
+                        <Icon name="pencil" />
                       </Icon.Group>
                     </Button>
                   }
                 />
               }
             >
-              <Modal.Header>Create Collection</Modal.Header>
+              <Modal.Header>
+                <Icon name="pencil" /> {selectedCollection.label}
+              </Modal.Header>
               <Modal.Content>
                 <Input
                   style={{ width: '100%' }}

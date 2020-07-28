@@ -51,6 +51,7 @@ export class DataProvider extends Component {
       selectedPage: 'home',
       selectedAccount: null,
       selectedCollection: null,
+      collectionData: null,
       selectedApiKey: null,
       accounts: [],
       collections: [],

@@ -30,15 +30,14 @@ export default class Setup extends React.PureComponent {
           uuid,
           selectedCollection,
           selectedApiKey,
-          selectedPage,
-          apiKeys
+          selectedPage
         }) => {
           const apiKey =
             (selectedApiKey && selectedApiKey.value) ||
-            '<Select API Key eg.NRAK-123... >';
+            '<Select API Key eg. NRAK-123... >';
           const collection =
             (selectedCollection && selectedCollection.label) ||
-            '<Select collection eg.network-integrations>';
+            '<Select collection eg. netw-integrations>';
           const accountId =
             (selectedAccount && selectedAccount.key) ||
             '<Select account eg. 12345678>';
@@ -144,6 +143,7 @@ export default class Setup extends React.PureComponent {
                         theme="monokai"
                         name="configuration"
                         height={'190px'}
+                        width="100%"
                         value={integrationsConfig}
                         editorProps={{ $blockScrolling: true }}
                       />
@@ -194,6 +194,7 @@ export default class Setup extends React.PureComponent {
                         theme="monokai"
                         name="dockerSyncConfig"
                         height={'50px'}
+                        width="100%"
                         value={dockerConfig}
                         editorProps={{ $blockScrolling: true }}
                         readOnly={true}
@@ -211,6 +212,7 @@ export default class Setup extends React.PureComponent {
                         theme="monokai"
                         name="Dockerfile"
                         height={'105px'}
+                        width="100%"
                         value={dockerfile}
                         editorProps={{ $blockScrolling: true }}
                         readOnly={true}
