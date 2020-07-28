@@ -57,22 +57,21 @@ export default class EditCollection extends React.PureComponent {
     });
   };
 
-  writeDocument = (selectedAccount, selectedCollection) => {
+  updateDocument = (selectedAccount, selectedCollection) => {
+    const { selectedDoc, workingDoc } = this.state;
     return new Promise((resolve) => {
-      this.setState({ isCreating: true }, () => {
-        const { name } = this.state;
-
-        // create collection, add to infex
+      this.setState({ isSaving: true }, () => {
         AccountStorageMutation.mutate({
           accountId: selectedAccount.key,
           actionType: AccountStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
           collection: selectedCollection.label,
-          documentId: 'collectionsIndex',
+          documentId: selectedDoc,
           document: {
-            data: collectionsIndex
+            config: window.btoa(workingDoc),
+            updated: Date.now()
           }
         }).then((value) => {
-          this.setState({ isCreating: false }, () => {
+          this.setState({ isSaving: false, newName: '' }, () => {
             resolve(value);
           });
         });
@@ -115,7 +114,7 @@ export default class EditCollection extends React.PureComponent {
               value={newName}
               error={nameExists}
               onChange={(e, d) => this.setState({ newName: d.value })}
-              width={7}
+              width={6}
             />
             <Form.Button
               content="Create"
@@ -141,6 +140,13 @@ export default class EditCollection extends React.PureComponent {
                 icon="save"
                 loading={isSaving}
                 disabled={!selectedDoc}
+                onClick={async () => {
+                  await this.updateDocument(
+                    selectedAccount,
+                    selectedCollection
+                  );
+                  getCollection(selectedCollection);
+                }}
               />
               <Button
                 animated
@@ -230,7 +236,7 @@ export default class EditCollection extends React.PureComponent {
                         {collectionData.map((c) => (
                           <Form.Field key={c.id}>
                             <Radio
-                              label={c.id}
+                              label={c.id.replace(/\+/g, ' ')}
                               name="radioGroup"
                               value={c.id}
                               checked={selectedDoc === c.id}
