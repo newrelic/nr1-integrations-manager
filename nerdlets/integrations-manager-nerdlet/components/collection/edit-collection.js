@@ -36,22 +36,45 @@ export default class EditCollection extends React.PureComponent {
   handleOpen = () => this.setState({ createOpen: true, name: '' });
   handleClose = () => this.setState({ createOpen: false, name: '' });
 
-  writeDocument = (selectedCollection, updateDataStateContext) => {
+  createDocument = (selectedAccount, selectedCollection) => {
+    const { newName } = this.state;
     return new Promise((resolve) => {
-      this.setState({ isAdding: true }, () => {
+      this.setState({ isCreating: true }, () => {
+        AccountStorageMutation.mutate({
+          accountId: selectedAccount.key,
+          actionType: AccountStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
+          collection: selectedCollection.label,
+          documentId: newName,
+          document: {
+            config: ''
+          }
+        }).then((value) => {
+          this.setState({ isCreating: false, newName: '' }, () => {
+            resolve(value);
+          });
+        });
+      });
+    });
+  };
+
+  writeDocument = (selectedAccount, selectedCollection) => {
+    return new Promise((resolve) => {
+      this.setState({ isCreating: true }, () => {
         const { name } = this.state;
 
         // create collection, add to infex
         AccountStorageMutation.mutate({
           accountId: selectedAccount.key,
           actionType: AccountStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
-          collection: selectedCollection,
+          collection: selectedCollection.label,
           documentId: 'collectionsIndex',
           document: {
             data: collectionsIndex
           }
         }).then((value) => {
-          resolve(value);
+          this.setState({ isCreating: false }, () => {
+            resolve(value);
+          });
         });
       });
     });
@@ -65,8 +88,22 @@ export default class EditCollection extends React.PureComponent {
     });
   };
 
-  renderMenu = (selectedDoc) => {
-    const { newName, originalDoc } = this.state;
+  renderMenu = (
+    getCollection,
+    selectedAccount,
+    selectedCollection,
+    collectionData,
+    selectedDoc
+  ) => {
+    const {
+      newName,
+      originalDoc,
+      isDeleting,
+      isSaving,
+      isCreating
+    } = this.state;
+    const nameExists =
+      collectionData.filter((c) => c.id === newName).length > 0;
     return (
       <div>
         <Header as="h5" content="Create or modify an integration" />
@@ -75,15 +112,21 @@ export default class EditCollection extends React.PureComponent {
             <Form.Input
               placeholder="New integration name..."
               value={newName}
+              error={nameExists}
               onChange={(e, d) => this.setState({ newName: d.value })}
               width={7}
             />
             <Form.Button
               content="Create"
               color="green"
+              loading={isCreating}
               icon="plus"
               width={4}
-              disabled={!newName}
+              disabled={!newName || nameExists}
+              onClick={async () => {
+                await this.createDocument(selectedAccount, selectedCollection);
+                getCollection(selectedCollection);
+              }}
             />
             <Form.Field style={{ float: 'right' }}>
               <Button
@@ -92,11 +135,16 @@ export default class EditCollection extends React.PureComponent {
                 disabled={!selectedDoc}
                 onClick={() => this.setState({ workingDoc: originalDoc })}
               />
-              <Button color="twitter" icon="save" disabled={!selectedDoc} />
+              <Button
+                color="twitter"
+                icon="save"
+                loading={isSaving}
+                disabled={!selectedDoc}
+              />
               <Button
                 animated
                 color="red"
-                loading
+                loading={isDeleting}
                 disabled={!selectedDoc}
                 style={{ marginBottom: '3px' }}
               >
@@ -119,7 +167,7 @@ export default class EditCollection extends React.PureComponent {
         {({
           selectedAccount,
           selectedCollection,
-          getCollections,
+          getCollection,
           collectionData,
           updateDataStateContext,
           collectionsIndex
@@ -181,7 +229,13 @@ export default class EditCollection extends React.PureComponent {
                       </Form>
                     </Grid.Column>
                     <Grid.Column width={12}>
-                      {this.renderMenu(selectedDoc)}
+                      {this.renderMenu(
+                        getCollection,
+                        selectedAccount,
+                        selectedCollection,
+                        collectionData,
+                        selectedDoc
+                      )}
                       {selectedDoc ? (
                         <>
                           <AceEditor

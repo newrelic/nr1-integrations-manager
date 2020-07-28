@@ -196,6 +196,26 @@ export class DataProvider extends Component {
     });
   };
 
+  getCollection = (incomingCollection) => {
+    const selectedCollection =
+      incomingCollection || this.state.selectedCollection;
+    AccountStorageQuery.query({
+      accountId:
+        selectedCollection.collectionAccountId || selectedCollection.accountId,
+      collection: selectedCollection.label
+    }).then((value) => {
+      if (value.errors && value.errors.length > 0) {
+        window.alert(`${selectedCollection.label}: ${value.errors[0].message}`);
+        this.setState({ selectedCollection: null });
+      } else {
+        this.setState({
+          collectionData: value.data || [],
+          selectedCollection
+        });
+      }
+    });
+  };
+
   getApiKeys = (accountId) => {
     NerdGraphQuery.query({
       query: gql`
@@ -408,6 +428,7 @@ export class DataProvider extends Component {
           ...this.state,
           updateDataStateContext: this.updateDataStateContext,
           getCollections: this.getCollections,
+          getCollection: this.getCollection,
           getApiKeys: this.getApiKeys
         }}
       >
