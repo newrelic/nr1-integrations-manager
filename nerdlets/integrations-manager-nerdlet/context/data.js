@@ -275,7 +275,7 @@ export class DataProvider extends Component {
       });
       collectionsIndex = ((collectionsIndex || {}).data || {}).data || [];
 
-      const collections = collectionsIndex.map((c) => ({
+      const collections = (collectionsIndex || []).map((c) => ({
         key: `${c}:::${accountId}`,
         value: c,
         label: c,

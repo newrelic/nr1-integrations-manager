@@ -1,13 +1,13 @@
 import React from 'react';
 import { Modal, Button, Popup, Icon } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
-import { AccountStorageMutation, AccountStorageQuery } from 'nr1';
+import { AccountStorageMutation } from 'nr1';
 import gql from 'graphql-tag';
 
 export default class DeleteCollection extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { deleteOpen: false };
+    this.state = { deleteOpen: false, isDeleting: false };
   }
 
   handleOpen = () => this.setState({ deleteOpen: true });
@@ -15,37 +15,40 @@ export default class DeleteCollection extends React.PureComponent {
 
   deleteCollection = (selectedCollection, collectionsIndex) => {
     return new Promise((resolve) => {
-      // remove collection
-      AccountStorageMutation.mutate({
-        accountId: parseInt(
-          selectedCollection.collectionAccountId || selectedCollection.accountId
-        ),
-        actionType: AccountStorageMutation.ACTION_TYPE.DELETE_COLLECTION,
-        collection: selectedCollection.value
-      }).then(async (value) => {
-        //remove from index collection
-        if (collectionsIndex) {
-          collectionsIndex = collectionsIndex.filter(
-            (c) => c !== selectedCollection.value
-          );
-          AccountStorageMutation.mutate({
-            accountId: selectedCollection.accountId,
-            actionType: AccountStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
-            documentId: 'collectionsIndex',
-            collection: 'collectionsIndex',
-            document: {
-              data: collectionsIndex
-            }
-          }).then((value2) => {
-            resolve({ collectionDelete: value, indexDelete: value2 });
-          });
-        }
+      this.setState({ isDeleting: true }, () => {
+        // remove collection
+        AccountStorageMutation.mutate({
+          accountId: parseInt(
+            selectedCollection.collectionAccountId ||
+              selectedCollection.accountId
+          ),
+          actionType: AccountStorageMutation.ACTION_TYPE.DELETE_COLLECTION,
+          collection: selectedCollection.value
+        }).then(async (value) => {
+          //remove from index collection
+          if (collectionsIndex) {
+            collectionsIndex = collectionsIndex.filter(
+              (c) => c !== selectedCollection.value
+            );
+            AccountStorageMutation.mutate({
+              accountId: selectedCollection.accountId,
+              actionType: AccountStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
+              documentId: 'collectionsIndex',
+              collection: 'collectionsIndex',
+              document: {
+                data: collectionsIndex
+              }
+            }).then((value2) => {
+              resolve({ collectionDelete: value, indexDelete: value2 });
+            });
+          }
+        });
       });
     });
   };
 
   render() {
-    const { deleteOpen } = this.state;
+    const { deleteOpen, isDeleting } = this.state;
     return (
       <DataConsumer>
         {({
@@ -101,6 +104,7 @@ export default class DeleteCollection extends React.PureComponent {
 
                 <Button
                   negative
+                  loading={isDeleting}
                   onClick={async () => {
                     await this.deleteCollection(
                       selectedCollection,
@@ -108,6 +112,7 @@ export default class DeleteCollection extends React.PureComponent {
                     );
                     updateDataStateContext({ selectedCollection: null });
                     getCollections(selectedAccount.key);
+                    this.setState({ isDeleting: false });
                   }}
                 >
                   Delete!

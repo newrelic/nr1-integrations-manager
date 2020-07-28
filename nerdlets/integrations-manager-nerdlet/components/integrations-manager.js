@@ -23,7 +23,13 @@ export default class IntegrationsManager extends React.Component {
     };
 
     return (
-      <div style={{ overflowY: 'hidden', overflowX: 'hidden' }}>
+      <div
+        style={{
+          overflowY: 'hidden',
+          overflowX: 'hidden',
+          minHeight: this.props.height - 46
+        }}
+      >
         <MenuBar />
         <Grid columns={16} style={mainGridStyle}>
           <Grid.Row style={{ paddingTop: '10px', marginBottom: '2px' }}>

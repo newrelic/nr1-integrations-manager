@@ -6,6 +6,7 @@ import { Button } from 'semantic-ui-react';
 import Select from 'react-select';
 import { DataConsumer } from '../../context/data';
 import DeleteCollection from '../collection/del-collection';
+import CreateCollection from '../collection/add-collection';
 
 export default class MenuBar extends React.PureComponent {
   render() {
@@ -18,9 +19,7 @@ export default class MenuBar extends React.PureComponent {
           selectedCollection,
           updateDataStateContext,
           getCollections,
-          getApiKeys,
-          apiKeys,
-          selectedApiKey
+          getApiKeys
         }) => {
           return (
             <div>
@@ -52,12 +51,14 @@ export default class MenuBar extends React.PureComponent {
                         selectedCollection
                       });
                     }}
+                    isDisabled={!selectedAccount}
                     value={selectedCollection}
                     classNamePrefix="react-select"
                   />
                 </div>
 
                 {selectedCollection ? <DeleteCollection /> : ''}
+                {selectedAccount ? <CreateCollection /> : ''}
 
                 <div className="flex-push" />
               </div>
