@@ -93,7 +93,8 @@ export default class EditCollection extends React.PureComponent {
     selectedAccount,
     selectedCollection,
     collectionData,
-    selectedDoc
+    selectedDoc,
+    deleteDocument
   ) => {
     const {
       newName,
@@ -147,6 +148,17 @@ export default class EditCollection extends React.PureComponent {
                 loading={isDeleting}
                 disabled={!selectedDoc}
                 style={{ marginBottom: '3px' }}
+                onClick={() => {
+                  this.setState({ isDeleting: true }, async () => {
+                    await deleteDocument(selectedDoc);
+                    getCollection(selectedCollection);
+                    this.setState({
+                      workingDoc: '',
+                      selectedDoc: null,
+                      isDeleting: false
+                    });
+                  });
+                }}
               >
                 <Button.Content visible>
                   <Icon name="close" /> Delete
@@ -168,6 +180,7 @@ export default class EditCollection extends React.PureComponent {
           selectedAccount,
           selectedCollection,
           getCollection,
+          deleteDocument,
           collectionData,
           updateDataStateContext,
           collectionsIndex
@@ -234,7 +247,8 @@ export default class EditCollection extends React.PureComponent {
                         selectedAccount,
                         selectedCollection,
                         collectionData,
-                        selectedDoc
+                        selectedDoc,
+                        deleteDocument
                       )}
                       {selectedDoc ? (
                         <>

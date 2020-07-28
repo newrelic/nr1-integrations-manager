@@ -216,6 +216,23 @@ export class DataProvider extends Component {
     });
   };
 
+  deleteDocument = (documentId, incomingCollection) => {
+    const selectedCollection =
+      incomingCollection || this.state.selectedCollection;
+    return new Promise((resolve) => {
+      AccountStorageMutation.mutate({
+        accountId:
+          selectedCollection.collectionAccountId ||
+          selectedCollection.accountId,
+        actionType: AccountStorageMutation.ACTION_TYPE.DELETE_DOCUMENT,
+        collection: selectedCollection.label,
+        documentId
+      }).then((value) => {
+        resolve(value);
+      });
+    });
+  };
+
   getApiKeys = (accountId) => {
     NerdGraphQuery.query({
       query: gql`
@@ -429,6 +446,7 @@ export class DataProvider extends Component {
           updateDataStateContext: this.updateDataStateContext,
           getCollections: this.getCollections,
           getCollection: this.getCollection,
+          deleteDocument: this.deleteDocument,
           getApiKeys: this.getApiKeys
         }}
       >
