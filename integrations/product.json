@@ -6,5 +6,11 @@
     "standard": "/master/integrations/v4configs/nri-nginx.yml",
     "discovery": null,
     "k8s": null
+  },
+  {
+    "name": "vSphere",
+    "git": "https://github.com/newrelic/nri-vsphere",
+    "image": "https://cdn.iconscout.com/icon/free/png-512/vmware-5-896163.png",
+    "standard": "https://raw.githubusercontent.com/newrelic/nri-vsphere/master/configs/vsphere-config.yml.sample"
   }
 ]
