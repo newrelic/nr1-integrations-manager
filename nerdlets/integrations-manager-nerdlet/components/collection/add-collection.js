@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, Popup, Icon, Input } from 'semantic-ui-react';
+import { Modal, Button, Popup, Icon, Input, Message } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 import { AccountStorageMutation } from 'nr1';
 
@@ -55,15 +55,21 @@ export default class CreateCollection extends React.PureComponent {
   };
 
   render() {
-    const { createOpen, isAdding } = this.state;
+    const { createOpen, isAdding, name } = this.state;
     return (
       <DataConsumer>
         {({
           selectedAccount,
           getCollections,
           updateDataStateContext,
-          collectionsIndex
+          collectionsIndex,
+          collections
         }) => {
+          const collectionExists =
+            collections.filter((c) => c.label === name).length > 0
+              ? true
+              : false;
+
           return (
             <Modal
               closeIcon
@@ -102,6 +108,13 @@ export default class CreateCollection extends React.PureComponent {
                   value={this.state.name}
                   onChange={(e, d) => this.setState({ name: d.value })}
                 />
+                {collectionExists ? (
+                  <Message negative>
+                    Collection already exists, please try another name.
+                  </Message>
+                ) : (
+                  ''
+                )}
               </Modal.Content>
               <Modal.Actions>
                 <Button
@@ -113,6 +126,7 @@ export default class CreateCollection extends React.PureComponent {
                 </Button>
 
                 <Button
+                  disabled={collectionExists}
                   positive
                   loading={isAdding}
                   onClick={async () => {
@@ -122,7 +136,7 @@ export default class CreateCollection extends React.PureComponent {
                       getCollections,
                       collectionsIndex
                     );
-                    this.setState({ isAdding: false });
+                    this.setState({ isAdding: false, createOpen: false });
                   }}
                 >
                   Add

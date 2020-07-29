@@ -120,7 +120,7 @@ export default class EditCollection extends React.PureComponent {
       yamlError
     } = this.state;
     const nameExists =
-      collectionData.filter((c) => c.id === newName).length > 0;
+      (collectionData || []).filter((c) => c.id === newName).length > 0;
     return (
       <div>
         <Header as="h5" content="Create or modify an integration" />
@@ -265,7 +265,7 @@ export default class EditCollection extends React.PureComponent {
                       <Header as="h5" content="Select Integration" />
 
                       <Form>
-                        {collectionData.map((c) => (
+                        {(collectionData || []).map((c) => (
                           <Form.Field key={c.id}>
                             <Radio
                               label={c.id.replace(/\+/g, ' ')}
