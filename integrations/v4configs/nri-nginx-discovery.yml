@@ -1,0 +1,16 @@
+integration_name: com.newrelic.nginx
+discovery:
+  docker:
+    match:
+      image: /nginx/
+      label.env: production
+instances:
+  - name: nginx-server-metrics
+    command: metrics
+    arguments:
+      status_url: http://${discovery.private.ip}:8081/status
+      status_module: discover
+      remote_monitoring: true
+    labels:
+      env: ${discovery.label.env}
+      role: ${discovery.label.role}
