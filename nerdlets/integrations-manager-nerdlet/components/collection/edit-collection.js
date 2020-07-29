@@ -8,10 +8,11 @@ import {
   Grid,
   Form,
   Radio,
-  Input
+  Message
 } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 import { AccountStorageMutation } from 'nr1';
+import jsyaml from 'js-yaml';
 import AceEditor from 'react-ace';
 import 'brace/mode/yaml';
 import 'brace/theme/monokai';
@@ -29,7 +30,8 @@ export default class EditCollection extends React.PureComponent {
       workingDoc: '',
       isSaving: false,
       isDeleting: false,
-      isCreating: false
+      isCreating: false,
+      yamlError: ''
     };
   }
 
@@ -80,10 +82,24 @@ export default class EditCollection extends React.PureComponent {
   };
 
   handleChange = (e, d) => {
+    let doc = '';
+    try {
+      doc = window.atob(d.doc.document.config);
+    } catch (e) {
+      doc = `error_loading: ${e}`;
+    }
+    let yamlError = '';
+    try {
+      jsyaml.safeLoad(doc);
+    } catch (e) {
+      yamlError = e.message;
+    }
+
     this.setState({
       selectedDoc: d.value,
-      originalDoc: window.atob(d.doc.document.config),
-      workingDoc: window.atob(d.doc.document.config)
+      originalDoc: doc,
+      workingDoc: doc,
+      yamlError
     });
   };
 
@@ -100,7 +116,8 @@ export default class EditCollection extends React.PureComponent {
       originalDoc,
       isDeleting,
       isSaving,
-      isCreating
+      isCreating,
+      yamlError
     } = this.state;
     const nameExists =
       collectionData.filter((c) => c.id === newName).length > 0;
@@ -113,7 +130,11 @@ export default class EditCollection extends React.PureComponent {
               placeholder="New integration name..."
               value={newName}
               error={nameExists}
-              onChange={(e, d) => this.setState({ newName: d.value })}
+              onChange={(e, d) =>
+                this.setState({
+                  newName: d.value.replace(/ /g, '-').replace(/\+/g, '-')
+                })
+              }
               width={6}
             />
             <Form.Button
@@ -139,7 +160,7 @@ export default class EditCollection extends React.PureComponent {
                 color="twitter"
                 icon="save"
                 loading={isSaving}
-                disabled={!selectedDoc}
+                disabled={!selectedDoc || yamlError ? true : false}
                 onClick={async () => {
                   await this.updateDocument(
                     selectedAccount,
@@ -174,6 +195,17 @@ export default class EditCollection extends React.PureComponent {
             </Form.Field>
           </Form.Group>
         </Form>
+
+        {yamlError ? (
+          <div style={{ paddingBottom: '10px' }}>
+            <Message negative>
+              <Message.Header>Invalid YAML</Message.Header>
+              <p>{yamlError}</p>
+            </Message>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     );
   };
@@ -264,7 +296,15 @@ export default class EditCollection extends React.PureComponent {
                             name="configuration"
                             width="100%"
                             value={workingDoc}
-                            onChange={(v) => this.setState({ workingDoc: v })}
+                            onChange={(v) => {
+                              let yamlError = '';
+                              try {
+                                jsyaml.safeLoad(v);
+                              } catch (e) {
+                                yamlError = e.message;
+                              }
+                              this.setState({ workingDoc: v, yamlError });
+                            }}
                             editorProps={{ $blockScrolling: true }}
                           />
                         </>
