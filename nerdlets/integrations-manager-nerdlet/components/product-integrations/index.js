@@ -4,10 +4,8 @@ no-console: 0
 import React from 'react';
 import { Grid, Input } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
-import AceEditor from 'react-ace';
-import 'brace/mode/yaml';
-import 'brace/theme/monokai';
 import IntegrationTiles from '../integration-tiles.js';
+import IntegrationInfo from '../integration';
 
 export default class ProductIntegrations extends React.PureComponent {
   constructor(props) {
@@ -23,9 +21,14 @@ export default class ProductIntegrations extends React.PureComponent {
 
     return (
       <DataConsumer>
-        {({ productIntegrations, selectedPage }) => {
+        {({
+          productIntegrations,
+          selectedPage,
+          selectedIntegration,
+          pkgName
+        }) => {
           const searchedIntegrations = productIntegrations.filter((i) =>
-            i.name.includes(searchText)
+            i.name.toLowerCase().includes(searchText.toLowerCase())
           );
 
           return (
@@ -40,7 +43,13 @@ export default class ProductIntegrations extends React.PureComponent {
                 paddingTop: '0px'
               }}
             >
-              <Grid.Column width={16}>
+              <Grid.Column
+                width={16}
+                style={{
+                  paddingBottom: '10px',
+                  display: selectedIntegration ? 'none' : ''
+                }}
+              >
                 <div style={{ textAlign: 'center' }}>
                   <Input
                     onChange={(e, d) => this.setState({ searchText: d.value })}
@@ -53,6 +62,17 @@ export default class ProductIntegrations extends React.PureComponent {
               <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
                 <IntegrationTiles integrations={searchedIntegrations} />
               </Grid.Column>
+              {selectedIntegration ? (
+                <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
+                  <IntegrationInfo
+                    selectedIntegration={selectedIntegration}
+                    pkgName={pkgName}
+                    integrationType={'product'}
+                  />
+                </Grid.Column>
+              ) : (
+                ''
+              )}
             </Grid.Row>
           );
         }}
