@@ -1,6 +1,6 @@
 [![New Relic One Catalog Project header](https://github.com/newrelic/open-source-office/raw/master/examples/categories/images/New_Relic_One_Catalog_Project.png)](https://github.com/newrelic/open-source-office/blob/master/examples/categories/index.md#nr1-catalog)
 
-# New Relic One Integrations Manager (nr1-integrations-manager)
+# Integrations Manager (nr1-integrations-manager)
 
 #### Formly Flex Manager
 
