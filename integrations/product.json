@@ -1,20 +1,28 @@
 [
-    {
-        "name": "nginx",
-        "git": "https://github.com/newrelic/nri-nginx",
-        "image": "https://cdn.auth0.com/blog/nginx-plus/nginx-logo.png",
-        "standard": "/master/integrations/v4configs/nri-nginx.yml",
-        "discovery": "/master/integrations/v4configs/nri-nginx-discovery.yml",
-        "k8s": null
-    },
-    {
-        "name": "vSphere",
-        "git": "https://github.com/newrelic/nri-vsphere",
-        "image": "https://cdn.iconscout.com/icon/free/png-512/vmware-5-896163.png",
-        "standard": "https://raw.githubusercontent.com/newrelic/nri-vsphere/master/configs/vsphere-config.yml.sample",
-        "requirements": [
-            "Install the nri-vsphere executable.",
-            "Install Documentation:::https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/vmware-vsphere-monitoring-integration#install"
-        ]
-    }
+  {
+    "name": "apache",
+    "git": "https://github.com/newrelic/nri-apache",
+    "image": "https://icon-icons.com/icons2/2107/PNG/72/file_type_apache_icon_130750.png",
+    "standard": "/master/integrations/v4configs/nri-apache.yml",
+    "discovery": "/master/integrations/v4configs/nri-apache-discovery.yml",
+    "k8s": null
+  },
+  {
+    "name": "nginx",
+    "git": "https://github.com/newrelic/nri-nginx",
+    "image": "https://cdn.auth0.com/blog/nginx-plus/nginx-logo.png",
+    "standard": "/master/integrations/v4configs/nri-nginx.yml",
+    "discovery": "/master/integrations/v4configs/nri-nginx-discovery.yml",
+    "k8s": null
+  },
+  {
+    "name": "vSphere",
+    "git": "https://github.com/newrelic/nri-vsphere",
+    "image": "https://cdn.iconscout.com/icon/free/png-512/vmware-5-896163.png",
+    "standard": "https://raw.githubusercontent.com/newrelic/nri-vsphere/master/configs/vsphere-config.yml.sample",
+    "requirements": [
+      "Install the nri-vsphere executable.",
+      "Install Documentation:::https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/vmware-vsphere-monitoring-integration#install"
+    ]
+  }
 ]
