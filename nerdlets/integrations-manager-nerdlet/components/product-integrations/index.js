@@ -62,7 +62,7 @@ export default class ProductIntegrations extends React.PureComponent {
               <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
                 <IntegrationTiles
                   integrations={searchedIntegrations}
-                  integrationType={'product'}
+                  integrationType="product"
                 />
               </Grid.Column>
               {selectedIntegration && selectedPage === 'product' ? (
@@ -70,7 +70,7 @@ export default class ProductIntegrations extends React.PureComponent {
                   <ProductIntegrationInfo
                     selectedIntegration={selectedIntegration}
                     pkgName={pkgName}
-                    integrationType={'product'}
+                    integrationType="product"
                   />
                 </Grid.Column>
               ) : (

@@ -32,7 +32,7 @@
     "not dead"
   ],
   "devDependencies": {
-    "@newrelic/eslint-plugin-newrelic": "^0.3.0",
+    "@newrelic/eslint-plugin-newrelic": "^0.3.1",
     "@semantic-release/changelog": "^3.0.5",
     "@semantic-release/git": "^7.0.18",
     "eslint": "^7.5.0",

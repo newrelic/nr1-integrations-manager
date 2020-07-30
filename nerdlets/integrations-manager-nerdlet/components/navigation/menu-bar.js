@@ -2,7 +2,6 @@
 no-console: 0
 */
 import React from 'react';
-import { AccountStorageQuery } from 'nr1';
 import Select from 'react-select';
 import { DataConsumer } from '../../context/data';
 import DeleteCollection from '../collection/del-collection';

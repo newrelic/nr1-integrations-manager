@@ -22,9 +22,7 @@ export default class EditCollection extends React.PureComponent {
     super(props);
     this.state = {
       createOpen: false,
-      name: '',
       newName: '',
-      isAdding: false,
       selectedDoc: null,
       originalDoc: '',
       workingDoc: '',
@@ -35,8 +33,8 @@ export default class EditCollection extends React.PureComponent {
     };
   }
 
-  handleOpen = () => this.setState({ createOpen: true, name: '' });
-  handleClose = () => this.setState({ createOpen: false, name: '' });
+  handleOpen = () => this.setState({ createOpen: true });
+  handleClose = () => this.setState({ createOpen: false });
 
   createDocument = (selectedAccount, selectedCollection) => {
     const { newName } = this.state;
@@ -160,7 +158,7 @@ export default class EditCollection extends React.PureComponent {
                 color="twitter"
                 icon="save"
                 loading={isSaving}
-                disabled={!selectedDoc || yamlError ? true : false}
+                disabled={!selectedDoc || yamlError}
                 onClick={async () => {
                   await this.updateDocument(
                     selectedAccount,

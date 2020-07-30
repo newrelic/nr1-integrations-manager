@@ -110,7 +110,7 @@ export default class FlexIntegrations extends React.PureComponent {
               <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
                 <IntegrationTiles
                   integrations={searchedIntegrations}
-                  integrationType={'flex'}
+                  integrationType="flex"
                 />
               </Grid.Column>
               {selectedIntegration && selectedPage === 'flex' ? (
@@ -118,7 +118,7 @@ export default class FlexIntegrations extends React.PureComponent {
                   <FlexInfo
                     selectedIntegration={selectedIntegration}
                     pkgName={pkgName}
-                    integrationType={'flex'}
+                    integrationType="flex"
                   />
                 </Grid.Column>
               ) : (

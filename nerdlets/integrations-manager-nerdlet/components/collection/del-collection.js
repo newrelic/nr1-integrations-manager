@@ -2,7 +2,6 @@ import React from 'react';
 import { Modal, Button, Popup, Icon } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 import { AccountStorageMutation } from 'nr1';
-import gql from 'graphql-tag';
 
 export default class DeleteCollection extends React.PureComponent {
   constructor(props) {
@@ -25,7 +24,7 @@ export default class DeleteCollection extends React.PureComponent {
           actionType: AccountStorageMutation.ACTION_TYPE.DELETE_COLLECTION,
           collection: selectedCollection.value
         }).then(async (value) => {
-          //remove from index collection
+          // remove from index collection
           if (collectionsIndex) {
             collectionsIndex = collectionsIndex.filter(
               (c) => c !== selectedCollection.value

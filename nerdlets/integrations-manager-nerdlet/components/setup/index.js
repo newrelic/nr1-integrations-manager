@@ -67,7 +67,7 @@ export default class Setup extends React.PureComponent {
               }}
             >
               <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
-                <Card color={'black'} style={{ width: '100%' }}>
+                <Card color="black" style={{ width: '100%' }}>
                   <Card.Content>
                     <Card.Header>How does it work?</Card.Header>
 
@@ -142,7 +142,7 @@ export default class Setup extends React.PureComponent {
                         mode="yaml"
                         theme="monokai"
                         name="configuration"
-                        height={'190px'}
+                        height="190px"
                         width="100%"
                         value={integrationsConfig}
                         editorProps={{ $blockScrolling: true }}
@@ -193,11 +193,11 @@ export default class Setup extends React.PureComponent {
                         mode="yaml"
                         theme="monokai"
                         name="dockerSyncConfig"
-                        height={'50px'}
+                        height="50px"
                         width="100%"
                         value={dockerConfig}
                         editorProps={{ $blockScrolling: true }}
-                        readOnly={true}
+                        readOnly
                       />
 
                       <br />
@@ -211,11 +211,11 @@ export default class Setup extends React.PureComponent {
                         mode="dockerfile"
                         theme="monokai"
                         name="Dockerfile"
-                        height={'105px'}
+                        height="105px"
                         width="100%"
                         value={dockerfile}
                         editorProps={{ $blockScrolling: true }}
-                        readOnly={true}
+                        readOnly
                       />
                       <br />
                       <List.Item>

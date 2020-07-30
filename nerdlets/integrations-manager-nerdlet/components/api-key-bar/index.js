@@ -23,7 +23,7 @@ export default class ApiKeyBar extends React.PureComponent {
               ? 'Select an account to view available API Keys'
               : 'Select your API Key';
           return (
-            <Card color={'black'} style={{ width: '100%' }}>
+            <Card color="black" style={{ width: '100%' }}>
               <Card.Content>
                 <Card.Header style={{ paddingBottom: '5px' }}>
                   {hdrMessage}

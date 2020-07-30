@@ -108,13 +108,6 @@ export class DataProvider extends Component {
     this.setState({ hasError: true, err, errInfo });
   }
 
-  // temporary function to help with repo name transition
-  getDetermineActiveRepo = () => {
-    return new Promise((resolve) => {
-      fetch;
-    });
-  };
-
   getFlexIntegrations = () => {
     this.setState({ loadingFlex: true }, () => {
       const flexConfigs = [];
@@ -132,7 +125,7 @@ export class DataProvider extends Component {
                 path: e.path,
                 name: e.name.replace('.yaml', '').replace('.yml', ''),
                 url: e.download_url,
-                html_url: f.html_url,
+                html_url: e.html_url,
                 category: 'generic'
               });
             } else if (e.type === 'dir' && !flexIgnoreDirs.includes(e.name)) {
@@ -330,7 +323,7 @@ export class DataProvider extends Component {
         ${getApiKeysQuery(accountId)}
       `
     }).then((values) => {
-      let apiKeys = (
+      const apiKeys = (
         (
           ((((values || {}).data || {}).actor || {}).apiAccess || {})
             .keySearch || {}
@@ -414,7 +407,7 @@ export class DataProvider extends Component {
 
       reportingEntities.forEach((r) => {
         // avoid duplicates
-        let collectionExists = existsInArray(
+        const collectionExists = existsInArray(
           collections,
           `${r.collection}:::${r.collectionAccountId}`,
           'key'

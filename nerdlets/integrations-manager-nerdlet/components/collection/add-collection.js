@@ -66,10 +66,7 @@ export default class CreateCollection extends React.PureComponent {
           collections
         }) => {
           const collectionExists =
-            collections.filter((c) => c.label === name).length > 0
-              ? true
-              : false;
-
+            collections.filter((c) => c.label === name).length > 0;
           return (
             <Modal
               closeIcon

@@ -31,6 +31,8 @@ module.exports = {
     ],
     'react/prop-types': 0,
     'no-new': 0,
-    'no-case-declarations': 0
+    'no-case-declarations': 0,
+    'no-alert': 0,
+    'no-unneeded-ternary': 0 // this is needed due to some semantic components and the disabled prop
   }
 };

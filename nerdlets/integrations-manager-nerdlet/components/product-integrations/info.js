@@ -1,5 +1,6 @@
 /* eslint 
-no-console: 0
+no-console: 0,
+no-unused-vars: 0
 */
 import React from 'react';
 import { Message, Menu, Button, Popup } from 'semantic-ui-react';
@@ -31,8 +32,8 @@ export default class ProductIntegrationInfo extends React.PureComponent {
       standardConfigName: '',
       discConfig: '',
       discConfigName: '',
-      k8sConfig: '',
-      k8sConfigName: '',
+      // k8sConfig: '',
+      // k8sConfigName: '',
       readme: '',
       isDeploying: false,
       isDeleting: false
@@ -319,7 +320,7 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                       {configExists ? (
                         <Button
                           icon="remove circle"
-                          content={'Remove'}
+                          content="Remove"
                           labelPosition="left"
                           color="instagram"
                           style={{ float: 'right' }}

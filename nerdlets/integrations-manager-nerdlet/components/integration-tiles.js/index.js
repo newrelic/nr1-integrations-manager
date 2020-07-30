@@ -41,7 +41,7 @@ export default class IntegrationTiles extends React.PureComponent {
                     : true
                 )
                 .map((i, z) => {
-                  let icon = integrationType === 'flex' ? i.type : '';
+                  const icon = integrationType === 'flex' ? i.type : '';
 
                   return (
                     <Card

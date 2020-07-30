@@ -1,5 +1,7 @@
 /* eslint 
-no-console: 0
+no-console: 0,
+no-unused-vars: 0,
+react/no-unused-state: 0
 */
 import React from 'react';
 import { Message, Button, Popup, Icon } from 'semantic-ui-react';
@@ -34,10 +36,6 @@ export default class FlexInfo extends React.PureComponent {
       );
     });
   }
-
-  handleItemClick = (e, { name }) => {
-    this.setState({ activeItem: name });
-  };
 
   deployIntegration = (selectedCollection, getCollection) => {
     const { flexConfig } = this.state;
@@ -97,9 +95,7 @@ export default class FlexInfo extends React.PureComponent {
           const configExists =
             (collectionData || []).filter(
               (c) => c.id === selectedIntegration.name
-            ).length > 0
-              ? true
-              : false;
+            ).length > 0;
 
           let deployMsg = '';
 
@@ -154,8 +150,6 @@ export default class FlexInfo extends React.PureComponent {
                               !selectedCollection ||
                               yamlError ||
                               configExists
-                                ? true
-                                : false
                             }
                           />
                         </div>
