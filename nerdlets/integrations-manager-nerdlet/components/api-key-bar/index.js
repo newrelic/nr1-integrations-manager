@@ -5,6 +5,7 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 import Select from 'react-select';
 import { DataConsumer } from '../../context/data';
+import DeleteKey from './del-key';
 
 export default class ApiKeyBar extends React.PureComponent {
   render() {
@@ -26,21 +27,27 @@ export default class ApiKeyBar extends React.PureComponent {
                 <Card.Header style={{ paddingBottom: '5px' }}>
                   {hdrMessage}
                 </Card.Header>
-
                 <div>
-                  <div className="react-select-input-group">
-                    <label>Select API Key</label>
-                    <Select
-                      isDisabled={selectedAccount === null}
-                      options={apiKeys}
-                      onChange={(selectedApiKey) => {
-                        updateDataStateContext({
-                          selectedApiKey
-                        });
-                      }}
-                      value={selectedApiKey}
-                      classNamePrefix="react-select"
-                    />
+                  <div
+                    className="utility-bar"
+                    style={{ background: '#FFFFFF', borderTop: '0px' }}
+                  >
+                    <div className="react-select-input-group">
+                      <label>Select API Key</label>
+                      <Select
+                        isDisabled={selectedAccount === null}
+                        options={apiKeys}
+                        onChange={(selectedApiKey) => {
+                          updateDataStateContext({
+                            selectedApiKey
+                          });
+                        }}
+                        value={selectedApiKey}
+                        classNamePrefix="react-select"
+                      />
+                    </div>
+
+                    {selectedApiKey ? <DeleteKey /> : ''}
                   </div>
                 </div>
               </Card.Content>

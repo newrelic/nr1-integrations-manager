@@ -42,7 +42,7 @@ export const getApiKeysQuery = (accountId) => `{
     }
   }`;
 
-export const createApiKey = (accountId, name, userId) => `mutation {
+export const createApiKeyQuery = (accountId, name, userId) => `mutation {
     apiAccessCreateKeys(keys: {user: {accountId: ${accountId}, name: "${name}", userId: ${userId}, notes: "Created by Integrations Manager"}}) {
       createdKeys {
         id
@@ -56,7 +56,7 @@ export const createApiKey = (accountId, name, userId) => `mutation {
     }
   }`;
 
-export const deleteApiKey = (keyId) => `mutation {
+export const deleteApiKeyQuery = (keyId) => `mutation {
     apiAccessDeleteKeys(keys: {userKeyIds: ["${keyId}"]}) {
       deletedKeys {
         id
