@@ -2,7 +2,7 @@
 no-console: 0
 */
 import React from 'react';
-import { Message, Button, Popup } from 'semantic-ui-react';
+import { Message, Button, Popup, Icon } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 import AceEditor from 'react-ace';
 import jsyaml from 'js-yaml';
@@ -168,10 +168,20 @@ export default class FlexInfo extends React.PureComponent {
                       icon={yamlError ? 'close' : 'check'}
                       style={{ cursor: 'none', float: 'right' }}
                     />
+
+                    <Button
+                      content="View on GitHub"
+                      icon="github"
+                      color="green"
+                      onClick={() =>
+                        window.open(selectedIntegration.html_url, '_blank')
+                      }
+                      style={{ float: 'right' }}
+                    />
+
                     {configExists ? (
                       <Button
-                        icon="remove circle"
-                        content={'Remove'}
+                        animated
                         labelPosition="left"
                         color="instagram"
                         style={{ float: 'right' }}
@@ -183,19 +193,15 @@ export default class FlexInfo extends React.PureComponent {
                             selectedIntegration
                           )
                         }
-                      />
+                      >
+                        <Button.Content visible>
+                          <Icon name="remove circle" /> Remove
+                        </Button.Content>
+                        <Button.Content hidden>Sure?</Button.Content>
+                      </Button>
                     ) : (
                       ''
                     )}
-                    <Button
-                      content="View on GitHub"
-                      icon="github"
-                      color="green"
-                      onClick={() =>
-                        window.open(selectedIntegration.html_url, '_blank')
-                      }
-                      style={{ float: 'right' }}
-                    />
                   </div>
                 )}
               </div>
