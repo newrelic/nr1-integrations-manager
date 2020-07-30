@@ -6,6 +6,7 @@ import { Card } from 'semantic-ui-react';
 import Select from 'react-select';
 import { DataConsumer } from '../../context/data';
 import DeleteKey from './del-key';
+import AddKey from './add-key';
 
 export default class ApiKeyBar extends React.PureComponent {
   render() {
@@ -48,6 +49,7 @@ export default class ApiKeyBar extends React.PureComponent {
                     </div>
 
                     {selectedApiKey ? <DeleteKey /> : ''}
+                    {selectedAccount ? <AddKey /> : ''}
                   </div>
                 </div>
               </Card.Content>

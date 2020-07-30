@@ -18,14 +18,10 @@ export default class DeleteKey extends React.PureComponent {
     return new Promise((resolve) => {
       this.setState({ isDeleting: true }, () => {
         // delete key
-
         NerdGraphMutation.mutate({
           mutation: gql`
             ${deleteApiKeyQuery(selectedApiKey.key)}
-          `,
-          variables: {
-            guid: 'XXXXXXXXXXX'
-          }
+          `
         }).then((value) => {
           this.setState({ isDeleting: false }, () => resolve(value));
         });

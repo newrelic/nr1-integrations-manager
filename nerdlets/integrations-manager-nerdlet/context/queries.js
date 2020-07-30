@@ -72,6 +72,7 @@ export const getUserQuery = `{
     actor {
       user {
         id
+        email
       }
     }
   }`;
