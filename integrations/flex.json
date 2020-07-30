@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Misc.",
+    "path": "examples/flexConfigs"
+  },
+  {
+    "name": "Windows",
+    "path": "examples/windows"
+  }
+]
