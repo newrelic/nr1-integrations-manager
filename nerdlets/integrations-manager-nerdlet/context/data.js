@@ -28,6 +28,15 @@ const semver = require('semver');
 
 const DataContext = React.createContext();
 
+const flexExamplesURL =
+  'https://api.github.com/repos/newrelic/nri-flex/contents/examples/';
+const flexIgnoreDirs = [
+  'fullConfigExamples',
+  'flexContainerDiscovery',
+  'dashboards',
+  'lambdaExample'
+];
+
 export const loadingMsg = (msg) => (
   <>
     <Icon name="spinner" loading />
@@ -63,7 +72,9 @@ export class DataProvider extends Component {
       apiKeys: [],
       userData: null,
       productIntegrations: [],
-      flexIntegrations: []
+      flexIntegrations: [],
+      flexConfigs: [],
+      loadingFlex: false
     };
   }
 
@@ -72,6 +83,7 @@ export class DataProvider extends Component {
     this.getNerdpackUuid();
     this.getUser();
     this.getProductIntegrations();
+    this.getFlexIntegrations();
     await this.getAccounts();
 
     if (this.state.accounts.length === 0) {
@@ -90,6 +102,52 @@ export class DataProvider extends Component {
   getDetermineActiveRepo = () => {
     return new Promise((resolve) => {
       fetch;
+    });
+  };
+
+  getFlexIntegrations = () => {
+    this.setState({ loadingFlex: true }, () => {
+      const flexConfigs = [];
+      const nestedDirs = [];
+      fetch(flexExamplesURL)
+        .then((response) => response.json())
+        .then((examplesData) => {
+          examplesData.forEach((e) => {
+            if (
+              e.type === 'file' &&
+              (e.name.endsWith('.yml') || e.name.endsWith('.yaml'))
+            ) {
+              flexConfigs.push({
+                path: e.path,
+                name: e.name,
+                url: e.download_url,
+                category: 'generic'
+              });
+            } else if (e.type === 'dir' && !flexIgnoreDirs.includes(e.name)) {
+              nestedDirs.push(e);
+            }
+          });
+
+          const dirPromises = nestedDirs.map((n) =>
+            fetch(n.url)
+              .then((resp) => resp.json())
+              .then((data) => data)
+          );
+          Promise.all(dirPromises).then((dirs) => {
+            dirs.forEach((d, i) => {
+              d.forEach((f) => {
+                flexConfigs.push({
+                  path: f.path,
+                  name: f.name,
+                  url: f.download_url,
+                  category: nestedDirs[i].path.replace('examples/', '')
+                });
+              });
+            });
+
+            this.setState({ flexConfigs, loadingFlex: false });
+          });
+        });
     });
   };
 

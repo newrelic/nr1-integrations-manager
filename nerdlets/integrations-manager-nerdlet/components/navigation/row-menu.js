@@ -2,14 +2,14 @@
 no-console: 0
 */
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Dimmer, Loader } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 
 export default class RowMenu extends React.PureComponent {
   render() {
     return (
       <DataConsumer>
-        {({ updateDataStateContext, selectedPage }) => {
+        {({ updateDataStateContext, selectedPage, loadingFlex }) => {
           return (
             <Card.Group centered>
               <Card
@@ -46,6 +46,13 @@ export default class RowMenu extends React.PureComponent {
                 onClick={() => updateDataStateContext({ selectedPage: 'flex' })}
               >
                 <Card.Content>
+                  {loadingFlex ? (
+                    <Dimmer active>
+                      <Loader size="small">Loading Flex Integrations...</Loader>
+                    </Dimmer>
+                  ) : (
+                    ''
+                  )}
                   <Card.Header>Flex Integrations</Card.Header>
                   <Card.Description>
                     Deploy and develop <strong>Flex</strong> integrations.
