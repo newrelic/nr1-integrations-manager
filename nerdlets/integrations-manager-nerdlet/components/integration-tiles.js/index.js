@@ -25,7 +25,11 @@ export default class IntegrationTiles extends React.PureComponent {
                     })
                   }
                 >
-                  <Card.Content style={{ marginTop: '15px' }}>
+                  <Card.Content
+                    style={{
+                      marginTop: integrationType === 'flex' ? '5px' : '15px'
+                    }}
+                  >
                     <Header as="h4">
                       <Icon name="left arrow" />
                     </Header>
@@ -64,13 +68,31 @@ export default class IntegrationTiles extends React.PureComponent {
                     >
                       <Card.Content>
                         {i.image && icon === '' ? (
-                          <Image floated="left" size="mini" src={i.image} />
+                          <Image
+                            floated="left"
+                            size="mini"
+                            src={i.image}
+                            style={{ marginTop: '5px' }}
+                          />
                         ) : (
                           ''
                         )}
 
-                        <Card.Header style={{ marginTop: '10px' }}>
-                          <div style={{ float: 'left' }}>
+                        <Card.Header
+                          style={{
+                            marginTop: integrationType === 'flex' ? '' : '15px'
+                          }}
+                        >
+                          <div
+                            style={{
+                              float: 'left',
+                              marginTop:
+                                selectedIntegration &&
+                                integrationType === 'flex'
+                                  ? '7px'
+                                  : ''
+                            }}
+                          >
                             {icon !== '' ? (
                               <Icon style={{ float: 'left' }} name={icon} />
                             ) : (

@@ -126,7 +126,7 @@ export class DataProvider extends Component {
                 name: e.name.replace('.yaml', '').replace('.yml', ''),
                 url: e.download_url,
                 html_url: e.html_url,
-                category: 'generic'
+                category: 'other'
               });
             } else if (e.type === 'dir' && !flexIgnoreDirs.includes(e.name)) {
               nestedDirs.push(e);
