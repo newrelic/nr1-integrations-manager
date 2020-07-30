@@ -141,7 +141,7 @@ export default class EditCollection extends React.PureComponent {
               loading={isCreating}
               icon="plus"
               width={4}
-              disabled={!newName || nameExists}
+              disabled={!newName || nameExists ? true : false}
               onClick={async () => {
                 await this.createDocument(selectedAccount, selectedCollection);
                 getCollection(selectedCollection);
@@ -151,14 +151,14 @@ export default class EditCollection extends React.PureComponent {
               <Button
                 color="yellow"
                 icon="undo"
-                disabled={!selectedDoc}
+                disabled={!selectedDoc ? true : false}
                 onClick={() => this.setState({ workingDoc: originalDoc })}
               />
               <Button
                 color="twitter"
                 icon="save"
                 loading={isSaving}
-                disabled={!selectedDoc || yamlError}
+                disabled={!selectedDoc || yamlError ? true : false}
                 onClick={async () => {
                   await this.updateDocument(
                     selectedAccount,
@@ -171,7 +171,7 @@ export default class EditCollection extends React.PureComponent {
                 animated
                 color="red"
                 loading={isDeleting}
-                disabled={!selectedDoc}
+                disabled={!selectedDoc ? true : false}
                 style={{ marginBottom: '3px' }}
                 onClick={() => {
                   this.setState({ isDeleting: true }, async () => {

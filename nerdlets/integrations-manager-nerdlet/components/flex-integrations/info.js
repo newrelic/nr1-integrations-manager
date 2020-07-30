@@ -95,7 +95,9 @@ export default class FlexInfo extends React.PureComponent {
           const configExists =
             (collectionData || []).filter(
               (c) => c.id === selectedIntegration.name
-            ).length > 0;
+            ).length > 0
+              ? true
+              : false;
 
           let deployMsg = '';
 
@@ -150,6 +152,8 @@ export default class FlexInfo extends React.PureComponent {
                               !selectedCollection ||
                               yamlError ||
                               configExists
+                                ? true
+                                : false
                             }
                           />
                         </div>
@@ -175,10 +179,11 @@ export default class FlexInfo extends React.PureComponent {
 
                     {configExists ? (
                       <Button
-                        animated
                         labelPosition="left"
                         color="instagram"
                         style={{ float: 'right' }}
+                        content="Remove"
+                        icon="remove circle"
                         loading={isDeleting}
                         onClick={() =>
                           this.undeployIntegration(
@@ -187,12 +192,7 @@ export default class FlexInfo extends React.PureComponent {
                             selectedIntegration
                           )
                         }
-                      >
-                        <Button.Content visible>
-                          <Icon name="remove circle" /> Remove
-                        </Button.Content>
-                        <Button.Content hidden>Sure?</Button.Content>
-                      </Button>
+                      />
                     ) : (
                       ''
                     )}
