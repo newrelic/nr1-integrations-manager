@@ -1,0 +1,16 @@
+integration_name: com.newrelic.apache
+discovery:
+  docker:
+    match:
+      image: /apache/
+      label.env: production
+integrations:
+  - name: apache-server-metrics
+    integration_name: com.newrelic.apache
+    command: metrics
+    arguments:
+      status_url: http://${discovery.private.ip}/server-status?auto
+      remote_monitoring: true
+    labels:
+      env: production
+      role: load_balancer

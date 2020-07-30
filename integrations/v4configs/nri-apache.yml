@@ -1,12 +1,18 @@
 integrations:
-  - name: nri-apache
-    interval: 30s
-    env:
-      STATUS_URL: http://127.0.0.1/server-status?auto
-      REMOTE_MONITORING: true
-      METRICS: 1
-  - name: nri-apache-inventory
-    exec:
-      - /var/db/newrelic-infra/newrelic-integrations/bin/nri-apache
-      - --inventory
-    inventory_source: config/apache
+  - name: apache-server-metrics
+    integration_name: com.newrelic.apache
+    command: metrics
+    arguments:
+      status_url: http://127.0.0.1/server-status?auto
+      remote_monitoring: true
+    labels:
+      env: production
+      role: load_balancer
+  - name: apache-server-inventory
+    integration_name: com.newrelic.apache
+    command: inventory
+    arguments:
+      remote_monitoring: true
+    labels:
+      env: production
+      role: load_balancer
