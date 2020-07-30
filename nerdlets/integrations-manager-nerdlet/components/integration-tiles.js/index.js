@@ -51,7 +51,7 @@ export default class IntegrationTiles extends React.PureComponent {
                       onClick={() => {
                         if (!selectedIntegration) {
                           updateDataStateContext({
-                            selectedIntegrationType: 'product',
+                            selectedIntegrationType: integrationType,
                             selectedIntegration: i
                           });
                         } else {

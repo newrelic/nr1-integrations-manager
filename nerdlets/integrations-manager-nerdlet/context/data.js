@@ -125,7 +125,8 @@ export class DataProvider extends Component {
           examplesData.forEach((e) => {
             if (
               e.type === 'file' &&
-              (e.name.endsWith('.yml') || e.name.endsWith('.yaml'))
+              (e.name.endsWith('.yml') || e.name.endsWith('.yaml')) &&
+              e.name !== 'nri-flex-k8s.yml'
             ) {
               flexConfigs.push({
                 path: e.path,

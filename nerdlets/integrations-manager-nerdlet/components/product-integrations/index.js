@@ -5,7 +5,7 @@ import React from 'react';
 import { Grid, Input } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 import IntegrationTiles from '../integration-tiles.js';
-import IntegrationInfo from '../integration';
+import ProductIntegrationInfo from './info';
 
 export default class ProductIntegrations extends React.PureComponent {
   constructor(props) {
@@ -60,11 +60,14 @@ export default class ProductIntegrations extends React.PureComponent {
                 </div>
               </Grid.Column>
               <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
-                <IntegrationTiles integrations={searchedIntegrations} />
+                <IntegrationTiles
+                  integrations={searchedIntegrations}
+                  integrationType={'product'}
+                />
               </Grid.Column>
-              {selectedIntegration ? (
+              {selectedIntegration && selectedPage === 'product' ? (
                 <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
-                  <IntegrationInfo
+                  <ProductIntegrationInfo
                     selectedIntegration={selectedIntegration}
                     pkgName={pkgName}
                     integrationType={'product'}

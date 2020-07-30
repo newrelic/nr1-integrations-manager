@@ -21,7 +21,7 @@ const getFileName = (url) => {
     .replace('.yaml', '');
 };
 
-export default class IntegrationInfo extends React.PureComponent {
+export default class ProductIntegrationInfo extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -41,7 +41,8 @@ export default class IntegrationInfo extends React.PureComponent {
 
   componentDidMount() {
     const { selectedIntegration, pkgName, integrationType } = this.props;
-    if (selectedIntegration) {
+
+    if (selectedIntegration && integrationType === 'product') {
       let standardUrl = selectedIntegration.standard;
       let discoveryUrl = selectedIntegration.discovery || null;
 

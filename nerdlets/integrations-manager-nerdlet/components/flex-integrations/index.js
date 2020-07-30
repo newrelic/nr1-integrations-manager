@@ -5,7 +5,7 @@ import React from 'react';
 import { Grid, Input, Dropdown } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 import IntegrationTiles from '../integration-tiles.js';
-import IntegrationInfo from '../integration';
+import FlexInfo from './info';
 
 export default class FlexIntegrations extends React.PureComponent {
   constructor(props) {
@@ -79,7 +79,7 @@ export default class FlexIntegrations extends React.PureComponent {
                   <Dropdown
                     options={options}
                     selection
-                    style={{ paddingBottom: '5px' }}
+                    style={{ paddingBottom: '5px', marginTop: '3px' }}
                     value={cat.value}
                     onChange={(e, d) => this.setState({ cat: d })}
                   />
@@ -98,9 +98,9 @@ export default class FlexIntegrations extends React.PureComponent {
                   integrationType={'flex'}
                 />
               </Grid.Column>
-              {selectedIntegration ? (
+              {selectedIntegration && selectedPage === 'flex' ? (
                 <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
-                  <IntegrationInfo
+                  <FlexInfo
                     selectedIntegration={selectedIntegration}
                     pkgName={pkgName}
                     integrationType={'flex'}

@@ -54,7 +54,8 @@ export default class RowMenu extends React.PureComponent {
                 onClick={() =>
                   updateDataStateContext({
                     selectedPage: 'flex',
-                    selectedIntegration: null
+                    selectedIntegration: null,
+                    selectedIntegrationType: null
                   })
                 }
               >
