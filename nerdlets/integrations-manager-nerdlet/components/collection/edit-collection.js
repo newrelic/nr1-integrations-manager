@@ -219,9 +219,7 @@ export default class EditCollection extends React.PureComponent {
           selectedCollection,
           getCollection,
           deleteDocument,
-          collectionData,
-          updateDataStateContext,
-          collectionsIndex
+          collectionData
         }) => {
           const { selectedDoc } = this.state;
 
@@ -233,7 +231,7 @@ export default class EditCollection extends React.PureComponent {
               size="fullscreen"
               trigger={
                 <Popup
-                  content="Edit Collection"
+                  content="Update Collection"
                   trigger={
                     <Button
                       onClick={this.handleOpen}

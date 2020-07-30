@@ -2,7 +2,7 @@
 no-console: 0
 */
 import React from 'react';
-import { Grid, Input, Dropdown } from 'semantic-ui-react';
+import { Grid, Input, Dropdown, Button } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 import IntegrationTiles from '../integration-tiles.js';
 import FlexInfo from './info';
@@ -89,6 +89,21 @@ export default class FlexIntegrations extends React.PureComponent {
                     icon="search"
                     placeholder="Search  integrations..."
                     style={{ width: '33%' }}
+                  />
+                  &nbsp;&nbsp;&nbsp;
+                  <Button
+                    icon="github"
+                    labelPosition="left"
+                    color="green"
+                    size="mini"
+                    style={{ float: 'right', marginTop: '3px' }}
+                    content="Contribute"
+                    onClick={() =>
+                      window.open(
+                        'https://github.com/newrelic/nri-flex',
+                        '_blank'
+                      )
+                    }
                   />
                 </div>
               </Grid.Column>

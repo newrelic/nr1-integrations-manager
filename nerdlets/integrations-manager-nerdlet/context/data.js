@@ -132,6 +132,7 @@ export class DataProvider extends Component {
                 path: e.path,
                 name: e.name.replace('.yaml', '').replace('.yml', ''),
                 url: e.download_url,
+                html_url: f.html_url,
                 category: 'generic'
               });
             } else if (e.type === 'dir' && !flexIgnoreDirs.includes(e.name)) {
@@ -155,6 +156,7 @@ export class DataProvider extends Component {
                     path: f.path,
                     name: f.name.replace('.yaml', '').replace('.yml', ''),
                     url: f.download_url,
+                    html_url: f.html_url,
                     category: nestedDirs[i].path
                       .replace('examples/', '')
                       .toLowerCase()

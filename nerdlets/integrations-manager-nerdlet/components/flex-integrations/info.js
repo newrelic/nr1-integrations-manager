@@ -187,6 +187,15 @@ export default class FlexInfo extends React.PureComponent {
                     ) : (
                       ''
                     )}
+                    <Button
+                      content="View on GitHub"
+                      icon="github"
+                      color="green"
+                      onClick={() =>
+                        window.open(selectedIntegration.html_url, '_blank')
+                      }
+                      style={{ float: 'right' }}
+                    />
                   </div>
                 )}
               </div>

@@ -168,7 +168,7 @@ export default class ProductIntegrationInfo extends React.PureComponent {
       readme,
       yamlError
     } = this.state;
-    const { integrationType } = this.props;
+    const { integrationType, selectedIntegration } = this.props;
 
     return (
       <DataConsumer>
@@ -237,6 +237,39 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                   ''
                 )}
               </Menu>
+
+              {selectedIntegration &&
+              selectedIntegration.requirements &&
+              selectedIntegration.requirements.length > 0 ? (
+                <div style={{ paddingBottom: '10px' }}>
+                  <Message warning>
+                    <Message.Header>Requirements</Message.Header>
+                    <Message.List>
+                      {selectedIntegration.requirements.map((r, i) => {
+                        if (r.includes(':::')) {
+                          const rSplit = r.split(':::');
+                          return (
+                            <Message.Item
+                              key={i}
+                              style={{
+                                cursor: 'pointer',
+                                color: 'blue'
+                              }}
+                              onClick={() => window.open(rSplit[1], '_blank')}
+                            >
+                              {rSplit[0]}
+                            </Message.Item>
+                          );
+                        }
+                        return <Message.Item key={i}>{r}</Message.Item>;
+                      })}
+                    </Message.List>
+                  </Message>
+                </div>
+              ) : (
+                ''
+              )}
+
               {activeItem.includes('Configuration') ? (
                 <div style={{ paddingBottom: '10px' }}>
                   {yamlError ? (
@@ -275,6 +308,7 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                           </div>
                         }
                       />
+
                       <Button
                         positive={!yamlError ? true : false}
                         negative={yamlError ? true : false}
