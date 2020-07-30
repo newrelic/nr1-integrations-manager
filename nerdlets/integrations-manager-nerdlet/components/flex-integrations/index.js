@@ -2,33 +2,58 @@
 no-console: 0
 */
 import React from 'react';
-import { Grid, Input } from 'semantic-ui-react';
+import { Grid, Input, Dropdown } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 import IntegrationTiles from '../integration-tiles.js';
 import IntegrationInfo from '../integration';
 
-export default class ProductIntegrations extends React.PureComponent {
+export default class FlexIntegrations extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      searchText: ''
+      searchText: '',
+      cat: { key: 'all', text: 'All', value: 'all' }
     };
   }
 
   render() {
-    const { searchText } = this.state;
+    const { searchText, cat } = this.state;
 
     return (
       <DataConsumer>
-        {({
-          productIntegrations,
-          selectedPage,
-          selectedIntegration,
-          pkgName
-        }) => {
-          const searchedIntegrations = productIntegrations.filter((i) =>
-            i.name.toLowerCase().includes(searchText.toLowerCase())
+        {({ flexConfigs, selectedPage, selectedIntegration, pkgName }) => {
+          const options = [{ key: 'all', text: 'All', value: 'all' }];
+
+          const categories = {};
+          flexConfigs.forEach((f) => {
+            if (!categories[f.category]) {
+              categories[f.category] = 0;
+            }
+            categories[f.category]++;
+
+            if (f.type !== 'code') {
+              if (!categories[f.type]) {
+                categories[f.type] = 0;
+              }
+              categories[f.type]++;
+            }
+          });
+
+          Object.keys(categories).forEach((key) => {
+            options.push({
+              key,
+              text: `${key} (${categories[key]})`,
+              value: key
+            });
+          });
+
+          const searchedIntegrations = flexConfigs.filter(
+            (i) =>
+              i.name.toLowerCase().includes(searchText.toLowerCase()) &&
+              (cat.value === 'all' ||
+                i.category === cat.value ||
+                i.type === cat.value)
           );
 
           return (
@@ -36,7 +61,7 @@ export default class ProductIntegrations extends React.PureComponent {
               columns={1}
               divided
               style={{
-                display: selectedPage === 'product' ? '' : 'none',
+                display: selectedPage === 'flex' ? '' : 'none',
                 paddingLeft: '10px',
                 paddingRight: '10px',
                 marginBottom: '10px',
@@ -51,23 +76,34 @@ export default class ProductIntegrations extends React.PureComponent {
                 }}
               >
                 <div style={{ textAlign: 'center' }}>
+                  <Dropdown
+                    options={options}
+                    selection
+                    style={{ paddingBottom: '5px' }}
+                    value={cat.value}
+                    onChange={(e, d) => this.setState({ cat: d })}
+                  />
+                  &nbsp;&nbsp;&nbsp;
                   <Input
                     onChange={(e, d) => this.setState({ searchText: d.value })}
                     icon="search"
-                    placeholder="Search integrations..."
+                    placeholder="Search  integrations..."
                     style={{ width: '33%' }}
                   />
                 </div>
               </Grid.Column>
               <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
-                <IntegrationTiles integrations={searchedIntegrations} />
+                <IntegrationTiles
+                  integrations={searchedIntegrations}
+                  integrationType={'flex'}
+                />
               </Grid.Column>
               {selectedIntegration ? (
                 <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
                   <IntegrationInfo
                     selectedIntegration={selectedIntegration}
                     pkgName={pkgName}
-                    integrationType={'product'}
+                    integrationType={'flex'}
                   />
                 </Grid.Column>
               ) : (

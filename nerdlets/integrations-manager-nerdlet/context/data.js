@@ -22,7 +22,7 @@ import {
   getApiKeysQuery,
   getUserQuery
 } from './queries';
-import { existsInArray } from './utils';
+import { existsInArray, arrayValueExistsInStr } from './utils';
 
 const semver = require('semver');
 
@@ -35,6 +35,16 @@ const flexIgnoreDirs = [
   'flexContainerDiscovery',
   'dashboards',
   'lambdaExample'
+];
+
+const dbs = [
+  'sqlserver',
+  'mssql',
+  'mysql',
+  'mariadb',
+  'postgres',
+  'vertica',
+  'hana'
 ];
 
 export const loadingMsg = (msg) => (
@@ -119,7 +129,7 @@ export class DataProvider extends Component {
             ) {
               flexConfigs.push({
                 path: e.path,
-                name: e.name,
+                name: e.name.replace('.yaml', '').replace('.yml', ''),
                 url: e.download_url,
                 category: 'generic'
               });
@@ -136,13 +146,33 @@ export class DataProvider extends Component {
           Promise.all(dirPromises).then((dirs) => {
             dirs.forEach((d, i) => {
               d.forEach((f) => {
-                flexConfigs.push({
-                  path: f.path,
-                  name: f.name,
-                  url: f.download_url,
-                  category: nestedDirs[i].path.replace('examples/', '')
-                });
+                if (
+                  f.type === 'file' &&
+                  (f.name.endsWith('.yml') || f.name.endsWith('.yaml'))
+                ) {
+                  flexConfigs.push({
+                    path: f.path,
+                    name: f.name.replace('.yaml', '').replace('.yml', ''),
+                    url: f.download_url,
+                    category: nestedDirs[i].path
+                      .replace('examples/', '')
+                      .toLowerCase()
+                  });
+                }
               });
+            });
+
+            // add types === icons
+            flexConfigs.forEach((f) => {
+              if (f.path.includes('windows')) {
+                f.type = 'windows';
+              } else if (f.path.includes('linux')) {
+                f.type = 'linux';
+              } else if (arrayValueExistsInStr(dbs, f.name)) {
+                f.type = 'database';
+              } else {
+                f.type = 'code';
+              }
             });
 
             this.setState({ flexConfigs, loadingFlex: false });

@@ -6,4 +6,14 @@ export const existsInArray = (arr, val, key) => {
       return true;
     }
   }
+  return false;
+};
+
+export const arrayValueExistsInStr = (arr, val) => {
+  for (let z = 0; z < arr.length; z++) {
+    if (val.includes(arr[z])) {
+      return true;
+    }
+  }
+  return false;
 };

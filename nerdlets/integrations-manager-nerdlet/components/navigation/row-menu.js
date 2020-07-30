@@ -16,7 +16,11 @@ export default class RowMenu extends React.PureComponent {
                 color={selectedPage === 'setup' ? 'green' : 'blue'}
                 href="#setup"
                 onClick={() =>
-                  updateDataStateContext({ selectedPage: 'setup' })
+                  updateDataStateContext({
+                    selectedPage: 'setup',
+                    selectedIntegration: null,
+                    selectedIntegrationType: null
+                  })
                 }
               >
                 <Card.Content>
@@ -30,7 +34,11 @@ export default class RowMenu extends React.PureComponent {
                 color={selectedPage === 'product' ? 'green' : 'blue'}
                 href="#product"
                 onClick={() =>
-                  updateDataStateContext({ selectedPage: 'product' })
+                  updateDataStateContext({
+                    selectedPage: 'product',
+                    selectedIntegration: null,
+                    selectedIntegrationType: null
+                  })
                 }
               >
                 <Card.Content>
@@ -43,7 +51,12 @@ export default class RowMenu extends React.PureComponent {
               <Card
                 color={selectedPage === 'flex' ? 'green' : 'blue'}
                 href="#flex"
-                onClick={() => updateDataStateContext({ selectedPage: 'flex' })}
+                onClick={() =>
+                  updateDataStateContext({
+                    selectedPage: 'flex',
+                    selectedIntegration: null
+                  })
+                }
               >
                 <Card.Content>
                   {loadingFlex ? (

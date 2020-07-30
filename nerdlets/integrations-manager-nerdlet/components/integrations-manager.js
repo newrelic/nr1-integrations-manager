@@ -9,6 +9,7 @@ import MenuBar from './navigation/menu-bar';
 import RowMenu from './navigation/row-menu';
 import Setup from './setup';
 import ProductIntegrations from './product-integrations';
+import FlexIntegrations from './flex-integrations';
 
 export default class IntegrationsManager extends React.Component {
   constructor(props) {
@@ -42,6 +43,7 @@ export default class IntegrationsManager extends React.Component {
 
           <Setup />
           <ProductIntegrations />
+          <FlexIntegrations />
         </Grid>
       </div>
     );

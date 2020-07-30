@@ -7,12 +7,12 @@ import { DataConsumer } from '../../context/data';
 
 export default class IntegrationTiles extends React.PureComponent {
   render() {
-    const { integrations } = this.props;
+    const { integrations, integrationType } = this.props;
     return (
       <DataConsumer>
         {({ updateDataStateContext, selectedIntegration }) => {
           return (
-            <Card.Group>
+            <Card.Group centered={!selectedIntegration}>
               {selectedIntegration ? (
                 <Card
                   color="black"
@@ -41,6 +41,8 @@ export default class IntegrationTiles extends React.PureComponent {
                     : true
                 )
                 .map((i, z) => {
+                  let icon = integrationType === 'flex' ? i.type : '';
+
                   return (
                     <Card
                       key={z}
@@ -61,13 +63,21 @@ export default class IntegrationTiles extends React.PureComponent {
                       }}
                     >
                       <Card.Content>
-                        {i.image ? (
+                        {i.image && icon === '' ? (
                           <Image floated="left" size="mini" src={i.image} />
                         ) : (
                           ''
                         )}
+
                         <Card.Header style={{ marginTop: '10px' }}>
-                          <div style={{ float: 'left' }}>{i.name}</div>
+                          <div style={{ float: 'left' }}>
+                            {icon !== '' ? (
+                              <Icon style={{ float: 'left' }} name={icon} />
+                            ) : (
+                              ''
+                            )}
+                            {i.name}
+                          </div>
                           {i.git ? (
                             <div
                               style={{ float: 'right' }}
