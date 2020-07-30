@@ -1,6 +1,6 @@
 # Third Party Notices
 
-The nr1-flex-manager uses source code from third party libraries which carry
+The nr1-integrations-manager uses source code from third party libraries which carry
 their own copyright notices and license terms. These notices are provided
 below.
 
@@ -8,30 +8,29 @@ In the event that a required notice is missing or incorrect, please notify us
 by e-mailing [open-source@newrelic.com](mailto:open-source@newrelic.com).
 
 For any licenses that require the disclosure of source
-code, the source code can be found at [https://github.com/newrelic/nr1-flex-manager](https://github.com/newrelic/nr1-flex-manager).
+code, the source code can be found at [https://github.com/newrelic/nr1-integrations-manager](https://github.com/newrelic/nr1-integrations-manager).
 
 ## Content
 
 **[dependencies](#dependencies)**
 
-* [graphql-tag](#graphql-tag)
-* [graphql](#graphql)
-* [lodash](#lodash)
-* [prop-types](#prop-types)
-* [react-ace](#react-ace)
-* [react-dom](#react-dom)
-* [react-syntax-highlighter](#react-syntax-highlighter)
-* [react](#react)
-* [semantic-ui-react](#semantic-ui-react)
+- [graphql-tag](#graphql-tag)
+- [graphql](#graphql)
+- [lodash](#lodash)
+- [prop-types](#prop-types)
+- [react-ace](#react-ace)
+- [react-dom](#react-dom)
+- [react-syntax-highlighter](#react-syntax-highlighter)
+- [react](#react)
+- [semantic-ui-react](#semantic-ui-react)
 
 **[devDependencies](#devDependencies)**
 
-* [@newrelic/eslint-plugin-newrelic](#newreliceslint-plugin-newrelic)
-* [@semantic-release/changelog](#semantic-releasechangelog)
-* [@semantic-release/git](#semantic-releasegit)
-* [eslint](#eslint)
-* [prettier](#prettier)
-
+- [@newrelic/eslint-plugin-newrelic](#newreliceslint-plugin-newrelic)
+- [@semantic-release/changelog](#semantic-releasechangelog)
+- [@semantic-release/git](#semantic-releasegit)
+- [eslint](#eslint)
+- [prettier](#prettier)
 
 ## dependencies
 
@@ -322,7 +321,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ```
-
 
 ## devDependencies
 
@@ -634,4 +632,3 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ```
-

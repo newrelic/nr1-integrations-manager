@@ -496,27 +496,6 @@ export class DataProvider extends Component {
       this.setState({ pkgName }, () => {
         resolve();
       });
-
-      //   .then((repoPackage) => {
-      //     if (pkg.version === repoPackage.version) {
-      //       console.log(`Running latest version: ${pkg.version}`);
-      //     } else if (semver.lt(pkg.version, repoPackage.version)) {
-      //       toast.warn(
-      //         <a
-      //           onClick={() =>
-      //             window.open(
-      //               'https://github.com/newrelic/nr1-flex-manager/',
-      //               '_blank'
-      //             )
-      //           }
-      //         >{`New version available: ${repoPackage.version}`}</a>,
-      //         {
-      //           autoClose: 5000,
-      //           containerId: 'C'
-      //         }
-      //       );
-      //     }
-      //   });
     });
   };
 

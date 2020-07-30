@@ -4,7 +4,7 @@
 
 #### Formly Flex Manager
 
-![CI](https://github.com/newrelic/nr1-flex-manager/workflows/CI/badge.svg) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-flex-manager?include_prereleases&sort=semver) [![Snyk](https://snyk.io/test/github/newrelic/nr1-flex-manager/badge.svg)](https://snyk.io/test/github/newrelic/nr1-flex-manager)
+![CI](https://github.com/newrelic/nr1-integrations-manager/workflows/CI/badge.svg) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-integrations-manager?include_prereleases&sort=semver) [![Snyk](https://snyk.io/test/github/newrelic/nr1-flex-manager/badge.svg)](https://snyk.io/test/github/newrelic/nr1-integrations-manager)
 
 ## Usage
 
@@ -12,7 +12,7 @@ Use the Integrations Manager to simplify the work of deploying first class produ
 
 > _Flex is an agnostic, all-in-one integration that makes sending data to New Relic from third party sources easier than ever._
 
-![Screenshot](./catalog/screenshots/nr1-flex-manager-1.png)
+![Screenshot](./catalog/screenshots/nr1-integrations-manager-1.png)
 
 ## Open Source License
 
