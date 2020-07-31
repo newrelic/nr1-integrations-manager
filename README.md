@@ -4,7 +4,7 @@
 
 #### Formly Flex Manager
 
-![CI](https://github.com/newrelic/nr1-integrations-manager/workflows/CI/badge.svg) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-integrations-manager?include_prereleases&sort=semver) [![Snyk](https://snyk.io/test/github/newrelic/nr1-flex-manager/badge.svg)](https://snyk.io/test/github/newrelic/nr1-integrations-manager)
+![CI](https://github.com/newrelic/nr1-integrations-manager/workflows/CI/badge.svg) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-integrations-manager?include_prereleases&sort=semver) [![Snyk](https://snyk.io/test/github/newrelic/nr1-integrations-manager/badge.svg)](https://snyk.io/test/github/newrelic/nr1-integrations-manager)
 
 ## Usage
 
@@ -64,7 +64,7 @@ New Relic hosts and moderates an online forum where you can interact with New Re
 
 [https://discuss.newrelic.com/t/flex-manager-nerdpack/83346](https://discuss.newrelic.com/t/flex-manager-nerdpack/83346)
 
-Please do not report issues with Flex Manager to New Relic Global Technical Support. Instead, visit the [`Explorers Hub`](https://discuss.newrelic.com/c/build-on-new-relic) for troubleshooting and best-practices.
+Please do not report issues with the Integrations Manager to New Relic Global Technical Support. Instead, visit the [`Explorers Hub`](https://discuss.newrelic.com/c/build-on-new-relic) for troubleshooting and best-practices.
 
 ## Issues / Enhancement Requests
 

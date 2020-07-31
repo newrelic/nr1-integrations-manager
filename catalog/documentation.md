@@ -1,16 +1,16 @@
 ## Usage
 
-Use Flex Manager to simplify the work of creating, managing and deploying new integrations that are built using [`Flex`](https://github.com/newrelic/nri-flex).
+Use the Integrations Manager to simplify the work of deploying first class product integrations, and developing and deploying new integrations that are built using [`Flex`](https://github.com/newrelic/nri-flex).
 
 > _Flex is an agnostic, all-in-one integration that makes sending data to New Relic from third party sources easier than ever._
 
 ## Open Source License
 
-This project is distributed under the [Apache 2 license](https://github.com/newrelic/nr1-flex-manager/blob/master/LICENSE).
+This project is distributed under the [Apache 2 license](https://github.com/newrelic/nr1-integrations-manager/blob/master/LICENSE).
 
 ## Dependencies
 
-Requires [`New Relic Infrastructure`](https://newrelic.com/products/infrastructure) and the [`Flex`](https://github.com/newrelic/nri-flex) integration.
+Requires [`New Relic Infrastructure`](https://newrelic.com/products/infrastructure)
 
 ## Getting started
 
@@ -24,8 +24,8 @@ npm -v
 Next, clone this repository and run the following scripts:
 
 ```bash
-nr1 nerdpack:clone -r https://github.com/newrelic/nr1-flex-manager.git
-cd nr1-flex-manager
+nr1 nerdpack:clone -r https://github.com/newrelic/nr1-integrations-manager.git
+cd nr1-integrations-manager
 nr1 nerdpack:uuid -gf
 npm install
 npm start
@@ -54,14 +54,14 @@ New Relic hosts and moderates an online forum where you can interact with New Re
 
 [https://discuss.newrelic.com/t/flex-manager-nerdpack/83346](https://discuss.newrelic.com/t/flex-manager-nerdpack/83346)
 
-Please do not report issues with Flex Manager to New Relic Global Technical Support. Instead, visit the [`Explorers Hub`](https://discuss.newrelic.com/c/build-on-new-relic) for troubleshooting and best-practices.
+Please do not report issues with the Integrations Manager to New Relic Global Technical Support. Instead, visit the [`Explorers Hub`](https://discuss.newrelic.com/c/build-on-new-relic) for troubleshooting and best-practices.
 
 ## Issues / Enhancement Requests
 
-Issues and enhancement requests can be submitted in the [Issues tab of this repository](https://github.com/newrelic/nr1-flex-manager/issues). Please search for and review the existing open issues before submitting a new issue.
+Issues and enhancement requests can be submitted in the [Issues tab of this repository](https://github.com/newrelic/nr1-integrations-manager/issues). Please search for and review the existing open issues before submitting a new issue.
 
 ## Contributing
 
-Contributions are welcome (and if you submit a Enhancement Request, expect to be invited to contribute it yourself :grin:). Please review our [Contributors Guide](https://github.com/newrelic/nr1-flex-manager/blob/master/CONTRIBUTING.md).
+Contributions are welcome (and if you submit a Enhancement Request, expect to be invited to contribute it yourself :grin:). Please review our [Contributors Guide](https://github.com/newrelic/nr1-integrations-manager/blob/master/CONTRIBUTING.md).
 
 Keep in mind that when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. If you'd like to execute our corporate CLA, or if you have any questions, please drop us an email at opensource@newrelic.com.
