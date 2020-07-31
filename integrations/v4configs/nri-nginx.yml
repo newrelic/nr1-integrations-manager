@@ -1,5 +1,6 @@
 integrations:
   - name: nri-nginx
+    interval: 30s
     env:
       # If you're using ngx_http_api_module be certain to use the full path up to and including the version number
       # Use the discovered IP as the host address

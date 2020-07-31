@@ -25,9 +25,41 @@ const getFileName = (url) => {
   return url
     .split('/')
     .pop()
+    .replace('.yml.k8s_sample', '-k8s')
+    .replace('.yaml.k8s_sample', '-k8s')
     .replace('.sample', '')
     .replace('.yml', '')
     .replace('.yaml', '');
+};
+
+const cleanK8sConfig = (cfg) => {
+  try {
+    cfg = cfg.split('\n').slice(1);
+    let spaceCheckLine = 0;
+    for (let z = 0; z < cfg.length; z++) {
+      if (cfg[z] === '---' || cfg[z] === ' discovery:') {
+        spaceCheckLine = z;
+        break;
+      }
+    }
+
+    let spaceCounter = 0;
+    for (let z = 0; z, cfg[spaceCheckLine].length; z++) {
+      if (cfg[spaceCheckLine][z] === ' ') {
+        spaceCounter++;
+      } else {
+        break;
+      }
+    }
+
+    cfg.forEach((c, i) => {
+      cfg[i] = c.slice(spaceCounter, c.length);
+    });
+
+    return cfg.join('\n');
+  } catch (e) {
+    return 'failed to parse';
+  }
 };
 
 export default class ProductIntegrationInfo extends React.PureComponent {
@@ -40,8 +72,8 @@ export default class ProductIntegrationInfo extends React.PureComponent {
       standardConfigName: '',
       discConfig: '',
       discConfigName: '',
-      // k8sConfig: '',
-      // k8sConfigName: '',
+      k8sConfig: '',
+      k8sConfigName: '',
       readme: '',
       changelog: '',
       isDeploying: false,
@@ -56,6 +88,7 @@ export default class ProductIntegrationInfo extends React.PureComponent {
     if (selectedIntegration && integrationType === 'product') {
       let standardUrl = selectedIntegration.standard;
       let discoveryUrl = selectedIntegration.discovery || null;
+      let k8s = selectedIntegration.k8s || null;
 
       const rawGithubUrl = 'https://raw.githubusercontent.com/newrelic/';
       const repo = selectedIntegration.git.replace(
@@ -69,6 +102,10 @@ export default class ProductIntegrationInfo extends React.PureComponent {
 
       if (discoveryUrl && !discoveryUrl.startsWith('http')) {
         discoveryUrl = `${rawGithubUrl}${pkgName}${discoveryUrl}`;
+      }
+
+      if (discoveryUrl && !discoveryUrl.startsWith('http')) {
+        k8s = `${rawGithubUrl}${pkgName}${k8s}`;
       }
 
       // get standard config
@@ -88,6 +125,18 @@ export default class ProductIntegrationInfo extends React.PureComponent {
             this.setState({
               discConfig: data,
               discConfigName: getFileName(discoveryUrl)
+            })
+          )
+        );
+      }
+
+      if (k8s) {
+        // get discovery config
+        fetch(k8s).then((response) =>
+          response.text().then((data) =>
+            this.setState({
+              k8sConfig: cleanK8sConfig(data),
+              k8sConfigName: getFileName(k8s)
             })
           )
         );
@@ -124,7 +173,9 @@ export default class ProductIntegrationInfo extends React.PureComponent {
       standardConfig,
       standardConfigName,
       discConfig,
-      discConfigName
+      discConfigName,
+      k8sConfig,
+      k8sConfigName
     } = this.state;
     this.setState({ isDeploying: true }, () => {
       let config = '';
@@ -135,6 +186,9 @@ export default class ProductIntegrationInfo extends React.PureComponent {
       } else if (activeItem === 'Discovery Configuration') {
         config = discConfig;
         documentId = discConfigName;
+      } else if (activeItem === 'Kubernetes Configuration') {
+        config = k8sConfig;
+        documentId = k8sConfigName;
       }
 
       AccountStorageMutation.mutate({
@@ -250,6 +304,8 @@ export default class ProductIntegrationInfo extends React.PureComponent {
       standardConfig,
       discConfigName,
       discConfig,
+      k8sConfig,
+      k8sConfigName,
       readme,
       changelog,
       yamlError
@@ -269,6 +325,8 @@ export default class ProductIntegrationInfo extends React.PureComponent {
             configName = standardConfigName;
           } else if (activeItem === 'Discovery Configuration') {
             configName = discConfigName;
+          } else if (activeItem === 'Kubernetes Configuration') {
+            configName = k8sConfigName;
           }
 
           const configExists =
@@ -309,6 +367,16 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                   <Menu.Item
                     name="Discovery Configuration"
                     active={activeItem === 'Discovery Configuration'}
+                    onClick={this.handleItemClick}
+                    icon="docker"
+                  />
+                ) : (
+                  ''
+                )}
+                {k8sConfig ? (
+                  <Menu.Item
+                    name="Kubernetes Configuration"
+                    active={activeItem === 'Kubernetes Configuration'}
                     onClick={this.handleItemClick}
                     icon="docker"
                   />
@@ -497,10 +565,38 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                     } catch (e) {
                       yamlError = e.message;
                     }
-                    this.setState({ standardConfig: v, yamlError });
+                    this.setState({ discConfig: v, yamlError });
                   }}
                   editorProps={{ $blockScrolling: true }}
-                />{' '}
+                />
+              </div>
+
+              <div
+                style={{
+                  display:
+                    activeItem === 'Kubernetes Configuration' && k8sConfig
+                      ? ''
+                      : 'none'
+                }}
+              >
+                {this.renderAccordion(true)}
+                <AceEditor
+                  mode="yaml"
+                  theme="monokai"
+                  name="configuration"
+                  width="100%"
+                  value={k8sConfig}
+                  onChange={async (v) => {
+                    let yamlError = '';
+                    try {
+                      jsyaml.safeLoad(v);
+                    } catch (e) {
+                      yamlError = e.message;
+                    }
+                    this.setState({ k8sConfig: v, yamlError });
+                  }}
+                  editorProps={{ $blockScrolling: true }}
+                />
               </div>
 
               {activeItem === 'README' ? (
