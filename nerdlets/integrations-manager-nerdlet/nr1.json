@@ -1,0 +1,6 @@
+{
+    "schemaType": "NERDLET",
+    "id": "integrations-manager-nerdlet",
+    "description": "Manage & Deploy Infrastructure Integrations",
+    "displayName": "Integrations Manager"
+}

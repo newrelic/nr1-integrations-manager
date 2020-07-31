@@ -9,3 +9,6 @@ integrations:
       # Name of Nginx status module OHI is to query against. discover | ngx_http_stub_status_module | ngx_http_status_module | ngx_http_api_module
       STATUS_MODULE: discover
       METRICS: 1
+    labels:
+      env: production
+      role: load_balancer

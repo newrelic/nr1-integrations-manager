@@ -1,0 +1,18 @@
+integrations:
+  - name: apache-server-metrics
+    integration_name: com.newrelic.apache
+    command: metrics
+    arguments:
+      status_url: http://127.0.0.1/server-status?auto
+      remote_monitoring: true
+    labels:
+      env: production
+      role: load_balancer
+  - name: apache-server-inventory
+    integration_name: com.newrelic.apache
+    command: inventory
+    arguments:
+      remote_monitoring: true
+    labels:
+      env: production
+      role: load_balancer

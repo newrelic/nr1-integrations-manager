@@ -1,7 +1,7 @@
 {
   "lastUpdated": "Fri Jun 05 2020 14:50:57 GMT+0000 (Coordinated Universal Time)",
-  "projectName": "nr1-flex-manager",
-  "projectUrl": "https://github.com/newrelic/nr1-flex-manager",
+  "projectName": "nr1-integrations-manager",
+  "projectUrl": "https://github.com/newrelic/nr1-integrations-manager",
   "includeDev": true,
   "dependencies": {
     "graphql-tag@2.10.3": {

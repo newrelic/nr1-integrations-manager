@@ -1,16 +1,18 @@
 [![New Relic One Catalog Project header](https://github.com/newrelic/open-source-office/raw/master/examples/categories/images/New_Relic_One_Catalog_Project.png)](https://github.com/newrelic/open-source-office/blob/master/examples/categories/index.md#nr1-catalog)
 
-# New Relic One Flex Manager (nr1-flex-manager)
+# Integrations Manager (nr1-integrations-manager)
 
-![CI](https://github.com/newrelic/nr1-flex-manager/workflows/CI/badge.svg) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-flex-manager?include_prereleases&sort=semver) [![Snyk](https://snyk.io/test/github/newrelic/nr1-flex-manager/badge.svg)](https://snyk.io/test/github/newrelic/nr1-flex-manager)
+#### Formly Flex Manager
+
+![CI](https://github.com/newrelic/nr1-integrations-manager/workflows/CI/badge.svg) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-integrations-manager?include_prereleases&sort=semver) [![Snyk](https://snyk.io/test/github/newrelic/nr1-flex-manager/badge.svg)](https://snyk.io/test/github/newrelic/nr1-integrations-manager)
 
 ## Usage
 
-Use Flex Manager to simplify the work of creating, managing and deploying new integrations that are built using [`Flex`](https://github.com/newrelic/nri-flex).
+Use the Integrations Manager to simplify the work of deploying first class product integrations, and developing and deploying new integrations that are built using [`Flex`](https://github.com/newrelic/nri-flex).
 
 > _Flex is an agnostic, all-in-one integration that makes sending data to New Relic from third party sources easier than ever._
 
-![Screenshot](./catalog/screenshots/nr1-flex-manager-1.png)
+![Screenshot](./catalog/screenshots/nr1-integrations-manager-1.png)
 
 ## Open Source License
 
@@ -18,7 +20,7 @@ This project is distributed under the [Apache 2 license](LICENSE).
 
 ## Dependencies
 
-Requires [`New Relic Infrastructure`](https://newrelic.com/products/infrastructure) and the [`Flex`](https://github.com/newrelic/nri-flex) integration.
+Requires [`New Relic Infrastructure`](https://newrelic.com/products/infrastructure).
 
 ## Getting started
 
@@ -32,8 +34,8 @@ npm -v
 Next, clone this repository and run the following scripts:
 
 ```bash
-nr1 nerdpack:clone -r https://github.com/newrelic/nr1-flex-manager.git
-cd nr1-flex-manager
+nr1 nerdpack:clone -r https://github.com/newrelic/nr1-integrations-manager.git
+cd nr1-integrations-manager
 nr1 nerdpack:uuid -gf
 npm install
 npm start
