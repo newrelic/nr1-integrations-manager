@@ -1,3 +1,10 @@
+## [0.3.2](https://github.com/newrelic/nr1-flex-manager/compare/v0.3.1...v0.3.2) (2020-07-31)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([885c5ea](https://github.com/newrelic/nr1-flex-manager/commit/885c5ea6ee940b843a8bb6dbb10d151109de9205))
+
 ## [0.3.1](https://github.com/newrelic/nr1-flex-manager/compare/v0.3.0...v0.3.1) (2020-03-26)
 
 
