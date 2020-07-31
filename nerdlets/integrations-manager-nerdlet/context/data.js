@@ -484,7 +484,7 @@ export class DataProvider extends Component {
               onClick={() =>
                 window.open(`https://github.com/newrelic/${pkgName}/`, '_blank')
               }
-            >{`New version available: ${data.version}`}</a>,
+            >{`New version available: ${data.version}, the app catalog will be updated shortly.`}</a>,
             {
               autoClose: 5000,
               containerId: 'C'

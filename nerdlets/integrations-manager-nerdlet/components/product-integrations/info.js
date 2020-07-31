@@ -3,7 +3,15 @@ no-console: 0,
 no-unused-vars: 0
 */
 import React from 'react';
-import { Message, Menu, Button, Popup } from 'semantic-ui-react';
+import {
+  Message,
+  Menu,
+  Button,
+  Popup,
+  Accordion,
+  Table,
+  Icon
+} from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 import AceEditor from 'react-ace';
 import ReactMarkdown from 'react-markdown';
@@ -36,7 +44,8 @@ export default class ProductIntegrationInfo extends React.PureComponent {
       // k8sConfigName: '',
       readme: '',
       isDeploying: false,
-      isDeleting: false
+      isDeleting: false,
+      activeIndex: null
     };
   }
 
@@ -94,6 +103,14 @@ export default class ProductIntegrationInfo extends React.PureComponent {
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
+  };
+
+  handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    const { activeIndex } = this.state;
+    const newIndex = activeIndex === index ? -1 : index;
+
+    this.setState({ activeIndex: newIndex });
   };
 
   deployIntegration = (selectedCollection, getCollection) => {
@@ -157,6 +174,82 @@ export default class ProductIntegrationInfo extends React.PureComponent {
     });
   };
 
+  renderAccordion = (discOptions) => {
+    return (
+      <Accordion style={{ paddingBottom: '10px' }}>
+        <Accordion.Title
+          style={{ display: discOptions ? '' : 'none' }}
+          active={this.state.activeIndex === 0}
+          index={0}
+          onClick={this.handleClick}
+        >
+          <Icon name="dropdown" />
+          View Discovery Options
+        </Accordion.Title>
+        <Accordion.Content active={this.state.activeIndex === 0}>
+          <Table
+            celled
+            basic="very"
+            style={{ width: '500px', paddingLeft: '20px' }}
+          >
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Variable</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell>{`$\{discovery.ip}`}</Table.Cell>
+                <Table.Cell>Container public IP address, if any</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{`$\{discovery.private.ip}`}</Table.Cell>
+                <Table.Cell>Container private IP address</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{`$\{discovery.port}`}</Table.Cell>
+                <Table.Cell>Container public port</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{`$\{discovery.private.port}`}</Table.Cell>
+                <Table.Cell>Container private port</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{`$\{discovery.image}`}</Table.Cell>
+                <Table.Cell>Image name</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{`$\{discovery.name}`}</Table.Cell>
+                <Table.Cell>Container name</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{`$\{discovery.label.<label name>}`}</Table.Cell>
+                <Table.Cell>
+                  Any container label, accessible by its name
+                </Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>
+        </Accordion.Content>
+
+        <Accordion.Title
+          active={this.state.activeIndex === 1}
+          index={1}
+          onClick={() =>
+            window.open(
+              'https://docs.newrelic.com/docs/integrations/host-integrations/installation/container-auto-discovery#define-discover',
+              '_blank'
+            )
+          }
+        >
+          <Icon name="dropdown" />
+          Discovery Documentation
+        </Accordion.Title>
+      </Accordion>
+    );
+  };
+
   render() {
     const {
       isDeploying,
@@ -218,12 +311,14 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                   name="Configuration"
                   active={activeItem === 'Configuration'}
                   onClick={this.handleItemClick}
+                  icon="file code outline"
                 />
                 {discConfig ? (
                   <Menu.Item
                     name="Discovery Configuration"
                     active={activeItem === 'Discovery Configuration'}
                     onClick={this.handleItemClick}
+                    icon="docker"
                   />
                 ) : (
                   ''
@@ -233,6 +328,7 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                     name="README"
                     active={activeItem === 'README'}
                     onClick={this.handleItemClick}
+                    icon="book"
                   />
                 ) : (
                   ''
@@ -346,6 +442,8 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                   display: activeItem === 'Configuration' ? '' : 'none'
                 }}
               >
+                {this.renderAccordion()}
+
                 <AceEditor
                   mode="yaml"
                   theme="monokai"
@@ -373,6 +471,7 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                       : 'none'
                 }}
               >
+                {this.renderAccordion(true)}
                 <AceEditor
                   mode="yaml"
                   theme="monokai"

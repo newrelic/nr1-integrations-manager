@@ -91,6 +91,14 @@ export default class Setup extends React.PureComponent {
                         <List.Item>
                           Choose your required deployment model.
                         </List.Item>
+                        <List.Item>
+                          Select your integrations collection, and deploy your
+                          required integrations.
+                        </List.Item>
+                        <List.Item>
+                          Remember to modify the integration config files to
+                          your environment specifications.
+                        </List.Item>
                       </List>
                     </Card.Description>
                   </Card.Content>
