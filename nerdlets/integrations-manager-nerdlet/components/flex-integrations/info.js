@@ -168,6 +168,19 @@ export default class FlexInfo extends React.PureComponent {
                     />
 
                     <Button
+                      content="Container Discovery"
+                      color="blue"
+                      icon="docker"
+                      style={{ float: 'right' }}
+                      onClick={() =>
+                        window.open(
+                          'https://docs.newrelic.com/docs/integrations/host-integrations/installation/container-auto-discovery#define-discover',
+                          '_blank'
+                        )
+                      }
+                    />
+
+                    <Button
                       content="View on GitHub"
                       icon="github"
                       color="green"

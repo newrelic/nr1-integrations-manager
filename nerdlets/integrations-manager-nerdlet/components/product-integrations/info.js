@@ -232,20 +232,6 @@ export default class ProductIntegrationInfo extends React.PureComponent {
             </Table.Body>
           </Table>
         </Accordion.Content>
-
-        <Accordion.Title
-          active={this.state.activeIndex === 1}
-          index={1}
-          onClick={() =>
-            window.open(
-              'https://docs.newrelic.com/docs/integrations/host-integrations/installation/container-auto-discovery#define-discover',
-              '_blank'
-            )
-          }
-        >
-          <Icon name="dropdown" />
-          Discovery Documentation
-        </Accordion.Title>
       </Accordion>
     );
   };
@@ -413,6 +399,18 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                         icon={yamlError ? 'close' : 'check'}
                         style={{ cursor: 'none', float: 'right' }}
                       />
+                      <Button
+                        content="Container Discovery"
+                        color="blue"
+                        icon="docker"
+                        style={{ float: 'right' }}
+                        onClick={() =>
+                          window.open(
+                            'https://docs.newrelic.com/docs/integrations/host-integrations/installation/container-auto-discovery#define-discover',
+                            '_blank'
+                          )
+                        }
+                      />
                       {configExists ? (
                         <Button
                           icon="remove circle"
@@ -442,8 +440,6 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                   display: activeItem === 'Configuration' ? '' : 'none'
                 }}
               >
-                {this.renderAccordion()}
-
                 <AceEditor
                   mode="yaml"
                   theme="monokai"
