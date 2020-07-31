@@ -1,0 +1,18 @@
+integrations:
+  - name: memcached
+    integration_name: com.newrelic.memcached
+    # Command can be all_data, metrics, or inventory
+    command: all_data
+    arguments:
+      # Hostname of the memcached instance.
+      # Defaults to localhost.
+      host: memcached_host
+      # Port memcached is running on.
+      # Defaults to 11211
+      port: 11211
+      # Memcached SASL username. Only required if
+      # authentication is enabled.
+      username: cacheuser
+      # Memcached SASL password. Only required if
+      # authentication is enabled.
+      password: password

@@ -1,0 +1,18 @@
+integrations:
+  - name: haproxy
+    integration_name: com.newrelic.haproxy
+    # Command can be all_data, metrics, or inventory
+    command: all_data
+    labels:
+      env: production
+      label: haproxy-cluster-member-1
+    arguments:
+      # The URL to the enabled stats page on the
+      # HAProxy instance
+      stats_url: http://haproxy-instance/stats
+      # Basic auth username
+      username: cacheuser
+      # Basic auth password
+      password: password
+      # A user defined cluster name for the HAProxy instance
+      cluster_name: my_haproxy_1

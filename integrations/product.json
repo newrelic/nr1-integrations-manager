@@ -36,12 +36,88 @@
     "k8s": "https://raw.githubusercontent.com/newrelic/nri-elasticsearch/master/elasticsearch-config.yml.k8s_sample"
   },
   {
+    "name": "f5",
+    "git": "https://github.com/newrelic/nri-f5",
+    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/F5_Networks_logo.svg/225px-F5_Networks_logo.svg.png",
+    "standard": "/master/integrations/v4configs/nri-f5.yml",
+    "k8s": "https://raw.githubusercontent.com/newrelic/nri-f5/master/f5-config.yml.k8s_sample"
+  },
+  {
+    "name": "haproxy",
+    "git": "https://github.com/newrelic/nri-haproxy",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Haproxy-logo.png",
+    "standard": "/master/integrations/v4configs/nri-haproxy.yml",
+    "k8s": "https://raw.githubusercontent.com/newrelic/nri-haproxy/master/haproxy-config.yml.k8s_sample"
+  },
+  {
+    "name": "kafka",
+    "git": "https://github.com/newrelic/nri-kafka",
+    "standard": "/master/integrations/v4configs/nri-kafka.yml",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Apache_kafka.svg/295px-Apache_kafka.svg.png",
+    "k8s": "https://raw.githubusercontent.com/newrelic/nri-kafka/master/kafka-config.yml.k8s_sample"
+  },
+  {
+    "name": "memcached",
+    "git": "https://github.com/newrelic/nri-memcached",
+    "standard": "/master/integrations/v4configs/nri-memcached.yml",
+    "image": "https://pnnsoft.com/Storage/BaseContents/a8aaf905-9f45-4364-9c6f-9529d04580c2/9fe2759e-670f-43bd-afc0-f0228f934ef7.png",
+    "k8s": "https://raw.githubusercontent.com/newrelic/nri-kafka/master/memcached-config.yml.k8s_sample"
+  },
+  {
+    "name": "mongodb",
+    "git": "https://github.com/newrelic/nri-mongodb",
+    "standard": "/master/integrations/v4configs/nri-mongodb.yml",
+    "image": "https://pnnsoft.com/Storage/BaseContents/a8aaf905-9f45-4364-9c6f-9529d04580c2/9fe2759e-670f-43bd-afc0-f0228f934ef7.png",
+    "k8s": "https://raw.githubusercontent.com/newrelic/nri-mongodb/master/mongodb-config.yml.k8s_sample"
+  },
+  {
+    "name": "mysql",
+    "git": "https://github.com/newrelic/nri-mysql",
+    "standard": "/master/integrations/v4configs/nri-mysql.yml",
+    "image": "https://cdn.iconscout.com/icon/free/png-256/mysql-19-1174939.png",
+    "k8s": "https://raw.githubusercontent.com/newrelic/nri-mysql/master/mysql-config.yml.k8s_sample"
+  },
+  {
     "name": "nginx",
     "git": "https://github.com/newrelic/nri-nginx",
     "image": "https://cdn.auth0.com/blog/nginx-plus/nginx-logo.png",
     "standard": "/master/integrations/v4configs/nri-nginx.yml",
     "discovery": "/master/integrations/v4configs/nri-nginx-discovery.yml",
     "k8s": "https://raw.githubusercontent.com/newrelic/nri-nginx/master/nginx-config.yml.k8s_sample"
+  },
+  {
+    "name": "oracledb",
+    "git": "https://github.com/newrelic/nri-oracledb",
+    "standard": "/master/integrations/v4configs/nri-oracledb.yml",
+    "image": "https://cdn.iconscout.com/icon/free/png-256/oracle-226044.png",
+    "k8s": "https://raw.githubusercontent.com/newrelic/nri-oracledb/master/oracledb-config.yml.k8s_sample"
+  },
+  {
+    "name": "postgresql",
+    "git": "https://github.com/newrelic/nri-postgresql",
+    "standard": "/master/integrations/v4configs/nri-postgresql.yml",
+    "image": "https://cdn.iconscout.com/icon/free/png-256/postgresql-11-1175122.png",
+    "k8s": "https://raw.githubusercontent.com/newrelic/nri-postgresql/master/postgresql-config.yml.k8s_sample"
+  },
+  {
+    "name": "rabbitmq",
+    "git": "https://github.com/newrelic/nri-rabbitmq",
+    "standard": "/master/integrations/v4configs/nri-rabbitmq.yml",
+    "image": "https://cdn.iconscout.com/icon/free/png-256/rabbitmq-282296.png",
+    "k8s": "https://raw.githubusercontent.com/newrelic/nri-rabbitmq/master/rabbitmq-config.yml.k8s_sample"
+  },
+  {
+    "name": "redis",
+    "git": "https://github.com/newrelic/nri-redis",
+    "standard": "/master/integrations/v4configs/nri-redis.yml",
+    "image": "https://cdn.iconscout.com/icon/free/png-256/redis-83994.png",
+    "k8s": "https://raw.githubusercontent.com/newrelic/nri-redis/master/redis-config.yml.k8s_sample"
+  },
+  {
+    "name": "varnish",
+    "git": "https://github.com/newrelic/nri-varnish",
+    "standard": "/master/integrations/v4configs/nri-varnish.yml",
+    "image": "https://www.zylon.net/images/logos/varnish.png"
   },
   {
     "name": "vSphere",

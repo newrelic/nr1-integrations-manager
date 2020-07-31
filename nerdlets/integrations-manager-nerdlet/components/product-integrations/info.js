@@ -66,8 +66,7 @@ const transformK8sToDocker = (k8s, name) => {
   try {
     k8s = k8s
       .replace('command:', 'docker:')
-      .replace('label.app', 'label.env')
-      .replace(name, 'production')
+      .replace(`label.app: ${name}`, 'label.env: production')
       .split('\n');
 
     let labelIndex = 0;
