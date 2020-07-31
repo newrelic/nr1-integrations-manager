@@ -5,7 +5,14 @@
     "image": "https://icon-icons.com/icons2/2107/PNG/72/file_type_apache_icon_130750.png",
     "standard": "/master/integrations/v4configs/nri-apache.yml",
     "discovery": "/master/integrations/v4configs/nri-apache-discovery.yml",
-    "k8s": null
+    "k8s": "https://github.com/newrelic/nri-apache/blob/master/apache-config.yml.k8s_sample"
+  },
+  {
+    "name": "cassandra",
+    "git": "https://github.com/newrelic/nri-cassandra",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cassandra_logo.svg/1280px-Cassandra_logo.svg.png",
+    "standard": "/master/integrations/v4configs/nri-cassandra.yml",
+    "k8s": "https://github.com/newrelic/nri-cassandra/blob/master/cassandra-config.yml.k8s_sample"
   },
   {
     "name": "nginx",
@@ -13,7 +20,7 @@
     "image": "https://cdn.auth0.com/blog/nginx-plus/nginx-logo.png",
     "standard": "/master/integrations/v4configs/nri-nginx.yml",
     "discovery": "/master/integrations/v4configs/nri-nginx-discovery.yml",
-    "k8s": null
+    "k8s": "https://github.com/newrelic/nri-nginx/blob/master/nginx-config.yml.k8s_sample"
   },
   {
     "name": "vSphere",

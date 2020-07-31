@@ -44,7 +44,7 @@ const cleanK8sConfig = (cfg) => {
     }
 
     let spaceCounter = 0;
-    for (let z = 0; z, cfg[spaceCheckLine].length; z++) {
+    for (let z = 0; z < cfg[spaceCheckLine].length; z++) {
       if (cfg[spaceCheckLine][z] === ' ') {
         spaceCounter++;
       } else {
