@@ -116,8 +116,12 @@ export default class Setup extends React.PureComponent {
                       <List.Item>
                         Download <strong>nri-sync</strong>
                         <List.List>
-                          <List.Item href="#">Linux</List.Item>
-                          <List.Item href="#">Windows</List.Item>
+                          <List.Item href="https://github.com/newrelic/nr1-flex-manager/raw/master/package/nri-sync">
+                            Linux
+                          </List.Item>
+                          <List.Item href="https://github.com/newrelic/nr1-flex-manager/raw/master/package/nri-sync.exe">
+                            Windows
+                          </List.Item>
                         </List.List>
                       </List.Item>
                       <List.Item>
@@ -190,7 +194,9 @@ export default class Setup extends React.PureComponent {
                       <List.Item>
                         Download <strong>nri-sync</strong>
                         <List.List>
-                          <List.Item href="#">Linux</List.Item>
+                          <List.Item href="https://github.com/newrelic/nr1-flex-manager/raw/master/package/nri-sync">
+                            Linux
+                          </List.Item>
                         </List.List>
                       </List.Item>
                       <List.Item>
