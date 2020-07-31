@@ -20,7 +20,8 @@ import {
   accountsQuery,
   catalogNerdpacksQuery,
   getApiKeysQuery,
-  getUserQuery
+  getUserQuery,
+  accountLicenseKeyQuery
 } from './queries';
 import { existsInArray, arrayValueExistsInStr } from './utils';
 
@@ -84,7 +85,8 @@ export class DataProvider extends Component {
       productIntegrations: [],
       flexIntegrations: [],
       flexConfigs: [],
-      loadingFlex: false
+      loadingFlex: false,
+      accountLicenseKey: ''
     };
   }
 
@@ -174,6 +176,20 @@ export class DataProvider extends Component {
             this.setState({ flexConfigs, loadingFlex: false });
           });
         });
+    });
+  };
+
+  getAccountLicenseKey = (accountId) => {
+    NerdGraphQuery.query({
+      query: gql`
+        ${accountLicenseKeyQuery(accountId)}
+      `
+    }).then((value) => {
+      const accountLicenseKey =
+        ((((value || {}).data || {}).actor || {}).account || {}).licenseKey ||
+        null;
+
+      this.setState({ accountLicenseKey });
     });
   };
 
@@ -513,7 +529,8 @@ export class DataProvider extends Component {
           getCollections: this.getCollections,
           getCollection: this.getCollection,
           deleteDocument: this.deleteDocument,
-          getApiKeys: this.getApiKeys
+          getApiKeys: this.getApiKeys,
+          getAccountLicenseKey: this.getAccountLicenseKey
         }}
       >
         {/* <ToastContainer

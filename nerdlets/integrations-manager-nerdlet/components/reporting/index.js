@@ -38,7 +38,7 @@ export default class ReportingEntities extends React.PureComponent {
     const { createOpen } = this.state;
     return (
       <DataConsumer>
-        {({ reportingEntities }) => {
+        {({ reportingEntities, getCollections, selectedAccount }) => {
           return (
             <Modal
               closeIcon
@@ -72,6 +72,14 @@ export default class ReportingEntities extends React.PureComponent {
             >
               <Modal.Header>Reporting Entities</Modal.Header>
               <Modal.Content>
+                <Button
+                  icon="refresh"
+                  content="Refresh"
+                  size="mini"
+                  color="twitter"
+                  style={{ float: 'right', marginBottom: '15px' }}
+                  onClick={() => getCollections(selectedAccount.key)}
+                />
                 <Table celled basic="very">
                   <Table.Header>
                     <Table.Row>

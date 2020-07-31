@@ -8,6 +8,14 @@ export const accountsQuery = `{
     }
   }`;
 
+export const accountLicenseKeyQuery = (accountId) => `{
+    actor {
+      account(id: ${accountId}) {
+        licenseKey
+      }
+    }
+  }`;
+
 export const catalogNerdpacksQuery = `{
     actor {
       nr1Catalog {

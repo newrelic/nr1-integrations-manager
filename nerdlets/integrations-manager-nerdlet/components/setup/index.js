@@ -2,17 +2,19 @@
 no-console: 0
 */
 import React from 'react';
-import { Grid, Card, List } from 'semantic-ui-react';
+import { Grid, Card, List, Divider, Header } from 'semantic-ui-react';
 import ApiKeyBar from '../api-key-bar';
 import { DataConsumer } from '../../context/data';
 import AceEditor from 'react-ace';
 import 'brace/mode/yaml';
+import 'brace/mode/sh';
 import 'brace/mode/dockerfile';
 import 'brace/theme/monokai';
 
 const dockerfile = `FROM newrelic/infrastructure-bundle:latest
 
 COPY ./nri-sync /var/db/newrelic-infra/newrelic-integrations/bin/
+RUN chmod +x /var/db/newrelic-infra/newrelic-integrations/bin/nri-sync
 COPY ./nri-sync-docker-config.yml /etc/newrelic-infra/integrations.d/
 
 ENV NRIA_PASSTHROUGH_ENVIRONMENT="NR_UUID,NR_API_KEY,NR_ACCOUNT_ID,NR_COLLECTION"`;
@@ -20,6 +22,26 @@ ENV NRIA_PASSTHROUGH_ENVIRONMENT="NR_UUID,NR_API_KEY,NR_ACCOUNT_ID,NR_COLLECTION
 const dockerConfig = `---
 integrations:
   - name: nri-sync`;
+
+const generateDockerCommand = (
+  license,
+  uuid,
+  accountId,
+  collection,
+  apiKey
+) => `docker run \\
+    -d \\
+    --name newrelic-infra \\
+    --network=host \\
+    --cap-add=SYS_PTRACE \\
+    -v "/:/host:ro" \\
+    -v "/var/run/docker.sock:/var/run/docker.sock" \\
+    -e NRIA_LICENSE_KEY="${license}" \\
+    -e NR_UUID="${uuid}" \\
+    -e NR_ACCOUNT_ID="${accountId}" \\
+    -e NR_COLLECTION="${collection}" \\
+    -e NR_API_KEY="${apiKey}" \\
+    nri-sync:latest`;
 
 export default class Setup extends React.PureComponent {
   render() {
@@ -30,8 +52,13 @@ export default class Setup extends React.PureComponent {
           uuid,
           selectedCollection,
           selectedApiKey,
-          selectedPage
+          selectedPage,
+          accountLicenseKey
         }) => {
+          const licenseKey = accountLicenseKey
+            ? accountLicenseKey
+            : '<insert account license key>';
+
           const apiKey =
             (selectedApiKey && selectedApiKey.value) ||
             '<Select API Key eg. NRAK-123... >';
@@ -256,6 +283,26 @@ export default class Setup extends React.PureComponent {
                         </List.Item>
                       </List.Item>
                     </List>
+                    <Divider />
+                    <Header as="h5">Example Docker run command</Header>
+                    <div>
+                      <AceEditor
+                        mode="shell"
+                        theme="monokai"
+                        name="command"
+                        height="200px"
+                        width="100%"
+                        value={generateDockerCommand(
+                          licenseKey,
+                          uuid,
+                          accountId,
+                          collection,
+                          apiKey
+                        )}
+                        editorProps={{ $blockScrolling: true }}
+                        readOnly
+                      />
+                    </div>
                   </Card.Content>
                 </Card>
               </Grid.Column>
