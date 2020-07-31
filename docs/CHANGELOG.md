@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/newrelic/nr1-flex-manager/compare/v1.0.0...v1.1.0) (2020-07-31)
+
+
+### Features
+
+* add binary download links ([817ba66](https://github.com/newrelic/nr1-flex-manager/commit/817ba66f8eb11814b313fdb33fb688751213dced))
+* add changelog ([c25b82e](https://github.com/newrelic/nr1-flex-manager/commit/c25b82e6c1d47b35315ee543ae32c05ed656412a))
+* add container discovery button ([d0c87ba](https://github.com/newrelic/nr1-flex-manager/commit/d0c87bac68093f44013d729ba71e6a2fcfc6c21f))
+* add k8s config ([271c0ee](https://github.com/newrelic/nr1-flex-manager/commit/271c0eebdd569669740834518606987361f3aaac))
+* show additional inline docs ([4077750](https://github.com/newrelic/nr1-flex-manager/commit/40777509bf826e4ba2315fde473ab6a1c2b4aa51))
+* update integrations ([b520399](https://github.com/newrelic/nr1-flex-manager/commit/b5203999a6f340e5ad50db9c00b76b621d01339c))
+
 # [1.0.0](https://github.com/newrelic/nr1-flex-manager/compare/v0.3.2...v1.0.0) (2020-07-31)
 
 
