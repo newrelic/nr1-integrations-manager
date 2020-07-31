@@ -1,9 +1,20 @@
 {
-  "lastUpdated": "Fri Jun 05 2020 14:50:57 GMT+0000 (Coordinated Universal Time)",
+  "lastUpdated": "Fri Jul 31 2020 06:11:58 GMT+0000 (Coordinated Universal Time)",
   "projectName": "nr1-integrations-manager",
   "projectUrl": "https://github.com/newrelic/nr1-integrations-manager",
   "includeDev": true,
   "dependencies": {
+    "ace-builds@1.4.12": {
+      "name": "ace-builds",
+      "version": "1.4.12",
+      "range": "^1.4.12",
+      "licenses": "BSD-3-Clause",
+      "repoUrl": "https://github.com/ajaxorg/ace-builds",
+      "versionedRepoUrl": "https://github.com/ajaxorg/ace-builds/tree/v1.4.12",
+      "licenseFile": "node_modules/ace-builds/LICENSE",
+      "licenseUrl": "https://github.com/ajaxorg/ace-builds/blob/v1.4.12/LICENSE",
+      "licenseTextSource": "file"
+    },
     "graphql-tag@2.10.3": {
       "name": "graphql-tag",
       "version": "2.10.3",
@@ -26,15 +37,28 @@
       "licenseUrl": "https://github.com/graphql/graphql-js/blob/v14.6.0/LICENSE",
       "licenseTextSource": "file"
     },
-    "lodash@4.17.15": {
+    "js-yaml@3.14.0": {
+      "name": "js-yaml",
+      "version": "3.14.0",
+      "range": "^3.14.0",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/nodeca/js-yaml",
+      "versionedRepoUrl": "https://github.com/nodeca/js-yaml/tree/v3.14.0",
+      "licenseFile": "node_modules/js-yaml/LICENSE",
+      "licenseUrl": "https://github.com/nodeca/js-yaml/blob/v3.14.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Vladimir Zapparov",
+      "email": "dervus.grim@gmail.com"
+    },
+    "lodash@4.17.19": {
       "name": "lodash",
-      "version": "4.17.15",
-      "range": "^4.17.15",
+      "version": "4.17.19",
+      "range": "^4.17.19",
       "licenses": "MIT",
       "repoUrl": "https://github.com/lodash/lodash",
-      "versionedRepoUrl": "https://github.com/lodash/lodash/tree/v4.17.15",
+      "versionedRepoUrl": "https://github.com/lodash/lodash/tree/v4.17.19",
       "licenseFile": "node_modules/lodash/LICENSE",
-      "licenseUrl": "https://github.com/lodash/lodash/blob/v4.17.15/LICENSE",
+      "licenseUrl": "https://github.com/lodash/lodash/blob/v4.17.19/LICENSE",
       "licenseTextSource": "file",
       "publisher": "John-David Dalton",
       "email": "john.david.dalton@gmail.com"
@@ -73,6 +97,31 @@
       "licenseUrl": "https://github.com/facebook/react/blob/v16.13.1/LICENSE",
       "licenseTextSource": "file"
     },
+    "react-markdown@4.3.1": {
+      "name": "react-markdown",
+      "version": "4.3.1",
+      "range": "^4.3.1",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/rexxars/react-markdown",
+      "versionedRepoUrl": "https://github.com/rexxars/react-markdown/tree/v4.3.1",
+      "licenseFile": "node_modules/react-markdown/LICENSE",
+      "licenseUrl": "https://github.com/rexxars/react-markdown/blob/v4.3.1/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Espen Hovlandsdal",
+      "email": "espen@hovlandsdal.com"
+    },
+    "react-select@3.1.0": {
+      "name": "react-select",
+      "version": "3.1.0",
+      "range": "^3.1.0",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/JedWatson/react-select",
+      "versionedRepoUrl": "https://github.com/JedWatson/react-select/tree/v3.1.0",
+      "licenseFile": "node_modules/react-select/README.md",
+      "licenseUrl": "https://github.com/JedWatson/react-select/blob/v3.1.0/README.md",
+      "licenseTextSource": "spdx",
+      "publisher": "Jed Watson"
+    },
     "react-syntax-highlighter@11.0.2": {
       "name": "react-syntax-highlighter",
       "version": "11.0.2",
@@ -85,6 +134,20 @@
       "licenseTextSource": "file",
       "publisher": "Conor Hastings"
     },
+    "react-toastify@5.5.0": {
+      "name": "react-toastify",
+      "version": "5.5.0",
+      "range": "^5.5.0",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/fkhadra/react-toastify",
+      "versionedRepoUrl": "https://github.com/fkhadra/react-toastify/tree/v5.5.0",
+      "licenseFile": "node_modules/react-toastify/LICENSE",
+      "licenseUrl": "https://github.com/fkhadra/react-toastify/blob/v5.5.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Fadi Khadra",
+      "email": "fdkhadra@gmail.com",
+      "url": "https://fkhadra.github.io"
+    },
     "react@16.13.1": {
       "name": "react",
       "version": "16.13.1",
@@ -96,30 +159,41 @@
       "licenseUrl": "https://github.com/facebook/react/blob/v16.13.1/LICENSE",
       "licenseTextSource": "file"
     },
-    "semantic-ui-react@0.87.3": {
+    "semantic-ui-react@1.0.0": {
       "name": "semantic-ui-react",
-      "version": "0.87.3",
-      "range": "^0.87.3",
+      "version": "1.0.0",
+      "range": "^1.0.0",
       "licenses": "MIT",
       "repoUrl": "https://github.com/Semantic-Org/Semantic-UI-React",
-      "versionedRepoUrl": "https://github.com/Semantic-Org/Semantic-UI-React/tree/v0.87.3",
+      "versionedRepoUrl": "https://github.com/Semantic-Org/Semantic-UI-React/tree/v1.0.0",
       "licenseFile": "node_modules/semantic-ui-react/LICENSE.md",
-      "licenseUrl": "https://github.com/Semantic-Org/Semantic-UI-React/blob/v0.87.3/LICENSE.md",
+      "licenseUrl": "https://github.com/Semantic-Org/Semantic-UI-React/blob/v1.0.0/LICENSE.md",
       "licenseTextSource": "file",
       "publisher": "Levi Thomason",
       "email": "me@levithomason.com"
+    },
+    "semver@7.3.2": {
+      "name": "semver",
+      "version": "7.3.2",
+      "range": "^7.3.2",
+      "licenses": "ISC",
+      "repoUrl": "https://github.com/npm/node-semver",
+      "versionedRepoUrl": "https://github.com/npm/node-semver/tree/v7.3.2",
+      "licenseFile": "node_modules/semver/LICENSE",
+      "licenseUrl": "https://github.com/npm/node-semver/blob/v7.3.2/LICENSE",
+      "licenseTextSource": "file"
     }
   },
   "devDependencies": {
-    "@newrelic/eslint-plugin-newrelic@0.3.0": {
+    "@newrelic/eslint-plugin-newrelic@0.3.1": {
       "name": "@newrelic/eslint-plugin-newrelic",
-      "version": "0.3.0",
-      "range": "^0.3.0",
+      "version": "0.3.1",
+      "range": "^0.3.1",
       "licenses": "Apache-2.0",
       "repoUrl": "https://github.com/NewRelic/eslint-plugin-newrelic",
-      "versionedRepoUrl": "https://github.com/NewRelic/eslint-plugin-newrelic/tree/v0.3.0",
+      "versionedRepoUrl": "https://github.com/NewRelic/eslint-plugin-newrelic/tree/v0.3.1",
       "licenseFile": "node_modules/@newrelic/eslint-plugin-newrelic/LICENSE",
-      "licenseUrl": "https://github.com/NewRelic/eslint-plugin-newrelic/blob/v0.3.0/LICENSE",
+      "licenseUrl": "https://github.com/NewRelic/eslint-plugin-newrelic/blob/v0.3.1/LICENSE",
       "licenseTextSource": "file",
       "publisher": "New Relic"
     },
@@ -149,28 +223,28 @@
       "publisher": "Pierre Vanduynslager",
       "url": "https://github.com/pvdlg"
     },
-    "eslint@6.8.0": {
+    "eslint@7.5.0": {
       "name": "eslint",
-      "version": "6.8.0",
-      "range": "^6.8.0",
+      "version": "7.5.0",
+      "range": "^7.5.0",
       "licenses": "MIT",
       "repoUrl": "https://github.com/eslint/eslint",
-      "versionedRepoUrl": "https://github.com/eslint/eslint/tree/v6.8.0",
+      "versionedRepoUrl": "https://github.com/eslint/eslint/tree/v7.5.0",
       "licenseFile": "node_modules/eslint/LICENSE",
-      "licenseUrl": "https://github.com/eslint/eslint/blob/v6.8.0/LICENSE",
+      "licenseUrl": "https://github.com/eslint/eslint/blob/v7.5.0/LICENSE",
       "licenseTextSource": "file",
       "publisher": "Nicholas C. Zakas",
       "email": "nicholas+npm@nczconsulting.com"
     },
-    "prettier@2.0.2": {
+    "prettier@2.0.5": {
       "name": "prettier",
-      "version": "2.0.2",
-      "range": "^2.0.2",
+      "version": "2.0.5",
+      "range": "^2.0.5",
       "licenses": "MIT",
       "repoUrl": "https://github.com/prettier/prettier",
-      "versionedRepoUrl": "https://github.com/prettier/prettier/tree/v2.0.2",
+      "versionedRepoUrl": "https://github.com/prettier/prettier/tree/v2.0.5",
       "licenseFile": "node_modules/prettier/LICENSE",
-      "licenseUrl": "https://github.com/prettier/prettier/blob/v2.0.2/LICENSE",
+      "licenseUrl": "https://github.com/prettier/prettier/blob/v2.0.5/LICENSE",
       "licenseTextSource": "file",
       "publisher": "James Long"
     }
