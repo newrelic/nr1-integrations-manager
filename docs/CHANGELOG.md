@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/newrelic/nr1-flex-manager/compare/v1.4.0...v1.5.0) (2020-07-31)
+
+
+### Features
+
+* ui updates ([a3b35a0](https://github.com/newrelic/nr1-flex-manager/commit/a3b35a041f7d406dba5dcd566de65f52097ab5c2))
+* update binaries, add example docker command, refresh btn ([3056e21](https://github.com/newrelic/nr1-flex-manager/commit/3056e2139021521505949675c5b96ace22264aa4))
+* update file name ([51b5b13](https://github.com/newrelic/nr1-flex-manager/commit/51b5b13a306b7ef595391f870fad2b930961223b))
+
 # [1.4.0](https://github.com/newrelic/nr1-flex-manager/compare/v1.3.0...v1.4.0) (2020-07-31)
 
 
