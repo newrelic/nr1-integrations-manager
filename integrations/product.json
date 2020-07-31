@@ -17,7 +17,7 @@
   {
     "name": "consul",
     "git": "https://github.com/newrelic/nri-consul",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cassandra_logo.svg/1280px-Cassandra_logo.svg.png",
+    "image": "https://raw.githubusercontent.com/CloudCoreo/consul-cluster/master/images/icon.png",
     "standard": "/master/integrations/v4configs/nri-consul.yml",
     "k8s": "https://raw.githubusercontent.com/newrelic/nri-consul/master/consul-config.yml.k8s_sample"
   },

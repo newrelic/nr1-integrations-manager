@@ -62,6 +62,38 @@ const cleanK8sConfig = (cfg) => {
   }
 };
 
+const transformK8sToDocker = (k8s, name) => {
+  try {
+    k8s = k8s
+      .replace('command:', 'docker:')
+      .replace('label.app', 'label.env')
+      .replace(name, 'production')
+      .split('\n');
+
+    let labelIndex = 0;
+    for (let z = 0; z < k8s.length; z++) {
+      if (k8s[z]) {
+        if (k8s[z].includes('label.')) {
+          labelIndex = z;
+        }
+
+        if (
+          k8s[z].includes('Run auto discovery') ||
+          k8s[z].includes('NRI Discovery for Kubernetes') ||
+          k8s[z].includes('nri-discovery-kubernetes')
+        ) {
+          delete k8s[z];
+        }
+      }
+    }
+
+    k8s.splice(labelIndex, 0, `      image: /${name}/`);
+    return k8s.filter((e) => e).join('\n');
+  } catch (e) {
+    return 'failed to parse';
+  }
+};
+
 export default class ProductIntegrationInfo extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -100,7 +132,11 @@ export default class ProductIntegrationInfo extends React.PureComponent {
         standardUrl = `${rawGithubUrl}${pkgName}${standardUrl}`;
       }
 
-      if (discoveryUrl && !discoveryUrl.startsWith('http')) {
+      if (
+        discoveryUrl &&
+        discoveryUrl !== 'off' &&
+        !discoveryUrl.startsWith('http')
+      ) {
         discoveryUrl = `${rawGithubUrl}${pkgName}${discoveryUrl}`;
       }
 
@@ -133,12 +169,26 @@ export default class ProductIntegrationInfo extends React.PureComponent {
       if (k8s) {
         // get discovery config
         fetch(k8s).then((response) =>
-          response.text().then((data) =>
+          response.text().then((data) => {
+            const k8sConfig = cleanK8sConfig(data);
+            const k8sConfigName = getFileName(k8s);
+
             this.setState({
-              k8sConfig: cleanK8sConfig(data),
-              k8sConfigName: getFileName(k8s)
-            })
-          )
+              k8sConfig,
+              k8sConfigName
+            });
+            if (!discoveryUrl && discoveryUrl !== 'off') {
+              const discConfig = transformK8sToDocker(
+                k8sConfig,
+                selectedIntegration.name
+              );
+
+              this.setState({
+                discConfig,
+                discConfigName: k8sConfigName.replace('-k8s', '-docker')
+              });
+            }
+          })
         );
       }
 
