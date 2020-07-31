@@ -1,0 +1,28 @@
+# Run auto discovery to find pods with label "app=couchbase"
+# https://docs.newrelic.com/docs/integrations/host-integrations/installation/container-auto-discovery
+discovery:
+  command:
+    # Run NRI Discovery for Kubernetes
+    # https://github.com/newrelic/nri-discovery-kubernetes
+    exec: /var/db/newrelic-infra/nri-discovery-kubernetes
+    match:
+      label.app: couchbase
+integrations:
+  - name: nri-couchbase
+    env:
+      # Use the discovered IP as the host address
+      HOSTNAME: ${discovery.ip}
+      PORT: <The port used to connect to the Couchbase API (default 8091)>
+      QUERY_PORT: <The port used to connect to the N1QL service (default 8093)>
+      USERNAME: <The username used to connect to the Couchbase API>
+      PASSWORD: <The password used to connect to the Couchbase API>
+      USE_SSL: <true or false. Signals whether to use SSL or not. Certificate bundle must be supplied. (default false)>
+      CA_BUNDLE_DIR: <Alternative Certificate Authority bundle directory, required if use_ssl is true>
+      CA_BUNDLE_FILE: <Alternative Certificate Authority bundle file, required if use_ssl is true>
+      ENABLE_BUCKETS: <(Optional) true or false. If true, collects bucket resources (default true)>
+      ENABLE_BUCKET_STATS: <(Optional) true or false. If true, collects additional bucket statistics (default true)>
+      ENABLE_CLUSTER_AND_NODES: <(Optional) true or false. If true, collects cluster and node resources (default true)>
+      TIMEOUT: <(Optional) Timeout, in seconds, for an API call (default 30)>
+    labels:
+      env: kubernetes
+      role: couchbase
