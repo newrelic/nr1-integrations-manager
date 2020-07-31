@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/newrelic/nr1-flex-manager/compare/v1.2.0...v1.3.0) (2020-07-31)
+
+
+### Features
+
+* add reporting entities ([86856ec](https://github.com/newrelic/nr1-flex-manager/commit/86856ecd4a5248b3494d4a14e8451ba485a8de12))
+* add transform k8s to docker config ([7c5b3ca](https://github.com/newrelic/nr1-flex-manager/commit/7c5b3ca1dc44a61500927d2d7773c02a35c553a0))
+* update key bar message ([4ee4fa5](https://github.com/newrelic/nr1-flex-manager/commit/4ee4fa5e8b93bef21e63e27f9b97b3252a0368fa))
+
 # [1.2.0](https://github.com/newrelic/nr1-flex-manager/compare/v1.1.0...v1.2.0) (2020-07-31)
 
 
