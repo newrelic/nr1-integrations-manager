@@ -20,7 +20,7 @@ export default class ApiKeyBar extends React.PureComponent {
         }) => {
           const hdrMessage =
             selectedAccount === null
-              ? 'Select an account to view available API Keys'
+              ? 'Select an account above to view available API Keys'
               : 'Select your API Key';
           return (
             <Card color="black" style={{ width: '100%' }}>

@@ -47,6 +47,7 @@ export default class ReportingEntities extends React.PureComponent {
               size="fullscreen"
               trigger={
                 <Popup
+                  basic
                   content="Reporting Entities"
                   trigger={
                     <Button
