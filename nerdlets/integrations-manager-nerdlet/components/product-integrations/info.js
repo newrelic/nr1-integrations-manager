@@ -43,6 +43,7 @@ export default class ProductIntegrationInfo extends React.PureComponent {
       // k8sConfig: '',
       // k8sConfigName: '',
       readme: '',
+      changelog: '',
       isDeploying: false,
       isDeleting: false,
       activeIndex: null
@@ -96,6 +97,10 @@ export default class ProductIntegrationInfo extends React.PureComponent {
         // get readme
         fetch(`${rawGithubUrl}${repo}/master/README.md`).then((response) =>
           response.text().then((data) => this.setState({ readme: data }))
+        );
+        // get readme
+        fetch(`${rawGithubUrl}${repo}/master/CHANGELOG.md`).then((response) =>
+          response.text().then((data) => this.setState({ changelog: data }))
         );
       }
     }
@@ -246,6 +251,7 @@ export default class ProductIntegrationInfo extends React.PureComponent {
       discConfigName,
       discConfig,
       readme,
+      changelog,
       yamlError
     } = this.state;
     const { integrationType, selectedIntegration } = this.props;
@@ -315,6 +321,16 @@ export default class ProductIntegrationInfo extends React.PureComponent {
                     active={activeItem === 'README'}
                     onClick={this.handleItemClick}
                     icon="book"
+                  />
+                ) : (
+                  ''
+                )}
+                {integrationType === 'product' ? (
+                  <Menu.Item
+                    name="CHANGELOG"
+                    active={activeItem === 'CHANGELOG'}
+                    onClick={this.handleItemClick}
+                    icon="tasks"
                   />
                 ) : (
                   ''
@@ -490,6 +506,14 @@ export default class ProductIntegrationInfo extends React.PureComponent {
               {activeItem === 'README' ? (
                 <ReactMarkdown
                   source={readme.split('\n').slice(1).join('\n')}
+                  escapeHtml={false}
+                />
+              ) : (
+                ''
+              )}
+              {activeItem === 'CHANGELOG' ? (
+                <ReactMarkdown
+                  source={changelog.split('\n').slice(1).join('\n')}
                   escapeHtml={false}
                 />
               ) : (
