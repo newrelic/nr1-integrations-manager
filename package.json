@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "ace-builds": "^1.4.12",
-    "graphql": "^14.4.2",
-    "graphql-tag": "^2.10.1",
+    "graphql": "^14.7.0",
+    "graphql-tag": "^2.10.4",
     "js-yaml": "^3.14.0",
     "lodash": "^4.17.19",
     "prop-types": "^15.6.2",
