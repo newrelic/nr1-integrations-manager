@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/newrelic/nr1-flex-manager/compare/v1.1.0...v1.2.0) (2020-07-31)
+
+
+### Features
+
+* update integrations index ([7c09566](https://github.com/newrelic/nr1-flex-manager/commit/7c09566817bc8b915968d90f384ed1a1eb3230d9))
+
 # [1.1.0](https://github.com/newrelic/nr1-flex-manager/compare/v1.0.0...v1.1.0) (2020-07-31)
 
 
