@@ -1,3 +1,18 @@
+# [1.0.0](https://github.com/newrelic/nr1-flex-manager/compare/v0.3.2...v1.0.0) (2020-07-31)
+
+
+### Features
+
+* update package deps ([f0b244b](https://github.com/newrelic/nr1-flex-manager/commit/f0b244b344dff866dcb9c60f7110971806bfed4f))
+
+
+* Merge branch 'master' of github.com:newrelic/nr1-flex-manager ([e20ec2a](https://github.com/newrelic/nr1-flex-manager/commit/e20ec2aa2a916b3a43a9f22df092cf25014da14c))
+
+
+### BREAKING CHANGES
+
+* Nerdpack overhaul and redesign
+
 ## [0.3.2](https://github.com/newrelic/nr1-flex-manager/compare/v0.3.1...v0.3.2) (2020-07-31)
 
 

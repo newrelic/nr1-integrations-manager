@@ -2,7 +2,7 @@
   "private": true,
   "name": "nr1-integrations-manager",
   "description": "Nerdpack integrations-manager",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "scripts": {
     "start": "nr1 nerdpack:serve",
     "test": "exit 0",
