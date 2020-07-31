@@ -53,7 +53,7 @@
     "name": "kafka",
     "git": "https://github.com/newrelic/nri-kafka",
     "standard": "/master/integrations/v4configs/nri-kafka.yml",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Apache_kafka.svg/295px-Apache_kafka.svg.png",
+    "image": "https://www.logolynx.com/images/logolynx/74/740cc2be68f93c7a05b767638fd2e11b.png",
     "k8s": "https://raw.githubusercontent.com/newrelic/nri-kafka/master/kafka-config.yml.k8s_sample"
   },
   {

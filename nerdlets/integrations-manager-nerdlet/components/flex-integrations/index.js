@@ -2,7 +2,7 @@
 no-console: 0
 */
 import React from 'react';
-import { Grid, Input, Dropdown, Button } from 'semantic-ui-react';
+import { Grid, Input, Dropdown, Button, Divider } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
 import IntegrationTiles from '../integration-tiles.js';
 import FlexInfo from './info';
@@ -75,11 +75,15 @@ export default class FlexIntegrations extends React.PureComponent {
                   display: selectedIntegration ? 'none' : ''
                 }}
               >
-                <div style={{ textAlign: 'center' }}>
+                <div>
                   <Dropdown
                     options={options}
                     selection
-                    style={{ paddingBottom: '5px', marginTop: '3px' }}
+                    style={{
+                      paddingBottom: '5px',
+                      marginTop: '3px',
+                      marginLeft: '25%'
+                    }}
                     value={cat.value}
                     onChange={(e, d) => this.setState({ cat: d })}
                   />
@@ -106,6 +110,7 @@ export default class FlexIntegrations extends React.PureComponent {
                     }
                   />
                 </div>
+                <Divider />
               </Grid.Column>
               <Grid.Column width={16} style={{ paddingBottom: '20px' }}>
                 <IntegrationTiles

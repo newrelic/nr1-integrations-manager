@@ -72,7 +72,7 @@ export default class IntegrationTiles extends React.PureComponent {
                             floated="left"
                             size="mini"
                             src={i.image}
-                            style={{ marginTop: '5px' }}
+                            style={{ marginTop: '5px', maxHeight: '40px' }}
                           />
                         ) : (
                           ''
