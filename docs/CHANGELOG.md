@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/newrelic/nr1-integrations-manager/compare/v1.5.0...v1.5.1) (2020-07-31)
+
+
+### Bug Fixes
+
+* updating catalog documentation to remove references to Flex ([#21](https://github.com/newrelic/nr1-integrations-manager/issues/21)) ([1ce68a5](https://github.com/newrelic/nr1-integrations-manager/commit/1ce68a5b6c4e8b8a98ee62ef72ae6ccca67665c4))
+
 # [1.5.0](https://github.com/newrelic/nr1-flex-manager/compare/v1.4.0...v1.5.0) (2020-07-31)
 
 
