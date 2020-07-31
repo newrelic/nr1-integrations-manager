@@ -479,17 +479,20 @@ export class DataProvider extends Component {
         if (pkg.version === data.version) {
           console.log(`Running latest version: ${pkg.version}`);
         } else if (semver.lt(pkg.version, data.version)) {
-          toast.warn(
-            <a
-              onClick={() =>
-                window.open(`https://github.com/newrelic/${pkgName}/`, '_blank')
-              }
-            >{`New version available: ${data.version}, the app catalog will be updated shortly.`}</a>,
-            {
-              autoClose: 5000,
-              containerId: 'C'
-            }
+          console.log(
+            `New version available: ${data.version}, the app catalog will be updated shortly.`
           );
+          // toast.warn(
+          //   <a
+          //     onClick={() =>
+          //       window.open(`https://github.com/newrelic/${pkgName}/`, '_blank')
+          //     }
+          //   >{`New version available: ${data.version}, the app catalog will be updated shortly.`}</a>,
+          //   {
+          //     autoClose: 5000,
+          //     containerId: 'C'
+          //   }
+          // );
         }
       }
 

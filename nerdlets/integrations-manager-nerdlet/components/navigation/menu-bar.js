@@ -7,6 +7,7 @@ import { DataConsumer } from '../../context/data';
 import DeleteCollection from '../collection/del-collection';
 import CreateCollection from '../collection/add-collection';
 import EditCollection from '../collection/edit-collection';
+import ReportingEntities from '../reporting';
 
 export default class MenuBar extends React.PureComponent {
   render() {
@@ -58,9 +59,17 @@ export default class MenuBar extends React.PureComponent {
 
                 {selectedCollection ? <DeleteCollection /> : ''}
                 {selectedCollection ? <EditCollection /> : ''}
-                {selectedAccount ? <CreateCollection /> : ''}
+                {selectedAccount ? (
+                  <CreateCollection
+                    isDisabled={!selectedAccount || collections.length === 0}
+                  />
+                ) : (
+                  ''
+                )}
 
                 <div className="flex-push" />
+
+                {selectedAccount ? <ReportingEntities /> : ''}
               </div>
             </div>
           );

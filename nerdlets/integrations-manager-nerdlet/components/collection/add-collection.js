@@ -56,6 +56,7 @@ export default class CreateCollection extends React.PureComponent {
 
   render() {
     const { createOpen, isAdding, name } = this.state;
+    const { isDisabled } = this.props;
     return (
       <DataConsumer>
         {({
@@ -81,6 +82,7 @@ export default class CreateCollection extends React.PureComponent {
                       onClick={this.handleOpen}
                       style={{ height: '45px' }}
                       className="filter-button"
+                      disabled={isDisabled}
                     >
                       <Icon.Group
                         size="large"
