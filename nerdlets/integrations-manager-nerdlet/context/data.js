@@ -67,7 +67,7 @@ export class DataProvider extends Component {
     super(props);
 
     this.state = {
-      pkgName: 'nr1-flex-manager', // when name transitioned update this
+      pkgName: 'nr1-integrations-manager', // when name transitioned update this
       selectedPage: 'home',
       selectedAccount: null,
       selectedCollection: null,
@@ -236,8 +236,7 @@ export class DataProvider extends Component {
           (n) =>
             n.visibility === 'GLOBAL' &&
             n.metadata.repository &&
-            (n.metadata.repository.includes('nr1-flex-manager') ||
-              n.metadata.repository.includes('nr1-integrations-manager'))
+            n.metadata.repository.includes('nr1-integrations-manager')
         );
 
         if (nerdpacks.length > 0) {
@@ -465,56 +464,26 @@ export class DataProvider extends Component {
 
   checkVersion = () => {
     return new Promise(async (resolve) => {
-      let pkgName = '';
-
-      // dual check temporary till transition
-      let data = await fetch(
+      const data = await fetch(
         'https://raw.githubusercontent.com/newrelic/nr1-integrations-manager/master/package.json'
       ).then((response) => {
         if (response.ok) {
-          pkgName = 'nr1-integrations-manager';
           return response.json();
         }
         return null;
       });
 
-      if (!data) {
-        data = await fetch(
-          'https://raw.githubusercontent.com/newrelic/nr1-flex-manager/master/package.json'
-        ).then((response) => {
-          if (response.ok) {
-            pkgName = 'nr1-flex-manager';
-            return response.json();
-          }
-          return null;
-        });
-      }
-
       if (data) {
-        console.log(`current name: ${pkgName}`);
         if (pkg.version === data.version) {
           console.log(`Running latest version: ${pkg.version}`);
         } else if (semver.lt(pkg.version, data.version)) {
           console.log(
             `New version available: ${data.version}, the app catalog will be updated shortly.`
           );
-          // toast.warn(
-          //   <a
-          //     onClick={() =>
-          //       window.open(`https://github.com/newrelic/${pkgName}/`, '_blank')
-          //     }
-          //   >{`New version available: ${data.version}, the app catalog will be updated shortly.`}</a>,
-          //   {
-          //     autoClose: 5000,
-          //     containerId: 'C'
-          //   }
-          // );
         }
       }
 
-      this.setState({ pkgName }, () => {
-        resolve();
-      });
+      resolve();
     });
   };
 
