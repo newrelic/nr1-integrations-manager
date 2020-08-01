@@ -2,7 +2,15 @@
 no-console: 0
 */
 import React from 'react';
-import { Grid, Card, List, Divider, Header } from 'semantic-ui-react';
+import {
+  Grid,
+  Card,
+  List,
+  Divider,
+  Header,
+  Form,
+  Radio
+} from 'semantic-ui-react';
 import ApiKeyBar from '../api-key-bar';
 import { DataConsumer } from '../../context/data';
 import AceEditor from 'react-ace';
@@ -11,7 +19,7 @@ import 'brace/mode/sh';
 import 'brace/mode/dockerfile';
 import 'brace/theme/monokai';
 
-const dockerfile = `FROM newrelic/infrastructure-bundle:latest
+const dockerfile = (image) => `FROM ${image}:latest
 
 COPY ./nri-sync /var/db/newrelic-infra/newrelic-integrations/bin/
 RUN chmod +x /var/db/newrelic-infra/newrelic-integrations/bin/nri-sync
@@ -44,7 +52,21 @@ const generateDockerCommand = (
     nri-sync:latest`;
 
 export default class Setup extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = { value: 'standard' };
+  }
+
+  handleChange = (e, { value }) => this.setState({ value });
+
   render() {
+    const { value } = this.state;
+
+    const image =
+      value === 'standard'
+        ? 'newrelic/infrastructure-bundle'
+        : 'newrelic/infrastructure-k8s';
+
     return (
       <DataConsumer>
         {({
@@ -247,6 +269,31 @@ export default class Setup extends React.PureComponent {
                         Copy binary and config to Dockerfile and add passthrough
                         variables.
                       </List.Item>
+                      <List.Item>
+                        <Form style={{ fontSize: '12px' }}>
+                          <Form.Field>
+                            Select required deployment image: <b>{value}</b>
+                          </Form.Field>
+                          <Form.Field>
+                            <Radio
+                              label="Standard Docker"
+                              name="radioGroup"
+                              value="standard"
+                              checked={value === 'standard'}
+                              onChange={this.handleChange}
+                            />
+                          </Form.Field>
+                          <Form.Field>
+                            <Radio
+                              label="Kubernetes"
+                              name="radioGroup"
+                              value="Kubernetes"
+                              checked={value === 'Kubernetes'}
+                              onChange={this.handleChange}
+                            />
+                          </Form.Field>
+                        </Form>
+                      </List.Item>
                       <br />
                       <AceEditor
                         mode="dockerfile"
@@ -254,7 +301,7 @@ export default class Setup extends React.PureComponent {
                         name="Dockerfile"
                         height="105px"
                         width="100%"
-                        value={dockerfile}
+                        value={dockerfile(image)}
                         editorProps={{ $blockScrolling: true }}
                         readOnly
                       />
