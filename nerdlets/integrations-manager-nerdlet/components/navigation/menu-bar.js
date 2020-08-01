@@ -53,7 +53,7 @@ export default class MenuBar extends React.PureComponent {
                     onChange={(selectedCollection) => {
                       getCollection(selectedCollection);
                     }}
-                    isDisabled={!selectedAccount || collections.length === 0}
+                    isDisabled={!selectedAccount}
                     value={selectedCollection}
                     classNamePrefix="react-select"
                   />
@@ -62,9 +62,7 @@ export default class MenuBar extends React.PureComponent {
                 {selectedCollection ? <DeleteCollection /> : ''}
                 {selectedCollection ? <EditCollection /> : ''}
                 {selectedAccount ? (
-                  <CreateCollection
-                    isDisabled={!selectedAccount || collections.length === 0}
-                  />
+                  <CreateCollection isDisabled={!selectedAccount} />
                 ) : (
                   ''
                 )}
