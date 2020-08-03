@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/newrelic/nr1-integrations-manager/compare/v1.6.0...v1.6.1) (2020-08-03)
+
+
+### Bug Fixes
+
+* made nri-sync executable ([4b8b4af](https://github.com/newrelic/nr1-integrations-manager/commit/4b8b4af03f7fe4e3079d97143622075cb35e7190))
+
 # [1.6.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.5.2...v1.6.0) (2020-08-01)
 
 
