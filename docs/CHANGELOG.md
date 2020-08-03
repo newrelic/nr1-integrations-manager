@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.6.1...v1.7.0) (2020-08-03)
+
+
+### Features
+
+* get download links dynamically, improve messaging ([dce1adf](https://github.com/newrelic/nr1-integrations-manager/commit/dce1adfc1111822e1030d63d4ae7c5ab8c7ddc19))
+
 ## [1.6.1](https://github.com/newrelic/nr1-integrations-manager/compare/v1.6.0...v1.6.1) (2020-08-03)
 
 
