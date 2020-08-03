@@ -75,7 +75,9 @@ export default class Setup extends React.PureComponent {
           selectedCollection,
           selectedApiKey,
           selectedPage,
-          accountLicenseKey
+          accountLicenseKey,
+          downloadLinux,
+          downloadWindows
         }) => {
           const licenseKey = accountLicenseKey
             ? accountLicenseKey
@@ -165,12 +167,8 @@ export default class Setup extends React.PureComponent {
                       <List.Item>
                         Download <strong>nri-sync</strong>
                         <List.List>
-                          <List.Item href="https://github.com/newrelic/nr1-flex-manager/raw/master/package/nri-sync">
-                            Linux
-                          </List.Item>
-                          <List.Item href="https://github.com/newrelic/nr1-flex-manager/raw/master/package/nri-sync.exe">
-                            Windows
-                          </List.Item>
+                          <List.Item href={downloadLinux}>Linux</List.Item>
+                          <List.Item href={downloadWindows}>Windows</List.Item>
                         </List.List>
                       </List.Item>
                       <List.Item>
@@ -181,6 +179,10 @@ export default class Setup extends React.PureComponent {
                             <List.Item>
                               /var/db/newrelic-infra/newrelic-integrations/bin/
                               <strong>nri-sync</strong>
+                            </List.Item>
+                            <List.Item>
+                              Ensure the binary has execute permissions, run:
+                              <strong> chmod +x ./nri-sync</strong>
                             </List.Item>
                           </List.Item>
                           <List.Item>

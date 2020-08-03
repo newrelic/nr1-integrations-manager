@@ -86,7 +86,9 @@ export class DataProvider extends Component {
       flexIntegrations: [],
       flexConfigs: [],
       loadingFlex: false,
-      accountLicenseKey: ''
+      accountLicenseKey: '',
+      downloadLinux: '',
+      downloadWindows: ''
     };
   }
 
@@ -483,7 +485,13 @@ export class DataProvider extends Component {
         }
       }
 
-      resolve();
+      this.setState(
+        {
+          downloadLinux: data.downloadLinux,
+          downloadWindows: data.downloadWindows
+        },
+        () => resolve()
+      );
     });
   };
 
