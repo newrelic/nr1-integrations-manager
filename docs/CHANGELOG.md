@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.5.2...v1.6.0) (2020-08-01)
+
+
+### Features
+
+* add container image selection ([c89a542](https://github.com/newrelic/nr1-integrations-manager/commit/c89a542c9c47b9db47f5643afb1bdc480f48a08e))
+
 ## [1.5.2](https://github.com/newrelic/nr1-integrations-manager/compare/v1.5.1...v1.5.2) (2020-08-01)
 
 
