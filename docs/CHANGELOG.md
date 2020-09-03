@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/newrelic/nr1-integrations-manager/compare/v1.7.0...v1.7.1) (2020-09-03)
+
+
+### Bug Fixes
+
+* updating default branch to main ([22ae962](https://github.com/newrelic/nr1-integrations-manager/commit/22ae9624ea61188ef122600f5d6ba3c2341c5654))
+
 # [1.7.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.6.1...v1.7.0) (2020-08-03)
 
 
