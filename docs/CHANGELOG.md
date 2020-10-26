@@ -1,3 +1,12 @@
+# [1.8.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.7.1...v1.8.0) (2020-10-26)
+
+
+### Features
+
+* remove # links due to NR1 platform bug ([9888767](https://github.com/newrelic/nr1-integrations-manager/commit/9888767c29680de0f47190e7eaa7d097ce0f1ee9))
+* update apache icon ([44d410a](https://github.com/newrelic/nr1-integrations-manager/commit/44d410a0835a3941c3009c9c747d7bd390d1ea49))
+* update link from master to main ([04c2af3](https://github.com/newrelic/nr1-integrations-manager/commit/04c2af3660f9ae2d8f599a88e6f30f4373c703e4))
+
 ## [1.7.1](https://github.com/newrelic/nr1-integrations-manager/compare/v1.7.0...v1.7.1) (2020-09-03)
 
 
