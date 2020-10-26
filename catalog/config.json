@@ -13,5 +13,5 @@
       "url": "https://discuss.newrelic.com/t/flex-manager-nerdpack/83346"
     }
   },
-  "whatsNew": "- Project redeveloped \n - UI Refresh"
+  "whatsNew": "- Handle NR1 platform bug \n"
 }
