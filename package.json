@@ -2,7 +2,7 @@
   "private": true,
   "name": "nr1-integrations-manager",
   "description": "Nerdpack integrations-manager",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "downloadLinux": "https://github.com/newrelic/nr1-flex-manager/raw/master/package/nri-sync",
   "downloadWindows": "https://github.com/newrelic/nr1-flex-manager/raw/master/package/nri-sync.exe",
   "scripts": {

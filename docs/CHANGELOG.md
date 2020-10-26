@@ -1,3 +1,16 @@
+# [1.8.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.7.0...v1.8.0) (2020-10-26)
+
+
+### Bug Fixes
+
+* upgrade lodash from 4.17.19 to 4.17.20 ([#33](https://github.com/newrelic/nr1-integrations-manager/issues/33)) ([97f2599](https://github.com/newrelic/nr1-integrations-manager/commit/97f259993ccbad7607f242518b0295abe4995b5e))
+
+
+### Features
+
+* merge ([0e64cef](https://github.com/newrelic/nr1-integrations-manager/commit/0e64cef66b34123698c97a53c507bbde553cf152))
+* remove # links due to NR1 platform bug ([a2f2951](https://github.com/newrelic/nr1-integrations-manager/commit/a2f29517c795b5c56797e239fa0588481161034c))
+
 ## [1.7.1](https://github.com/newrelic/nr1-integrations-manager/compare/v1.7.0...v1.7.1) (2020-09-25)
 
 
