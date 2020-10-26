@@ -2,7 +2,7 @@
   {
     "name": "apache",
     "git": "https://github.com/newrelic/nri-apache",
-    "image": "https://i.dlpng.com/static/png/6904108_preview.png",
+    "image": "https://cdn.iconscout.com/icon/free/png-256/apache-8-1174973.png",
     "standard": "/master/integrations/v4configs/nri-apache.yml",
     "discovery": "/master/integrations/v4configs/nri-apache-discovery.yml",
     "k8s": "https://raw.githubusercontent.com/newrelic/nri-apache/master/apache-config.yml.k8s_sample"
