@@ -17,7 +17,6 @@ export default class IntegrationTiles extends React.PureComponent {
                 <Card
                   color="black"
                   style={{ width: '50px' }}
-                  href="#"
                   onClick={() =>
                     updateDataStateContext({
                       selectedIntegration: null,
@@ -50,7 +49,6 @@ export default class IntegrationTiles extends React.PureComponent {
                   return (
                     <Card
                       key={z}
-                      href="#"
                       color={selectedIntegration ? 'green' : 'black'}
                       onClick={() => {
                         if (!selectedIntegration) {

@@ -14,7 +14,6 @@ export default class RowMenu extends React.PureComponent {
             <Card.Group centered>
               <Card
                 color={selectedPage === 'setup' ? 'green' : 'blue'}
-                href="#setup"
                 onClick={() =>
                   updateDataStateContext({
                     selectedPage: 'setup',
@@ -32,7 +31,6 @@ export default class RowMenu extends React.PureComponent {
               </Card>
               <Card
                 color={selectedPage === 'product' ? 'green' : 'blue'}
-                href="#product"
                 onClick={() =>
                   updateDataStateContext({
                     selectedPage: 'product',
@@ -50,7 +48,6 @@ export default class RowMenu extends React.PureComponent {
               </Card>
               <Card
                 color={selectedPage === 'flex' ? 'green' : 'blue'}
-                href="#flex"
                 onClick={() =>
                   updateDataStateContext({
                     selectedPage: 'flex',

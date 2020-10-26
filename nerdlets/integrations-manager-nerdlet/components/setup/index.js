@@ -245,7 +245,7 @@ export default class Setup extends React.PureComponent {
                       <List.Item>
                         Download <strong>nri-sync</strong>
                         <List.List>
-                          <List.Item href="https://github.com/newrelic/nr1-flex-manager/raw/master/package/nri-sync">
+                          <List.Item href="https://github.com/newrelic/nr1-integrations-manager/raw/main/package/nri-sync">
                             Linux
                           </List.Item>
                         </List.List>
