@@ -197,7 +197,7 @@ export class DataProvider extends Component {
 
   getProductIntegrations = () => {
     const { pkgName } = this.state;
-    const url = `https://raw.githubusercontent.com/newrelic/${pkgName}/master/integrations/product.json`;
+    const url = `https://raw.githubusercontent.com/newrelic/${pkgName}/main/integrations/product.json`;
 
     fetch(url)
       .then((response) => response.json())
@@ -467,7 +467,7 @@ export class DataProvider extends Component {
   checkVersion = () => {
     return new Promise(async (resolve) => {
       const data = await fetch(
-        'https://raw.githubusercontent.com/newrelic/nr1-integrations-manager/master/package.json'
+        'https://raw.githubusercontent.com/newrelic/nr1-integrations-manager/main/package.json'
       ).then((response) => {
         if (response.ok) {
           return response.json();
