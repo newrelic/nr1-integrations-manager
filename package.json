@@ -23,7 +23,7 @@
     "react-dom": "^16.6.3",
     "react-markdown": "^4.3.1",
     "react-select": "^3.1.1",
-    "react-syntax-highlighter": "^11.0.2",
+    "react-syntax-highlighter": "^13.0.0",
     "react-toastify": "^5.5.0",
     "semantic-ui-react": "^1.0.0",
     "semver": "^7.3.4"
