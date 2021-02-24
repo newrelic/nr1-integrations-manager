@@ -3,6 +3,26 @@
 
 ### Bug Fixes
 
+* upgrade js-yaml from 3.14.0 to 3.14.1 ([8e7486a](https://github.com/newrelic/nr1-integrations-manager/commit/8e7486a21577d4f1928f9ca305336955b6171751))
+* upgrade lodash from 4.17.19 to 4.17.20 ([#33](https://github.com/newrelic/nr1-integrations-manager/issues/33)) ([97f2599](https://github.com/newrelic/nr1-integrations-manager/commit/97f259993ccbad7607f242518b0295abe4995b5e))
+* upgrade react-select from 3.1.0 to 3.1.1 ([#68](https://github.com/newrelic/nr1-integrations-manager/issues/68)) ([f9d7861](https://github.com/newrelic/nr1-integrations-manager/commit/f9d7861187b28e55f66745e72e9312834ab45f5b))
+* upgrade react-select from 3.1.1 to 3.2.0 ([b1845d7](https://github.com/newrelic/nr1-integrations-manager/commit/b1845d7a820548efd2120c78c4b6ae05b98fbbc2))
+* upgrade react-select from 3.1.1 to 3.2.0 ([a6f8996](https://github.com/newrelic/nr1-integrations-manager/commit/a6f8996b7549747c207e9c69e5b89cb6d09d84b9))
+* upgrade semantic-ui-react from 1.0.0 to 1.3.1 ([8d407dd](https://github.com/newrelic/nr1-integrations-manager/commit/8d407dd3ec0dfdaef1866c7f703f96ebad8b565a))
+* upgrade semantic-ui-react from 1.0.0 to 1.3.1 ([7025ecd](https://github.com/newrelic/nr1-integrations-manager/commit/7025ecd1067fbfa5a31a6f0fb5ba575eb04e5ac0))
+* upgrade semver from 7.3.2 to 7.3.4 ([#58](https://github.com/newrelic/nr1-integrations-manager/issues/58)) ([61d4d31](https://github.com/newrelic/nr1-integrations-manager/commit/61d4d31b2c07307e65d08a2be9fd8c390b2b3f38))
+
+
+### Features
+
+* merge ([0e64cef](https://github.com/newrelic/nr1-integrations-manager/commit/0e64cef66b34123698c97a53c507bbde553cf152))
+* remove # links due to NR1 platform bug ([a2f2951](https://github.com/newrelic/nr1-integrations-manager/commit/a2f29517c795b5c56797e239fa0588481161034c))
+
+# [1.8.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.7.0...v1.8.0) (2021-02-24)
+
+
+### Bug Fixes
+
 * upgrade lodash from 4.17.19 to 4.17.20 ([#33](https://github.com/newrelic/nr1-integrations-manager/issues/33)) ([97f2599](https://github.com/newrelic/nr1-integrations-manager/commit/97f259993ccbad7607f242518b0295abe4995b5e))
 * upgrade react-select from 3.1.0 to 3.1.1 ([#68](https://github.com/newrelic/nr1-integrations-manager/issues/68)) ([f9d7861](https://github.com/newrelic/nr1-integrations-manager/commit/f9d7861187b28e55f66745e72e9312834ab45f5b))
 * upgrade react-select from 3.1.1 to 3.2.0 ([b1845d7](https://github.com/newrelic/nr1-integrations-manager/commit/b1845d7a820548efd2120c78c4b6ae05b98fbbc2))
