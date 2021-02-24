@@ -133,7 +133,7 @@ SOFTWARE.
 
 ### js-yaml
 
-This product includes source derived from [js-yaml](https://github.com/nodeca/js-yaml) ([v3.14.0](https://github.com/nodeca/js-yaml/tree/v3.14.0)), distributed under the [MIT License](https://github.com/nodeca/js-yaml/blob/v3.14.0/LICENSE):
+This product includes source derived from [js-yaml](https://github.com/nodeca/js-yaml) ([v3.14.1](https://github.com/nodeca/js-yaml/tree/v3.14.1)), distributed under the [MIT License](https://github.com/nodeca/js-yaml/blob/v3.14.1/LICENSE):
 
 ```
 (The MIT License)
