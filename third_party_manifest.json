@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "Sun Oct 25 2020 23:59:52 GMT+0000 (Coordinated Universal Time)",
+  "lastUpdated": "Wed Feb 24 2021 21:13:50 GMT+0000 (Coordinated Universal Time)",
   "projectName": "nr1-integrations-manager",
   "projectUrl": "https://github.com/newrelic/nr1-integrations-manager",
   "includeDev": true,
@@ -110,15 +110,15 @@
       "publisher": "Espen Hovlandsdal",
       "email": "espen@hovlandsdal.com"
     },
-    "react-select@3.1.0": {
+    "react-select@3.2.0": {
       "name": "react-select",
-      "version": "3.1.0",
-      "range": "^3.1.0",
+      "version": "3.2.0",
+      "range": "^3.2.0",
       "licenses": "MIT",
-      "repoUrl": "https://github.com/JedWatson/react-select",
-      "versionedRepoUrl": "https://github.com/JedWatson/react-select/tree/v3.1.0",
+      "repoUrl": "https://github.com/JedWatson/react-select/tree/master/packages/react-select",
+      "versionedRepoUrl": "https://github.com/JedWatson/react-select/tree/master/packages/react-select/tree/v3.2.0",
       "licenseFile": "node_modules/react-select/README.md",
-      "licenseUrl": "https://github.com/JedWatson/react-select/blob/v3.1.0/README.md",
+      "licenseUrl": "https://github.com/JedWatson/react-select/tree/master/packages/react-select/blob/v3.2.0/README.md",
       "licenseTextSource": "spdx",
       "publisher": "Jed Watson"
     },
@@ -159,28 +159,28 @@
       "licenseUrl": "https://github.com/facebook/react/blob/v16.13.1/LICENSE",
       "licenseTextSource": "file"
     },
-    "semantic-ui-react@1.0.0": {
+    "semantic-ui-react@1.3.1": {
       "name": "semantic-ui-react",
-      "version": "1.0.0",
-      "range": "^1.0.0",
+      "version": "1.3.1",
+      "range": "^1.3.1",
       "licenses": "MIT",
       "repoUrl": "https://github.com/Semantic-Org/Semantic-UI-React",
-      "versionedRepoUrl": "https://github.com/Semantic-Org/Semantic-UI-React/tree/v1.0.0",
+      "versionedRepoUrl": "https://github.com/Semantic-Org/Semantic-UI-React/tree/v1.3.1",
       "licenseFile": "node_modules/semantic-ui-react/LICENSE.md",
-      "licenseUrl": "https://github.com/Semantic-Org/Semantic-UI-React/blob/v1.0.0/LICENSE.md",
+      "licenseUrl": "https://github.com/Semantic-Org/Semantic-UI-React/blob/v1.3.1/LICENSE.md",
       "licenseTextSource": "file",
       "publisher": "Levi Thomason",
       "email": "me@levithomason.com"
     },
-    "semver@7.3.2": {
+    "semver@7.3.4": {
       "name": "semver",
-      "version": "7.3.2",
-      "range": "^7.3.2",
+      "version": "7.3.4",
+      "range": "^7.3.4",
       "licenses": "ISC",
       "repoUrl": "https://github.com/npm/node-semver",
-      "versionedRepoUrl": "https://github.com/npm/node-semver/tree/v7.3.2",
+      "versionedRepoUrl": "https://github.com/npm/node-semver/tree/v7.3.4",
       "licenseFile": "node_modules/semver/LICENSE",
-      "licenseUrl": "https://github.com/npm/node-semver/blob/v7.3.2/LICENSE",
+      "licenseUrl": "https://github.com/npm/node-semver/blob/v7.3.4/LICENSE",
       "licenseTextSource": "file"
     }
   },
