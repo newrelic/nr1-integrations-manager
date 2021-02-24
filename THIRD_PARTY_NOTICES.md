@@ -334,7 +334,7 @@ SOFTWARE.
 
 ### react-select
 
-This product includes source derived from [react-select](https://github.com/JedWatson/react-select/tree/master/packages/react-select) ([v3.1.1](https://github.com/JedWatson/react-select/tree/master/packages/react-select/tree/v3.1.1)), distributed under the [MIT License](https://github.com/JedWatson/react-select/tree/master/packages/react-select/blob/v3.1.1/README.md):
+This product includes source derived from [react-select](https://github.com/JedWatson/react-select/tree/master/packages/react-select) ([v3.2.0](https://github.com/JedWatson/react-select/tree/master/packages/react-select/tree/v3.2.0)), distributed under the [MIT License](https://github.com/JedWatson/react-select/tree/master/packages/react-select/blob/v3.2.0/README.md):
 
 ```
 MIT License
@@ -436,7 +436,7 @@ SOFTWARE.
 
 ### semantic-ui-react
 
-This product includes source derived from [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React) ([v1.0.0](https://github.com/Semantic-Org/Semantic-UI-React/tree/v1.0.0)), distributed under the [MIT License](https://github.com/Semantic-Org/Semantic-UI-React/blob/v1.0.0/LICENSE.md):
+This product includes source derived from [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React) ([v1.3.1](https://github.com/Semantic-Org/Semantic-UI-React/tree/v1.3.1)), distributed under the [MIT License](https://github.com/Semantic-Org/Semantic-UI-React/blob/v1.3.1/LICENSE.md):
 
 ```
 MIT License
