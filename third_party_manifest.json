@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "Fri Feb 26 2021 00:06:41 GMT+0000 (Coordinated Universal Time)",
+  "lastUpdated": "Tue Mar 09 2021 14:58:19 GMT+0000 (Coordinated Universal Time)",
   "projectName": "nr1-integrations-manager",
   "projectUrl": "https://github.com/newrelic/nr1-integrations-manager",
   "includeDev": true,
@@ -122,15 +122,15 @@
       "licenseTextSource": "spdx",
       "publisher": "Jed Watson"
     },
-    "react-syntax-highlighter@13.0.0": {
+    "react-syntax-highlighter@13.5.3": {
       "name": "react-syntax-highlighter",
-      "version": "13.0.0",
-      "range": "^13.0.0",
+      "version": "13.5.3",
+      "range": "^13.5.3",
       "licenses": "MIT",
-      "repoUrl": "https://github.com/conorhastings/react-syntax-highlighter",
-      "versionedRepoUrl": "https://github.com/conorhastings/react-syntax-highlighter/tree/v13.0.0",
+      "repoUrl": "https://github.com/react-syntax-highlighter/react-syntax-highlighter",
+      "versionedRepoUrl": "https://github.com/react-syntax-highlighter/react-syntax-highlighter/tree/v13.5.3",
       "licenseFile": "node_modules/react-syntax-highlighter/LICENSE",
-      "licenseUrl": "https://github.com/conorhastings/react-syntax-highlighter/blob/v13.0.0/LICENSE",
+      "licenseUrl": "https://github.com/react-syntax-highlighter/react-syntax-highlighter/blob/v13.5.3/LICENSE",
       "licenseTextSource": "file",
       "publisher": "Conor Hastings"
     },

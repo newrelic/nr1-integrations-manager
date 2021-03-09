@@ -350,7 +350,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### react-syntax-highlighter
 
-This product includes source derived from [react-syntax-highlighter](https://github.com/conorhastings/react-syntax-highlighter) ([v13.0.0](https://github.com/conorhastings/react-syntax-highlighter/tree/v13.0.0)), distributed under the [MIT License](https://github.com/conorhastings/react-syntax-highlighter/blob/v13.0.0/LICENSE):
+This product includes source derived from [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) ([v13.5.3](https://github.com/react-syntax-highlighter/react-syntax-highlighter/tree/v13.5.3)), distributed under the [MIT License](https://github.com/react-syntax-highlighter/react-syntax-highlighter/blob/v13.5.3/LICENSE):
 
 ```
 MIT License
