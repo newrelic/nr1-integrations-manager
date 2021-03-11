@@ -133,7 +133,7 @@ SOFTWARE.
 
 ### js-yaml
 
-This product includes source derived from [js-yaml](https://github.com/nodeca/js-yaml) ([v3.14.0](https://github.com/nodeca/js-yaml/tree/v3.14.0)), distributed under the [MIT License](https://github.com/nodeca/js-yaml/blob/v3.14.0/LICENSE):
+This product includes source derived from [js-yaml](https://github.com/nodeca/js-yaml) ([v3.14.1](https://github.com/nodeca/js-yaml/tree/v3.14.1)), distributed under the [MIT License](https://github.com/nodeca/js-yaml/blob/v3.14.1/LICENSE):
 
 ```
 (The MIT License)
@@ -162,7 +162,7 @@ THE SOFTWARE.
 
 ### lodash
 
-This product includes source derived from [lodash](https://github.com/lodash/lodash) ([v4.17.20](https://github.com/lodash/lodash/tree/v4.17.20)), distributed under the [MIT License](https://github.com/lodash/lodash/blob/v4.17.20/LICENSE):
+This product includes source derived from [lodash](https://github.com/lodash/lodash) ([v4.17.21](https://github.com/lodash/lodash/tree/v4.17.21)), distributed under the [MIT License](https://github.com/lodash/lodash/blob/v4.17.21/LICENSE):
 
 ```
 Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
@@ -334,7 +334,7 @@ SOFTWARE.
 
 ### react-select
 
-This product includes source derived from [react-select](https://github.com/JedWatson/react-select/tree/master/packages/react-select) ([v3.1.1](https://github.com/JedWatson/react-select/tree/master/packages/react-select/tree/v3.1.1)), distributed under the [MIT License](https://github.com/JedWatson/react-select/tree/master/packages/react-select/blob/v3.1.1/README.md):
+This product includes source derived from [react-select](https://github.com/JedWatson/react-select/tree/master/packages/react-select) ([v3.2.0](https://github.com/JedWatson/react-select/tree/master/packages/react-select/tree/v3.2.0)), distributed under the [MIT License](https://github.com/JedWatson/react-select/tree/master/packages/react-select/blob/v3.2.0/README.md):
 
 ```
 MIT License
@@ -350,7 +350,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### react-syntax-highlighter
 
-This product includes source derived from [react-syntax-highlighter](https://github.com/conorhastings/react-syntax-highlighter) ([v11.0.2](https://github.com/conorhastings/react-syntax-highlighter/tree/v11.0.2)), distributed under the [MIT License](https://github.com/conorhastings/react-syntax-highlighter/blob/v11.0.2/LICENSE):
+This product includes source derived from [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) ([v13.5.3](https://github.com/react-syntax-highlighter/react-syntax-highlighter/tree/v13.5.3)), distributed under the [MIT License](https://github.com/react-syntax-highlighter/react-syntax-highlighter/blob/v13.5.3/LICENSE):
 
 ```
 MIT License
@@ -436,7 +436,7 @@ SOFTWARE.
 
 ### semantic-ui-react
 
-This product includes source derived from [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React) ([v1.0.0](https://github.com/Semantic-Org/Semantic-UI-React/tree/v1.0.0)), distributed under the [MIT License](https://github.com/Semantic-Org/Semantic-UI-React/blob/v1.0.0/LICENSE.md):
+This product includes source derived from [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React) ([v1.3.1](https://github.com/Semantic-Org/Semantic-UI-React/tree/v1.3.1)), distributed under the [MIT License](https://github.com/Semantic-Org/Semantic-UI-React/blob/v1.3.1/LICENSE.md):
 
 ```
 MIT License
