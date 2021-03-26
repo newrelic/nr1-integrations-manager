@@ -276,7 +276,7 @@ SOFTWARE.
 
 ### react-dom
 
-This product includes source derived from [react-dom](https://github.com/facebook/react) ([v16.13.1](https://github.com/facebook/react/tree/v16.13.1)), distributed under the [MIT License](https://github.com/facebook/react/blob/v16.13.1/LICENSE):
+This product includes source derived from [react-dom](https://github.com/facebook/react) ([v16.6.3](https://github.com/facebook/react/tree/v16.6.3)), distributed under the [MIT License](https://github.com/facebook/react/blob/v16.6.3/LICENSE):
 
 ```
 MIT License
@@ -407,7 +407,7 @@ SOFTWARE.
 
 ### react
 
-This product includes source derived from [react](https://github.com/facebook/react) ([v16.13.1](https://github.com/facebook/react/tree/v16.13.1)), distributed under the [MIT License](https://github.com/facebook/react/blob/v16.13.1/LICENSE):
+This product includes source derived from [react](https://github.com/facebook/react) ([v16.6.3](https://github.com/facebook/react/tree/v16.6.3)), distributed under the [MIT License](https://github.com/facebook/react/blob/v16.6.3/LICENSE):
 
 ```
 MIT License
@@ -465,7 +465,7 @@ SOFTWARE.
 
 ### semver
 
-This product includes source derived from [semver](https://github.com/npm/node-semver) ([v7.3.4](https://github.com/npm/node-semver/tree/v7.3.4)), distributed under the [ISC License](https://github.com/npm/node-semver/blob/v7.3.4/LICENSE):
+This product includes source derived from [semver](https://github.com/npm/node-semver) ([v7.3.5](https://github.com/npm/node-semver/tree/v7.3.5)), distributed under the [ISC License](https://github.com/npm/node-semver/blob/v7.3.5/LICENSE):
 
 ```
 The ISC License
@@ -758,7 +758,7 @@ SOFTWARE.
 
 ### eslint
 
-This product includes source derived from [eslint](https://github.com/eslint/eslint) ([v7.5.0](https://github.com/eslint/eslint/tree/v7.5.0)), distributed under the [MIT License](https://github.com/eslint/eslint/blob/v7.5.0/LICENSE):
+This product includes source derived from [eslint](https://github.com/eslint/eslint) ([v7.22.0](https://github.com/eslint/eslint/tree/v7.22.0)), distributed under the [MIT License](https://github.com/eslint/eslint/blob/v7.22.0/LICENSE):
 
 ```
 Copyright JS Foundation and other contributors, https://js.foundation
@@ -785,7 +785,7 @@ THE SOFTWARE.
 
 ### prettier
 
-This product includes source derived from [prettier](https://github.com/prettier/prettier) ([v2.0.5](https://github.com/prettier/prettier/tree/v2.0.5)), distributed under the [MIT License](https://github.com/prettier/prettier/blob/v2.0.5/LICENSE):
+This product includes source derived from [prettier](https://github.com/prettier/prettier) ([v2.2.1](https://github.com/prettier/prettier/tree/v2.2.1)), distributed under the [MIT License](https://github.com/prettier/prettier/blob/v2.2.1/LICENSE):
 
 ```
 Copyright © James Long and contributors
