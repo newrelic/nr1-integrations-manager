@@ -16,7 +16,7 @@
     "graphql": "^14.7.0",
     "graphql-tag": "^2.10.4",
     "js-yaml": "^3.14.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "prop-types": "^15.6.2",
     "react-ace": "^7.0.5",
     "react-markdown": "^4.3.1",
