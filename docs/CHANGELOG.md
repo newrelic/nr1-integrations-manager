@@ -1,3 +1,11 @@
+## [1.8.1](https://github.com/newrelic/nr1-integrations-manager/compare/v1.8.0...v1.8.1) (2021-05-07)
+
+
+### Bug Fixes
+
+* upgrade lodash from 4.17.19 to 4.17.21 ([4ec2940](https://github.com/newrelic/nr1-integrations-manager/commit/4ec294006db1db6264632034df0be74e5f6e2af7))
+* upgrade semver from 7.3.2 to 7.3.4 ([a06d077](https://github.com/newrelic/nr1-integrations-manager/commit/a06d077f9104c824d5c196fd8375185ed53d4e4d))
+
 # [1.8.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.7.1...v1.8.0) (2020-10-26)
 
 
