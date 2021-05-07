@@ -24,7 +24,7 @@
     "react-syntax-highlighter": "^11.0.2",
     "react-toastify": "^5.5.0",
     "semantic-ui-react": "^1.0.0",
-    "semver": "^7.3.2"
+    "semver": "^7.3.4"
   },
   "browserslist": [
     "last 2 versions",
