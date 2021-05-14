@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/newrelic/nr1-integrations-manager/compare/v1.8.1...v1.8.2) (2021-05-14)
+
+
+### Bug Fixes
+
+* remove graphql-tag dependency ([cefad57](https://github.com/newrelic/nr1-integrations-manager/commit/cefad570a86c850b499359f696ed4d9bfcaf3c14))
+
 ## [1.8.1](https://github.com/newrelic/nr1-integrations-manager/compare/v1.8.0...v1.8.1) (2021-05-07)
 
 
