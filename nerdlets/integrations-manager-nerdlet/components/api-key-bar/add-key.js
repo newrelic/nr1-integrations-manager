@@ -1,9 +1,8 @@
 import React from 'react';
 import { Modal, Button, Popup, Icon, Input } from 'semantic-ui-react';
 import { DataConsumer } from '../../context/data';
-import { NerdGraphMutation } from 'nr1';
+import { NerdGraphMutation, ngql } from 'nr1';
 import { createApiKeyQuery } from '../../context/queries';
-import gql from 'graphql-tag';
 
 export default class AddKey extends React.PureComponent {
   constructor(props) {
@@ -20,7 +19,7 @@ export default class AddKey extends React.PureComponent {
         const { name } = this.state;
         // add key
         NerdGraphMutation.mutate({
-          mutation: gql`
+          mutation: ngql`
             ${createApiKeyQuery(selectedAccount.key, name, userData.id)}
           `
         }).then((value) => {

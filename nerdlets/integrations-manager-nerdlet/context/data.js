@@ -11,11 +11,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import {
   NerdGraphQuery,
   AccountStorageQuery,
-  AccountStorageMutation
+  AccountStorageMutation,
+  ngql
 } from 'nr1';
 import { Icon } from 'semantic-ui-react';
 import pkg from '../../../package.json';
-import gql from 'graphql-tag';
 import {
   accountsQuery,
   catalogNerdpacksQuery,
@@ -183,7 +183,7 @@ export class DataProvider extends Component {
 
   getAccountLicenseKey = (accountId) => {
     NerdGraphQuery.query({
-      query: gql`
+      query: ngql`
         ${accountLicenseKeyQuery(accountId)}
       `
     }).then((value) => {
@@ -227,7 +227,7 @@ export class DataProvider extends Component {
     // check if nerdpack is running from app catalog
     if (nerdpackUUID === '') {
       await NerdGraphQuery.query({
-        query: gql`
+        query: ngql`
           ${catalogNerdpacksQuery}
         `
       }).then((value) => {
@@ -254,7 +254,7 @@ export class DataProvider extends Component {
 
   getUser = () => {
     NerdGraphQuery.query({
-      query: gql`
+      query: ngql`
         ${getUserQuery}
       `
     }).then((value) => {
@@ -272,7 +272,7 @@ export class DataProvider extends Component {
       });
 
       NerdGraphQuery.query({
-        query: gql`
+        query: ngql`
           ${accountsQuery}
         `
       }).then((value) => {
@@ -336,7 +336,7 @@ export class DataProvider extends Component {
 
   getApiKeys = (accountId) => {
     NerdGraphQuery.query({
-      query: gql`
+      query: ngql`
         ${getApiKeysQuery(accountId)}
       `
     }).then((values) => {
@@ -398,7 +398,7 @@ export class DataProvider extends Component {
     }`;
 
     NerdGraphQuery.query({
-      query: gql`
+      query: ngql`
         ${snycQuery}
       `
     }).then(async (value) => {
