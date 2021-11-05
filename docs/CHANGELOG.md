@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.9.0...v1.10.0) (2021-11-05)
+
+
+### Features
+
+* add catalog keywords and categoryTerms ([c098fab](https://github.com/newrelic/nr1-integrations-manager/commit/c098fab18a32192343595193de7cb78fde1e06ba))
+
 # [1.9.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.8.2...v1.9.0) (2021-10-04)
 
 
