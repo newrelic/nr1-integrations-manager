@@ -2,6 +2,8 @@
   "tagline": "Manage your integrations",
   "repository": "https://github.com/newrelic/nr1-integrations-manager.git",
   "details": "Use the Integrations Manager to simplify the work of creating, managing and deploying integrations.",
+  "categoryTerms": ["os", "infrastructure"],
+  "keywords": ["flex"],
   "support": {
     "issues": {
       "url": "https://github.com/newrelic/nr1-integrations-manager/issues"
