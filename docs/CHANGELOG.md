@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/newrelic/nr1-integrations-manager/compare/v1.10.0...v1.10.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* app deprecations ([3884f93](https://github.com/newrelic/nr1-integrations-manager/commit/3884f930e6d588e69a3816486334338d27c8ba94))
+
 # [1.10.0](https://github.com/newrelic/nr1-integrations-manager/compare/v1.9.0...v1.10.0) (2021-11-05)
 
 
