@@ -305,8 +305,10 @@ export class DataProvider extends Component {
         selectedCollection.collectionAccountId || selectedCollection.accountId,
       collection: selectedCollection.label
     }).then((value) => {
-      if (value.errors && value.errors.length > 0) {
-        window.alert(`${selectedCollection.label}: ${value.errors[0].message}`);
+      if (value.error && value.error.graphQLErrors.length > 0) {
+        window.alert(
+          `${selectedCollection.label}: ${value.error.graphQLErrors[0].message}`
+        );
         this.setState({ selectedCollection: null });
       } else {
         this.setState({
